@@ -1,5 +1,5 @@
 # llm evidence triangulation
- This is the official repository for the project githubA Large Language Model Approach to Extracting Causal Evidence across Study Designs for Evidence Triangulation
+ This is the official repository for the project A Large Language Model Approach to Extracting Causal Evidence across Study Designs for Evidence Triangulation
 
 This repository provides the official implementation of the paper **“A Large Language Model Approach to Extracting Causal Evidence across Study Designs for Evidence Triangulation.”** The project aims to automate the extraction of study design, exposure–outcome concepts, and relationships (e.g., effect direction, statistical significance) from biomedical abstracts. By combining multiple lines of evidence—randomized controlled trials (RCTs), observational studies (OSs), Mendelian randomization (MR), and more—our framework computes **Convergency of Evidence (CoE)** and **Level of Convergency (LoC)** to support more robust causal inference in epidemiology and public health.
 
@@ -56,7 +56,9 @@ The pipeline infers whether the paper is an RCT, observational, MR, or meta-anal
 	4.	Optional Weighting
 	•	Adjusts each study’s impact on CoE/LoC, e.g., by sample size or other quality indicators to reflect relative study robustness.
 
-Contributing
+---
+
+## Contributing
 
 We welcome feedback, bug reports, and feature requests. Please open an issue or submit a pull request to improve any part of this pipeline, from data ingestion to triangulation scoring.
 
