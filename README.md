@@ -39,8 +39,8 @@ This work leverages **large language models (LLMs)** to:
 
 1. **Clone this repository**:
    ```bash
-   git clone https://github.com/<YourUsername>/EvidenceTriangulation.git
-   cd EvidenceTriangulation
+   git clone https://github.com/xuanyshi/llm-evidence-triangulation.git
+   cd llm-evidence-triangulation
 
 
 Algorithm Overview
