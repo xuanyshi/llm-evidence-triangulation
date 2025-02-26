@@ -12,6 +12,13 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 
 ---
 
+## Instructions
+
+- Use `notebooks/pubmed_fetcher_function.py` for acquiring texts for title and abstract from PubMed.
+- Use `notebooks/extraction_matching.py` for name entity extraction, relation extraction, and exposure/outcome filtering.
+
+---
+
 ## Background
 
 Causal inference in biomedical research often requires synthesizing evidence from a variety of study designs, each with distinct potential biases. Traditional meta-analyses typically pool similar study types, while *evidence triangulation* aggregates results across **heterogeneous** designs—randomized controlled trials, observational studies, Mendelian randomization, and more—to assess whether each line of evidence converges on the same causal conclusion.
