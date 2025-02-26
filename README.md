@@ -8,6 +8,8 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 
 ![Figure 1](figures/figure_1.png)
 
+*Figure 1. Overall workflow of automatic evidence triangulation using LLM.*
+
 ---
 
 ## Background
