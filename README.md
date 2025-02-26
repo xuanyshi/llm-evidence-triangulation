@@ -4,6 +4,10 @@ This is the official repository for the project **A Large Language Model Approac
 
 This repository provides the official implementation of the paper **“A Large Language Model Approach to Extracting Causal Evidence across Study Designs for Evidence Triangulation.”** The project aims to automate the extraction of study design, exposure–outcome concepts, and relationships (e.g., effect direction, statistical significance) from biomedical abstracts. By combining multiple lines of evidence—randomized controlled trials (RCTs), observational studies (OSs), Mendelian randomization (MR), and more—our framework computes **Convergency of Evidence (CoE)** and **Level of Convergency (LoC)** to support more robust causal inference in epidemiology and public health.
 
+Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.18.24304457v3).
+
+![Figure 1](figures/figure_1.png)
+
 ---
 
 ## Background
