@@ -46,7 +46,7 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
    ```
 
 ### Installation Time
-- On a standard desktop, running per article takes approximately 1 minutes.
+- On a standard desktop, running per article takes approximately 1 minute.
 
 ---
 
