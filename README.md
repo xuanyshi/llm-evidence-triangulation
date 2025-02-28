@@ -12,6 +12,76 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 
 ---
 
+## System Requirements
+
+### Software Dependencies
+- Python 3.8+
+- others in requirements.txt
+
+### Supported Operating Systems
+- Tested on macOS 14.6.1, and Google Colab
+
+### Tested Versions
+- Software has been tested on Python 3.11.11
+- PubMed data extraction tested on latest PubMed API
+
+### Hardware Requirements
+- Recommended: 8GB RAM, NVIDIA GPU 
+
+---
+
+## Installation Guide
+
+### Instructions
+1. **Clone this repository**:
+   ```bash
+   git clone https://github.com/xuanyshi/llm-evidence-triangulation.git
+   cd llm-evidence-triangulation
+   ```
+2. **Create a virtual environment and install dependencies**:
+   ```bash
+   python3 -m venv env
+   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   pip install -r requirements.txt
+   ```
+
+### Installation Time
+- On a standard desktop, running per article takes approximately 1 minutes.
+
+---
+
+## Demo
+
+### Running the Demo
+```bash
+python scripts/.py
+```
+
+### Expected Output
+- Extracted entities (exposures and outcomes) from sample abstracts.
+- Study classification (RCT, observational, etc.).
+- Convergency of Evidence (CoE) score.
+
+
+---
+
+## Instructions for Use
+
+### Running the Software on Your Data
+```bash
+python scripts/pubmed_fetcher_function.py 
+```
+
+### Optional: Reproducing Manuscript Results
+1. Ensure all dependencies are installed.
+2. Run:
+   ```bash
+   python scripts/pubmed_fetcher_function.py
+   ```
+3. Outputs will match the manuscript results if run on the same dataset.
+
+---
+
 ## Instructions
 
 - Use `notebooks/pubmed_fetcher_function.py` for acquiring texts for title and abstract from PubMed.
@@ -46,16 +116,6 @@ This work leverages **large language models (LLMs)** to:
 
 - **Scalable & Adaptive**  
   Easily extends to new publications; reflects how consensus evolves over time as additional data (and new study designs) appear in the literature.
-
----
-
-## Installation
-
-1. **Clone this repository**:
-   ```bash
-   git clone https://github.com/xuanyshi/llm-evidence-triangulation.git
-   cd llm-evidence-triangulation
-   ```
 
 ---
 
