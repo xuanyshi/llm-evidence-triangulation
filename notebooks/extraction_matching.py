@@ -1,3 +1,5 @@
+import threading
+
 prompt_step1 = """
 From the following given title and abstract, extract all studied exposures and outcomes separately. Ignore any other information.
 

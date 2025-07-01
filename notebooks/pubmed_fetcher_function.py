@@ -267,5 +267,6 @@ def pmid_splitter(pmid):
     print(len(query_split))
     return query_split
 
+pmid_all = ['24842917', '9293648', '11860914']
 pmid_chunks = pmid_splitter(pmid_all) ## input a list of wanted pmids
 all_got_df = crawler(pmid_chunks).rename(columns={'index':'pmid'})
