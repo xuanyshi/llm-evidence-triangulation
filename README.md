@@ -48,18 +48,10 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 ### Installation Time
 - On a standard desktop, running per article takes approximately 1 minute.
 
----
-
-## Demo
-
-### Running the Demo
-```bash
-python scripts/.py
-```
 
 ### Expected Output
 - Extracted entities (exposures and outcomes) from sample abstracts.
-- Study classification (RCT, observational, etc.).
+- Study classification (RCT, observational, mendelian randomization.).
 - Convergency of Evidence (CoE) score.
 
 
@@ -85,7 +77,8 @@ python scripts/pubmed_fetcher_function.py
 ## Instructions
 
 - Use `notebooks/pubmed_fetcher_function.py` for acquiring texts for title and abstract from PubMed.
-- Use `notebooks/extraction_matching.py` for name entity extraction, relation extraction, and exposure/outcome filtering.
+- Use `notebooks/extraction_matching.py` for name entity extraction, relation extraction, and exposure/outcome mapping and filtering.
+- Codes were running on google colab. Thus it is preferred to copy and paste to a notebook environment.
 
 ---
 

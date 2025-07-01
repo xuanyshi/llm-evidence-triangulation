@@ -59,16 +59,6 @@ def crawler(pmid_chunks):
                 info_dict['epub_year'] = epub_year
                 info_dict['epub_month'] = epub_month
                 info_dict['pub_types'] = publication_types
-                # if art_info.find('.//PubDate'):
-                #   pub_date = art_info.find('.//PubDate')
-                #   year = pub_date.find('Year').text if pub_date.find('Year').text else None
-                #   month = pub_date.find('Month').text if pub_date.find('Month').text else None
-                # else:
-                #   year = None
-                #   month = None
-
-                # info_dict['pub_year'] = year
-                # info_dict['pub_month'] = month
 
                 background = None
                 conclusion = None
@@ -161,32 +151,10 @@ def crawler(pmid_chunks):
                 for i in comment_info:
                     if i.attrib['RefType'] == 'CommentIn':
                         comment_count+=1
-                        #print([x.text for x in i][0])
-                #print(comment_count)
-                #omment = comment_info.findall('RefSource')
-                #p_type = [i.attrib  for i in p_type ]
-
-                #a = [i  for i in p_type if (i.tag == 'AbstractText')]
-                #a = [i for i in a if i!= None]
-                #print(comment)
-        #         for i in a:
-        #             #print(i.attrib.keys())
-        #             if 'NlmCategory' in i.attrib.keys():
-        #                 p_type = i.text
-        #             else:
-        #                 p_type = None
-        #         print(p_type)
-        #         info_dict['comment'] = p_type
                 info_dict['# of comments'] = comment_count
         #################################################### mesh info
             mesh_tree = article.findall('MeshHeadingList')
             for mesh_info in mesh_tree:
-        #         mesh = mesh_info.findall('MeshHeading/')
-        #         all_mesh = [i.text for i in mesh]
-
-        #         mesh_tags = mesh_info.findall('MeshHeading/*[@MajorTopicYN="Y"]')
-        #         mesh_tags = [i.text for i in mesh_tags]
-
                 all_mesh_list = []
                 major_mesh_list = []
                 for i in mesh_info:
@@ -197,10 +165,6 @@ def crawler(pmid_chunks):
                     if_major = 0
 
                     for m in i:
-        #                 if m.attrib['MajorTopicYN']=='Y':
-        #                     major_mesh += m.text
-        #                     major_mesh +='/'
-
 
                         if m.tag=='DescriptorName':
                             descriptor=m.text
@@ -230,21 +194,10 @@ def crawler(pmid_chunks):
                                 major_mesh += '/'
                                 major_mesh+=qualifier
                                 major_mesh+='*'
-                         ## combining sub mesh and main mesh
-
-                    #full_mesh = full_mesh[:-1]
-                    #major_mesh = major_mesh[:-1]
-
 
                     all_mesh_list.append(full_mesh)
                     major_mesh_list.append(major_mesh)
                     major_mesh_list = [value for value in major_mesh_list if '*' in value]
-
-        #         desp = mesh_info.findall('MeshHeading/')
-        #         for i in desp:
-        #             print(i.tag,'\n')
-
-
 
                 info_dict['all_mesh_terms'] = all_mesh_list
                 info_dict['major_mesh_terms'] = major_mesh_list
