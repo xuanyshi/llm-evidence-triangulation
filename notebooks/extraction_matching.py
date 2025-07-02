@@ -158,6 +158,9 @@ total_input_tokens = 0
 total_output_tokens = 0
 token_lock = threading.Lock()  # Prevent race conditions in multi-threaded execution
 
+MODEL="deepseek-chat"
+client = OpenAI(api_key='sk-...',base_url="https://api.deepseek.com")
+
 # Function to perform the two-step extraction
 def two_step_extraction(text):
     global total_input_tokens, total_output_tokens
