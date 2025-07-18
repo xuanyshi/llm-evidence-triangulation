@@ -1,4 +1,4 @@
-# LLM Evidence Triangulation
+# Evidence Triangulator
 
 This is the official repository for the project **Evidence Triangulator: Using Large Language Models to Extract and Synthesize Causal Evidence Across Study Designs**.
 
@@ -9,6 +9,24 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 ![Figure 1](figures/figure_1.png)
 
 *Figure 1. Overall workflow of automatic evidence triangulation using LLM.*
+
+## Authors and Affiliations
+
+**Authors**  
+Xuanyu Shi, MS¹²; Wenjing Zhao, PhD¹²; Ting Chen, PhD³; Chao Yang, PhD⁴⁵; Jian Du* PhD¹²⁴  
+
+\*Corresponding author
+
+**Affiliations**  
+¹ Institute of Medical Technology, Peking University, Beijing, China  
+² National Institute of Health Data Science, Peking University, Beijing, China  
+³ Business School, Dublin City University, Dublin, Ireland  
+⁴ Renal Division, Department of Medicine, Peking University First Hospital; Peking University Institute of Nephrology, Beijing, China  
+⁵ Center for Digital Health and Artificial Intelligence, Peking University First Hospital, Beijing, China
+
+**Contact**  
+• Xuanyu Shi — shixuanyu@bjmu.edu.cn  
+• Jian Du — dujian@bjmu.edu.cn
 
 ---
 
