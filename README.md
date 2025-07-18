@@ -1,8 +1,8 @@
 # LLM Evidence Triangulation
 
-This is the official repository for the project **Evidence Triangulator: A Large Language Model Approach to Extracting and Synthesizing Causal Evidence across Study Designs**.
+This is the official repository for the project **Evidence Triangulator: Using Large Language Models to Extract and Synthesize Causal Evidence Across Study Designs**.
 
-This repository provides the official implementation of the paper **“Evidence Triangulator: A Large Language Model Approach to Extracting and Synthesizing Causal Evidence across Study Designs”** The project aims to automate the extraction of study design, exposure–outcome concepts, and relationships (e.g., effect direction, statistical significance) from biomedical abstracts. By combining multiple lines of evidence—randomized controlled trials (RCTs), observational studies (OSs), Mendelian randomization (MR), and more—our framework computes **Convergency of Evidence (CoE)** and **Level of Convergency (LoC)** to support more robust causal inference in epidemiology and public health.
+This repository provides the official implementation of the paper **“Evidence Triangulator: Using Large Language Models to Extract and Synthesize Causal Evidence Across Study Designs”** The project aims to automate the extraction of study design, exposure–outcome concepts, and relationships (e.g., effect direction, statistical significance) from biomedical abstracts. By combining multiple lines of evidence—randomized controlled trials (RCTs), observational studies (OSs), Mendelian randomization (MR), and more—our framework computes **Convergency of Evidence (CoE)** and **Level of Convergency (LoC)** to support more robust causal inference in epidemiology and public health.
 
 Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.18.24304457v3).
 
@@ -15,18 +15,18 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 ## System Requirements
 
 ### Software Dependencies
-- Python 3.8+
+- Python 3.12.11
 - others in requirements.txt
 
 ### Supported Operating Systems
-- Tested on macOS 14.6.1, and Google Colab
+- Tested on macOS 15.3.1, and Google Colab
 
 ### Tested Versions
-- Software has been tested on Python 3.11.11
-- PubMed data extraction tested on latest PubMed API
+- Software has been tested on Python 3.12.11
+- PubMed data extraction tested on latest PubMed efetch API
 
 ### Hardware Requirements
-- Recommended: 8GB RAM, NVIDIA GPU 
+- Recommended: 16GB RAM
 
 ---
 
@@ -53,6 +53,7 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 - Extracted entities (exposures and outcomes) from sample abstracts.
 - Study classification (RCT, observational, mendelian randomization.).
 - Convergency of Evidence (CoE) score.
+- Figure of yearly trend of CoE directions
 
 
 ---
@@ -60,25 +61,18 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 ## Instructions for Use
 
 ### Running the Software on Your Data
+use running_demo.ipynb to run the .py scripts and see results
 ```bash
-python scripts/pubmed_fetcher_function.py 
+running_demo.ipynb 
 ```
-
-### Optional: Reproducing Manuscript Results
-1. Ensure all dependencies are installed.
-2. Run:
-   ```bash
-   python scripts/pubmed_fetcher_function.py
-   ```
-3. Outputs will match the manuscript results if run on the same dataset.
-
 ---
 
-## Instructions
+## Explanations of .py files
 
 - Use `notebooks/pubmed_fetcher_function.py` for acquiring texts for title and abstract from PubMed.
 - Use `notebooks/extraction_matching.py` for name entity extraction, relation extraction, and exposure/outcome mapping and filtering.
-- Codes were running on google colab. Thus it is preferred to copy and paste to a notebook environment.
+- Use `notebooks/triangulation.py` for evidence triangulation algorithm and figure plotting.
+- Codes were tested in VS Code.
 
 ---
 
