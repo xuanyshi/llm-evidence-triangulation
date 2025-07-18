@@ -25,7 +25,7 @@ Xuanyu Shi, MS¹²; Wenjing Zhao, PhD¹²; Ting Chen, PhD³; Chao Yang, PhD⁴�
 ⁵ Center for Digital Health and Artificial Intelligence, Peking University First Hospital, Beijing, China
 
 **Contact**  
-• Xuanyu Shi — shixuanyu@bjmu.edu.cn  
+• [Xuanyu Shi](https://xuanyshi.github.io/) — shixuanyu@bjmu.edu.cn  
 • [Jian Du](https://www.nihds.pku.edu.cn/en/info/1027/1024.htm) — dujian@bjmu.edu.cn
 
 ---
