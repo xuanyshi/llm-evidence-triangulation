@@ -1,8 +1,8 @@
-# Evidence Triangulator
+# Evidence Triangulator 🔍
 
 This is the official repository for the project **Evidence Triangulator: Using Large Language Models to Extract and Synthesize Causal Evidence Across Study Designs**.
 
-This repository provides the official implementation of the paper **“Evidence Triangulator: Using Large Language Models to Extract and Synthesize Causal Evidence Across Study Designs”** The project aims to automate the extraction of study design, exposure–outcome concepts, and relationships (e.g., effect direction, statistical significance) from biomedical abstracts. By combining multiple lines of evidence—randomized controlled trials (RCTs), observational studies (OSs), Mendelian randomization (MR), and more—our framework computes **Convergency of Evidence (CoE)** and **Level of Convergency (LoC)** to support more robust causal inference in epidemiology and public health.
+This repository provides the official implementation of the paper **"Evidence Triangulator: Using Large Language Models to Extract and Synthesize Causal Evidence Across Study Designs"** The project aims to automate the extraction of study design, exposure–outcome concepts, and relationships (e.g., effect direction, statistical significance) from biomedical abstracts. By combining multiple lines of evidence—randomized controlled trials (RCTs), observational studies (OSs), Mendelian randomization (MR), and more—our framework computes **Convergency of Evidence (CoE)** and **Level of Convergency (LoC)** to support more robust causal inference in epidemiology and public health.
 
 Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.18.24304457v3).
 
@@ -10,7 +10,7 @@ Read our preprint on [medRxiv](https://www.medrxiv.org/content/10.1101/2024.03.1
 
 *Figure 1. Overall workflow of automatic evidence triangulation using LLM.*
 
-## Authors and Affiliations
+## Authors and Affiliations 👥
 
 **Authors**  
 Xuanyu Shi, MS¹²; Wenjing Zhao, PhD¹²; Ting Chen, PhD³; Chao Yang, PhD⁴⁵; Jian Du* PhD¹²⁴  
@@ -30,7 +30,7 @@ Xuanyu Shi, MS¹²; Wenjing Zhao, PhD¹²; Ting Chen, PhD³; Chao Yang, PhD⁴�
 
 ---
 
-## System Requirements
+## System Requirements 💻
 
 ### Software Dependencies
 - Python 3.12.11
@@ -48,7 +48,7 @@ Xuanyu Shi, MS¹²; Wenjing Zhao, PhD¹²; Ting Chen, PhD³; Chao Yang, PhD⁴�
 
 ---
 
-## Installation Guide
+## Installation Guide 🛠️
 
 ### Instructions
 1. **Clone this repository**:
@@ -76,7 +76,7 @@ Xuanyu Shi, MS¹²; Wenjing Zhao, PhD¹²; Ting Chen, PhD³; Chao Yang, PhD⁴�
 
 ---
 
-## Instructions for Use
+## Instructions for Use ▶️
 
 ### Running the Software on Your Data
 use running_demo.ipynb to run the .py scripts and see results
@@ -85,7 +85,7 @@ running_demo.ipynb
 ```
 ---
 
-## Explanations of .py files
+## Explanations of .py files 🧑‍💻
 
 - Use `notebooks/pubmed_fetcher_function.py` for acquiring texts for title and abstract from PubMed.
 - Use `notebooks/extraction_matching.py` for name entity extraction, relation extraction, and exposure/outcome mapping and filtering.
@@ -94,7 +94,7 @@ running_demo.ipynb
 
 ---
 
-## Background
+## Background 📚
 
 Causal inference in biomedical research often requires synthesizing evidence from a variety of study designs, each with distinct potential biases. Traditional meta-analyses typically pool similar study types, while *evidence triangulation* aggregates results across **heterogeneous** designs—randomized controlled trials, observational studies, Mendelian randomization, and more—to assess whether each line of evidence converges on the same causal conclusion.
 
@@ -105,7 +105,7 @@ This work leverages **large language models (LLMs)** to:
 
 ---
 
-## Key Features
+## Key Features ✨
 
 - **Prompt-Based Extraction**  
   Uses flexible LLMs to parse abstracts, identify exposures and outcomes, and extract effect directions.
@@ -124,7 +124,7 @@ This work leverages **large language models (LLMs)** to:
 
 ---
 
-## Algorithm Overview
+## Algorithm Overview 🔄
 
 ### 1. LLM-Powered Extraction
 - **Two-Step:**
@@ -132,24 +132,24 @@ This work leverages **large language models (LLMs)** to:
   2. **Relation Extraction:** Determine effect direction, p-value significance, and population size.
 
 ### 2. Study Design Classification
-- The pipeline infers whether the paper is an RCT, observational, MR, or meta-analysis based on the abstract’s content.
+- The pipeline infers whether the paper is an RCT, observational, MR, or meta-analysis based on the abstract's content.
 
 ### 3. Evidence Triangulation
 - **Convergency of Evidence (CoE):** Tallies how many lines of evidence (from distinct designs) point to excitatory, inhibitory, or null effects.
 - **Level of Convergency (LoC):** Categorizes the CoE score (e.g., weak, moderate, strong) to convey an at-a-glance measure of the overall consensus.
 
 ### 4. Optional Weighting
-- Adjusts each study’s impact on CoE/LoC, e.g., by sample size or other quality indicators to reflect relative study robustness.
+- Adjusts each study's impact on CoE/LoC, e.g., by sample size or other quality indicators to reflect relative study robustness.
 
 ---
 
-## Contributing
+## Contributing 🤝
 
 We welcome feedback, bug reports, and feature requests. Please open an issue or submit a pull request to improve any part of this pipeline, from data ingestion to triangulation scoring.
 
 ---
 
-## References
+## References 📑
 
 1. Lawlor, D. A., Tilling, K., & Davey Smith, G. (2016). *Triangulation in aetiological epidemiology.* International Journal of Epidemiology, 45(6), 1866–1886.
 2. Munafò, M. R., & Davey Smith, G. (2018). *Robust research needs many lines of evidence.* Nature, 553, 399–401.
