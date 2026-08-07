@@ -1,0 +1,322 @@
+,exposure,outcome,significance,direction,population_main_condition,comparator,pmid
+0,oral magnesium supplementation,small arterial compliance,positive,increase,symptomatic heart failure,placebo,16470086
+1,Spirulina supplementation,systolic blood pressure,positive,decrease,hypertension,not found,34578932
+2,Spirulina supplementation,diastolic blood pressure,positive,decrease,hypertension,not found,34578932
+3,LDL-C,risk of CAD,positive,increase,coronary artery disease,not found,26946290
+4,LDL-C,diabetes risk,positive,decrease,coronary artery disease,not found,26946290
+5,intralipid postconditioning,72-hour AUC of cTnT,positive,decrease,valve replacement surgery,normal saline,28246176
+6,intralipid postconditioning,72-hour AUC of CK-MB,positive,decrease,valve replacement surgery,normal saline,28246176
+7,EPA+DHA therapy,levels of IL-6,positive,decrease,chronic venous leg ulcers,placebo therapy,29735019
+8,EPA+DHA therapy,levels of IL-1β,positive,decrease,chronic venous leg ulcers,placebo therapy,29735019
+9,EPA+DHA therapy,levels of TNF-α,positive,decrease,chronic venous leg ulcers,placebo therapy,29735019
+10,Grana Padano cheese consumption,blood pressure,positive,decrease,hypertension,placebo,30468507
+11,K-gluconate supplementation,urinary Ca excretion,positive,decrease,pre-hypertensive-to-hypertensive,control,34959951
+12,K-gluconate supplementation,urinary pH,positive,increase,pre-hypertensive-to-hypertensive,control,34959951
+13,K-gluconate supplementation,Ca retention,negative,not found,pre-hypertensive-to-hypertensive,control,34959951
+14,dark chocolate consumption,24 h blood pressure,negative,not found,mild hypertension,reduced snack only,26296850
+15,dark chocolate consumption,resting blood pressure,negative,not found,mild hypertension,reduced snack only,26296850
+16,dark chocolate consumption,arterial stiffness,negative,not found,mild hypertension,reduced snack only,26296850
+17,dark chocolate consumption,weight,positive,not found,mild hypertension,reduced snack only,26296850
+18,group office visits,eating fruits and vegetables,positive,increase,coronary artery disease,National Cholesterol Education Program's Step II-III diet plan,11252212
+19,group office visits,cooking with monounsaturated fat,positive,increase,coronary artery disease,National Cholesterol Education Program's Step II-III diet plan,11252212
+20,group office visits,low-density lipoprotein reductions,positive,decrease,coronary artery disease,National Cholesterol Education Program's Step II-III diet plan,11252212
+21,group office visits,total PMPM expenses,negative,decrease,coronary artery disease,National Cholesterol Education Program's Step II-III diet plan,11252212
+22,eGFR(CKD-EPI),"composite end point of CV death, recurrent myocardial infarction, heart failure, or stroke",positive,decrease,acute myocardial infarction,eGFR(MDRD),21884875
+23,weight loss,reduction of left ventricular mass index (LVMi),positive,decrease,obese hypertensive patients,those who did not lose weight,30559043
+24,whey protein,systolic blood pressure,positive,decrease,mildly hypertensive,Ca-caseinate and maltodextrin,29568003
+25,whey protein,arterial stiffness,positive,increase,mildly hypertensive,maltodextrin,29568003
+26,whey protein,insulin response,positive,increase,mildly hypertensive,Ca-caseinate,29568003
+27,Ca-caseinate,non-esterified fatty acids suppression,positive,decrease,mildly hypertensive,whey protein and maltodextrin,29568003
+28,Ca-caseinate,postprandial triacylglycerol response,positive,decrease,mildly hypertensive,whey protein,29568003
+29,menopause,accelerated IMT progression,positive,increase,subclinical atherosclerosis,premenopausal women,15358024
+30,diet/exercise intervention,IMT progression,positive,decrease,subclinical atherosclerosis,control group,15358024
+31,viscous soluble fiber supplementation,systolic blood pressure,positive,decrease,not found,not found,29153856
+32,viscous soluble fiber supplementation,diastolic blood pressure,positive,decrease,not found,not found,29153856
+33,ingestion of 10 g dried broccoli sprouts,endothelial function measured by flow mediated dilation (FMD),negative,not found,hypertension,ordinary diet,20805984
+34,n-3 PUFAs,recurrence of atrial fibrillation,negative,not found,atrial fibrillation,placebo,25465932
+35,n-3 PUFAs,inflammatory markers,negative,not found,atrial fibrillation,placebo,25465932
+36,n-3 PUFAs,N-terminal-pro-brain-type natriuretic peptide,negative,not found,atrial fibrillation,placebo,25465932
+37,n-3 PUFAs,oxidative stress (urinary F2-isoprostanes),negative,not found,atrial fibrillation,placebo,25465932
+38,full-fat dairy foods,circulating inflammatory and atherogenic biomarkers,negative,not found,overweight,control low-fat milk,21811291
+39,whey protein supplementation,total body fat mass,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+40,whole-body electromyostimulation and protein supplementation,total body fat mass,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+41,whole-body electromyostimulation and protein supplementation,trunk fat mass,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+42,whey protein supplementation,trunk fat mass,negative,not found,sarcopenic obesity,non-intervention control,29523089
+43,whole-body electromyostimulation and protein supplementation,waist circumference,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+44,whey protein supplementation,waist circumference,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+45,whole-body electromyostimulation and protein supplementation,total-cholesterol/HDL-cholesterol ratio,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+46,whey protein supplementation,total-cholesterol/HDL-cholesterol ratio,positive,decrease,sarcopenic obesity,non-intervention control,29523089
+47,thiamine deficiency,severe pulmonary hypertension,positive,increase,pulmonary hypertension,not found,32883659
+48,thiamine administration,resolution of pulmonary hypertension,positive,decrease,pulmonary hypertension,not found,32883659
+49,high overall nutritional quality,cardiometabolic risk profile,positive,decrease,not found,not found,31182170
+50,high overall nutritional quality,waist circumference,positive,decrease,not found,not found,31182170
+51,high overall nutritional quality,cholesterol:HDL-cholesterol ratio,positive,decrease,not found,not found,31182170
+52,high overall nutritional quality,non-HDL-cholesterol concentrations,positive,decrease,not found,not found,31182170
+53,high overall nutritional quality,TAG concentrations,positive,decrease,not found,not found,31182170
+54,high overall nutritional quality,HbA1c concentrations,positive,decrease,not found,not found,31182170
+55,high overall nutritional quality,hypertriacylglycerolaemic waist phenotype,positive,decrease,not found,not found,31182170
+56,genetic predisposition to ever smoking,CVD mortality,positive,increase,CVD,not found,35551603
+57,DASH score,association between genetic predisposition to smoking and CVD mortality,positive,increase,CVD,low DASH score,35551603
+58,fish oil,triglycerides,positive,decrease,angina pectoris,n-6 polyunsaturated fatty acids,3178506
+59,fish oil,very low density lipoproteins,positive,decrease,angina pectoris,n-6 polyunsaturated fatty acids,3178506
+60,fish oil,total cholesterol,positive,increase,angina pectoris,n-6 polyunsaturated fatty acids,3178506
+61,fish oil,fibrinolytic activity,positive,decrease,angina pectoris,n-6 polyunsaturated fatty acids,3178506
+62,vitamin D supplementation,systolic blood pressure (SBP),negative,decrease,high blood pressure,not found,24374742
+63,vitamin D supplementation,diastolic blood pressure (DBP),negative,decrease,high blood pressure,not found,24374742
+64,vitamin D supplementation,diastolic blood pressure (DBP) in participants with pre-existing cardiometabolic disease,positive,decrease,high blood pressure,not found,24374742
+65,genetic variants (rs6013897 in CYP24A1 gene region),systolic blood pressure (SBP),positive,not found,high blood pressure,not found,24374742
+66,genetic variants (rs6013897 in CYP24A1 gene region),diastolic blood pressure (DBP),positive,not found,high blood pressure,not found,24374742
+67,genetically-elevated risk of vitamin D deficiency,systolic blood pressure (SBP),negative,not found,high blood pressure,not found,24374742
+68,genetically-elevated risk of vitamin D deficiency,diastolic blood pressure (DBP),negative,not found,high blood pressure,not found,24374742
+69,salt depletion obtained by chlorthalidone and severe restriction of salt intake,left ventricular mass (LVM),positive,decrease,arterial hypertension,balanced diet without salt restriction,6238910
+70,salt depletion obtained by chlorthalidone and severe restriction of salt intake,systolic and diastolic blood pressure,positive,decrease,arterial hypertension,balanced diet without salt restriction,6238910
+71,salt depletion obtained by chlorthalidone and severe restriction of salt intake,left ventricular function (LVF),negative,not found,arterial hypertension,balanced diet without salt restriction,6238910
+72,egg consumption,total mortality,negative,not found,not found,not found,31173548
+73,egg consumption,coronary heart disease (CHD) mortality,negative,not found,not found,not found,31173548
+74,egg consumption,stroke mortality,positive,decrease,not found,not found,31173548
+75,egg consumption,diabetes (T2DM),positive,increase,not found,not found,31173548
+76,egg consumption,hypertension (HTN),positive,increase,not found,not found,31173548
+77,replacement of dietary saturated fat with polyunsaturated fat (linoleic acid),blood pressure,negative,not found,mild hypertension,dietary saturated fat,3308702
+78,replacement of dietary saturated fat with carbohydrate,blood pressure,negative,not found,mild hypertension,dietary saturated fat,3308702
+79,no added salt diet,systolic and diastolic BP,positive,decrease,mild to moderate hypertension,control group,17986327
+80,no added salt diet,24 hour urinary sodium excretion,positive,decrease,mild to moderate hypertension,control group,17986327
+81,cTG-AUC,presence of CAD,positive,increase,premature coronary artery disease,controls,14642412
+82,simvastatin 40 mg/day,cTG-AUC,positive,decrease,premature coronary artery disease,baseline,14642412
+83,simvastatin 80 mg/day,cTG-AUC,positive,decrease,premature coronary artery disease,baseline,14642412
+84,obesity,higher sodium excretion,positive,increase,heart failure,not found,24366985
+85,diabetes,higher sodium excretion,positive,increase,heart failure,not found,24366985
+86,cognitive intactness,higher sodium excretion,positive,increase,heart failure,not found,24366985
+87,worksite-based heart disease risk reduction project,"changes in tobacco use, dietary fat intake, and serum cholesterol",not found,not found,heart disease,control conditions,8188494
+88,low-moderate alcohol consumption,risk of atrial fibrillation,negative,not found,atrial fibrillation,non-drinkers,31078364
+89,Mediterranean alcohol drinking pattern,risk of atrial fibrillation,negative,not found,atrial fibrillation,non-drinkers,31078364
+90,heavy alcohol consumption,risk of atrial fibrillation,negative,not found,atrial fibrillation,non-drinkers,31078364
+91,increase in tea consumption by 3 cups per day,risk of CHD,positive,decrease,not found,not found,25354990
+92,increase in tea consumption by 3 cups per day,risk of cardiac death,positive,decrease,not found,not found,25354990
+93,increase in tea consumption by 3 cups per day,risk of stroke,positive,decrease,not found,not found,25354990
+94,increase in tea consumption by 3 cups per day,risk of total mortality,positive,decrease,not found,not found,25354990
+95,increase in tea consumption by 3 cups per day,risk of cerebral infarction,positive,decrease,not found,not found,25354990
+96,increase in tea consumption by 3 cups per day,risk of intracerebral hemorrhage,positive,decrease,not found,not found,25354990
+97,increase in tea consumption by 3 cups per day,risk of stroke mortality,negative,not found,not found,not found,25354990
+98,yoga,symptomatic AF episodes,positive,decrease,Atrial fibrillation,not found,29650239
+99,yoga,quality of life,positive,increase,Atrial fibrillation,not found,29650239
+100,acupuncture,AF occurrence,positive,decrease,Atrial fibrillation,not found,29650239
+101,weight loss,AF burden,positive,decrease,Atrial fibrillation,not found,29650239
+102,weight loss,symptoms,positive,decrease,Atrial fibrillation,not found,29650239
+103,moderate exercise,arrhythmia free survival,positive,increase,Atrial fibrillation,not found,29650239
+104,moderate exercise,AF burden,positive,decrease,Atrial fibrillation,not found,29650239
+105,ultraprocessed food consumption,systolic blood pressure,positive,increase,not found,not found,37354762
+106,ultraprocessed food consumption,diastolic blood pressure,positive,increase,not found,not found,37354762
+107,dietary phosphorus intake,systolic BP,negative,not found,elevated blood pressure,not found,31051505
+108,dietary phosphorus intake,diastolic BP,negative,not found,elevated blood pressure,not found,31051505
+109,dietary phosphorus intake,incident hypertension,negative,not found,elevated blood pressure,not found,31051505
+110,folinic acid supplementation,homocysteine concentrations,negative,not found,newborns,control group,20823897
+111,folinic acid supplementation,plasma folate concentrations,positive,increase,newborns,control group,20823897
+112,regular consumption of white fish,waist circumference,positive,decrease,metabolic syndrome,no fish or seafood,24462043
+113,regular consumption of white fish,diastolic blood pressure,positive,decrease,metabolic syndrome,no fish or seafood,24462043
+114,regular consumption of white fish,serum LDL concentrations,positive,decrease,metabolic syndrome,no fish or seafood,24462043
+115,regular consumption of white fish,serum EPA and DHA fatty acids,positive,increase,metabolic syndrome,no fish or seafood,24462043
+116,regular consumption of white fish,serum HDL concentrations,negative,not found,metabolic syndrome,no fish or seafood,24462043
+117,regular consumption of white fish,serum triglyceride concentrations,negative,not found,metabolic syndrome,no fish or seafood,24462043
+118,l-arginine supplementation,flow-mediated dilation,negative,not found,"cardiovascular disease, obesity, or diabetes",placebo,30577559
+119,l-arginine supplementation,nitrite/nitrate (NOx) rate,negative,not found,"cardiovascular disease, obesity, or diabetes",placebo,30577559
+120,l-arginine supplementation,asymmetric dimethylarginine (ADMA),negative,not found,"cardiovascular disease, obesity, or diabetes",placebo,30577559
+121,weight loss,relapse of hypertension,positive,decrease,hypertension,no dietary intervention,6535339
+122,sodium restriction,relapse of hypertension,positive,decrease,hypertension,no dietary intervention,6535339
+123,lowest blood pressure on therapy,rate of relapse,positive,decrease,hypertension,not found,6535339
+124,unprocessed red meat consumption,ischemic heart disease (IHD) risk,positive,increase,ischemic heart disease,not found,36974753
+125,processed meat consumption,ischemic heart disease (IHD) risk,positive,increase,ischemic heart disease,not found,36974753
+126,low-volume exercise training,serum derivatives of reactive oxygen metabolites concentrations,positive,decrease,postmenopausal women,baseline values,24418871
+127,vitamin E supplementation,serum biological antioxidant potential concentrations,positive,increase,postmenopausal women,baseline values,24418871
+128,low-volume exercise training,serum biological antioxidant potential concentrations,positive,increase,postmenopausal women,baseline values,24418871
+129,vitamin E and exercise,serum biological antioxidant potential concentrations,negative,not found,postmenopausal women,baseline values,24418871
+130,vitamin E supplementation,plasma thioredoxin concentrations,positive,increase,postmenopausal women,baseline values,24418871
+131,low-volume exercise training,plasma thioredoxin concentrations,positive,increase,postmenopausal women,baseline values,24418871
+132,vitamin E and exercise,plasma thioredoxin concentrations,positive,increase,postmenopausal women,baseline values,24418871
+133,red and processed meat,ischemic heart disease,positive,increase,ischemic heart disease,not found,31006335
+134,yogurt,ischemic heart disease,positive,decrease,ischemic heart disease,not found,31006335
+135,cheese,ischemic heart disease,positive,decrease,ischemic heart disease,not found,31006335
+136,eggs,ischemic heart disease,positive,decrease,ischemic heart disease,not found,31006335
+137,Almond supplementation,Serum HDL cholesterol,positive,increase,coronary artery disease,no-intervention group,26269239
+138,Almond supplementation,"Serum concentrations of total cholesterol, triglycerides, LDL cholesterol, and VLDL cholesterol",positive,decrease,coronary artery disease,no-intervention group,26269239
+139,Almond supplementation,Total-to-HDL and LDL-to-HDL cholesterol ratios,positive,decrease,coronary artery disease,no-intervention group,26269239
+140,Almond supplementation,Atherogenic index,positive,decrease,coronary artery disease,no-intervention group,26269239
+141,calcium supplements,risk of myocardial infarction,positive,increase,not found,placebo,21409434
+142,calcium supplements,risk of stroke,positive,increase,not found,placebo,21409434
+143,co-administration of vitamin D with calcium,adverse effects of calcium supplements,negative,not found,not found,calcium supplements alone,21409434
+144,"higher intakes of vegetables, fruit, and fish",CVD mortality risk,positive,decrease,not found,"lower intakes of vegetables, fruit, and fish",31006729
+145,lower salt intake,CVD mortality risk,positive,decrease,not found,higher salt intake,31006729
+146,milk consumption,ischaemic heart disease,positive,decrease,not found,subjects with the lowest consumption,15116074
+147,milk consumption,ischaemic stroke,positive,decrease,not found,subjects with the lowest consumption,15116074
+148,milk consumption,any vascular event,positive,decrease,not found,subjects with the lowest consumption,15116074
+149,grape pomace supplementation,insulin sensitivity,positive,increase,cardiometabolic risk,control group,30382274
+150,grape pomace supplementation,other metabolic syndrome markers,negative,not found,cardiometabolic risk,control group,30382274
+151,prescriptive exercise,cardiovascular complications (CVCs) of diabetes,not found,not found,diabetes,not found,24500553
+152,laryngopharyngeal neuromuscular electrical stimulation,status of swallowing function according to the Functional Oral Intake Scale (FOIS),positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+153,laryngopharyngeal neuromuscular electrical stimulation,instrumental Fiberoptic Endoscopic Examination of Swallowing examination,positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+154,laryngopharyngeal neuromuscular electrical stimulation,Penetration Aspiration Scale,positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+155,laryngopharyngeal neuromuscular electrical stimulation,Pooling score,negative,not found,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+156,laryngopharyngeal neuromuscular electrical stimulation,presence of oropharyngeal secretion,positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+157,laryngopharyngeal neuromuscular electrical stimulation,type of diet taken by mouth,positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+158,laryngopharyngeal neuromuscular electrical stimulation,need for postural compensations,positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+159,laryngopharyngeal neuromuscular electrical stimulation,duration of the dysphagia training,positive,increase,subacute stroke and dysphagia,traditional dysphagia training alone,30714980
+160,atorvastatin treatment,risk of reaching the primary endpoint,positive,decrease,hemodialysis patients,placebo,26022817
+161,atorvastatin treatment,all-cause mortality,positive,decrease,hemodialysis patients,placebo,26022817
+162,atorvastatin treatment,risk of all cardiac events,positive,decrease,hemodialysis patients,placebo,26022817
+163,BRADA diet,fasting plasma glucose,positive,decrease,hypertension,standard care,25172379
+164,BRADA diet,glycated hemoglobin,positive,decrease,hypertension,standard care,25172379
+165,BRADA diet,total cholesterol,positive,decrease,hypertension,standard care,25172379
+166,BRADA diet,low-density lipoprotein cholesterol,positive,decrease,hypertension,standard care,25172379
+167,soybean protein supplementation,plasma E-selectin,positive,decrease,cardiovascular disease,milk protein,23187956
+168,soybean protein supplementation,plasma leptin,positive,decrease,cardiovascular disease,carbohydrate,23187956
+169,diet and exercise program,anthropometric changes,positive,decrease,obesity,no diet + no exercise control group,21092228
+170,diet and exercise program,body composition changes,positive,decrease,obesity,no diet + no exercise control group,21092228
+171,diet and exercise program,fitness improvements,positive,increase,obesity,no diet + no exercise control group,21092228
+172,diet and exercise program,energy expenditure,positive,increase,obesity,no diet + no exercise control group,21092228
+173,diet and exercise program,circulating leptin,positive,decrease,obesity,no diet + no exercise control group,21092228
+174,VLCHP diet,serum insulin and HOMA-IR values,positive,decrease,obesity,other diet groups,21092228
+175,ovo-lacto-vegetarian diet,systolic blood pressure,positive,decrease,mild hypertension,usual diet,2856757
+176,MPH1 (containing IPP),systolic BP,positive,decrease,stage 1 hypertension,placebo,21059213
+177,MPH1 (containing IPP),diastolic BP,positive,decrease,stage 1 hypertension,placebo,21059213
+178,MPH2,BP,negative,not found,stage 1 hypertension,placebo,21059213
+179,MPHs,"plasma renin activity, angiotensin I and II",negative,not found,stage 1 hypertension,placebo,21059213
+180,Paleolithic diet,weight loss,positive,increase,healthy,Australian Guide to Healthy Eating diet,27223304
+181,Paleolithic diet,carbohydrate intake,positive,decrease,healthy,Australian Guide to Healthy Eating diet,27223304
+182,Paleolithic diet,sodium intake,positive,decrease,healthy,Australian Guide to Healthy Eating diet,27223304
+183,Paleolithic diet,calcium intake,positive,decrease,healthy,Australian Guide to Healthy Eating diet,27223304
+184,Paleolithic diet,iodine intake,positive,decrease,healthy,Australian Guide to Healthy Eating diet,27223304
+185,Paleolithic diet,fat intake,positive,increase,healthy,Australian Guide to Healthy Eating diet,27223304
+186,Paleolithic diet,β-carotene intake,positive,increase,healthy,Australian Guide to Healthy Eating diet,27223304
+187,dietary advice combined with self monitoring of morning urine chloride concentration,diastolic blood pressure,negative,decrease,essential hypertension,dietary advice alone,7997845
+188,dietary advice combined with self monitoring of morning urine chloride concentration,systolic blood pressure,positive,decrease,essential hypertension,dietary advice alone,7997845
+189,dietary advice combined with self monitoring of morning urine chloride concentration,24 h sodium excretion,negative,not found,essential hypertension,dietary advice alone,7997845
+190,Mediterranean diet,Serum MG,positive,decrease,coronary heart disease,low-fat diet,32529753
+191,SD decrease in MG after Mediterranean diet,probability of T2DM remission,positive,increase,coronary heart disease,not found,32529753
+192,SD increase in disposition index at baseline,probability of remission,positive,increase,coronary heart disease,not found,32529753
+193,TRE with CR,body weight,positive,decrease,not found,CR alone,37488260
+194,TRE with CR,fat mass,positive,decrease,not found,CR alone,37488260
+195,TRE with CR,waist circumference,positive,decrease,not found,CR alone,37488260
+196,TRE with CR,blood pressure,negative,not found,not found,CR alone,37488260
+197,TRE with CR,glucose profile,negative,not found,not found,CR alone,37488260
+198,TRE with CR,lipid profile,negative,not found,not found,CR alone,37488260
+199,early TRE with CR,weight loss,positive,decrease,not found,delayed or broader TRE with CR,37488260
+200,early TRE with CR,fat mass,positive,decrease,not found,delayed or broader TRE with CR,37488260
+201,advice to increase fibre intake alone,cardiovascular outcomes,not found,not found,generally healthy adults without existing CVD or increased CVD risk factors,not found,21718558
+202,advice to increase fruit and vegetable intake alone,cardiovascular outcomes,not found,not found,generally healthy adults without existing CVD or increased CVD risk factors,not found,21718558
+203,advice to reduce and/or modify fat intake alone,cardiovascular outcomes,not found,not found,generally healthy adults without existing CVD or increased CVD risk factors,not found,21718558
+204,advice to reduce sodium intake alone,cardiovascular outcomes,not found,not found,generally healthy adults without existing CVD or increased CVD risk factors,not found,21718558
+205,oral amino acid supplements,exercise capacity,positive,increase,chronic heart failure,placebo,18514618
+206,oral amino acid supplements,peak VO2,positive,increase,chronic heart failure,placebo,18514618
+207,oral amino acid supplements,VO2/HR,positive,increase,chronic heart failure,placebo,18514618
+208,oral amino acid supplements,ANA-VO2,positive,decrease,chronic heart failure,placebo,18514618
+209,black tea consumption,endothelial vasomotor dysfunction,positive,decrease,coronary artery disease,water,11447078
+210,black tea consumption,endothelium- dependent flow-mediated dilation of the brachial artery,positive,increase,coronary artery disease,water,11447078
+211,black tea consumption,endothelium-independent nitroglycerin-induced dilation,negative,not found,coronary artery disease,water,11447078
+212,black tea consumption,Plasma flavonoids,positive,increase,coronary artery disease,water,11447078
+213,omega-3 fatty acids,triglycerides,positive,decrease,familial hypercholesterolemia,placebo,32823643
+214,plant stanols,total cholesterol,positive,decrease,familial hypercholesterolemia,cholesterol-lowering diet,32823643
+215,plant stanols,low-density lipoprotein cholesterol,positive,decrease,familial hypercholesterolemia,cholesterol-lowering diet,32823643
+216,plant sterols,total cholesterol,positive,decrease,familial hypercholesterolemia,cholesterol-lowering diet,32823643
+217,plant sterols,low-density lipoprotein cholesterol,positive,decrease,familial hypercholesterolemia,cholesterol-lowering diet,32823643
+218,combined B-vitamin supplementation,risk of stroke,positive,decrease,not found,not found,38432716
+219,combined B-vitamin supplementation (folic acid 0.8 mg/d and vitamin B12 0.4 mg/d),risk of stroke,positive,decrease,not found,not found,38432716
+220,combined B-vitamin supplementation,risk of stroke,negative,not found,not found,not found,38432716
+221,antihypertensive drug class,impaired fasting glucose,negative,not found,uncomplicated hypertension,not found,18783618
+222,Poor Masticatory Capacity,Blood Biomarkers of Elevated Cardiovascular Disease Risk,not found,not found,not found,not found,34039017
+223,low-moderate alcohol consumption,risk of cardiovascular disease,positive,decrease,not found,not found,31906033
+224,dietary nitrate supplementation,blood pressure,positive,decrease,hypertension,placebo,25421976
+225,dietary nitrate supplementation,endothelial function,positive,increase,hypertension,placebo,25421976
+226,dietary nitrate supplementation,arterial stiffness,positive,decrease,hypertension,placebo,25421976
+227,(-)-epicatechin intake,endothelial function,positive,increase,healthy young adults,not found,36364762
+228,(-)-epicatechin intake,flow-mediated dilatation (FMD),positive,increase,healthy young adults,not found,36364762
+229,(-)-epicatechin intake,peripheral arterial tonometry (PAT) index,positive,increase,healthy young adults,not found,36364762
+230,(-)-epicatechin intake,"glucose/lipid metabolism, oxidative stress, inflammation, appetite sensations, and body weight",negative,not found,not found,not found,36364762
+231,tuna and dark fish intake,risk of incident major cardiovascular disease,negative,not found,no history of cardiovascular disease,not found,27646568
+232,α-linolenic acid intake,major cardiovascular disease,negative,not found,no history of cardiovascular disease,not found,27646568
+233,marine omega-3 fatty acid intake,major cardiovascular disease,negative,not found,no history of cardiovascular disease,not found,27646568
+234,Inequality-adjusted Human Development Index,existence of salt reduction initiatives,positive,increase,not found,not found,23924617
+235,fatty fish intake,concentrations of n-3 fatty acids and docosahexaenoic acid,positive,increase,coronary heart disease,control diet,24528693
+236,fatty fish intake,"concentrations of cholesterol, cholesterol esters, and total lipids in very large high-density lipoproteins (HDLs)",positive,increase,coronary heart disease,control diet,24528693
+237,fatty fish intake,mean size of HDL particles,positive,increase,coronary heart disease,control diet,24528693
+238,fish diets,very-low-density lipoprotein or low-density lipoprotein size,negative,not found,coronary heart disease,control diet,24528693
+239,telephone-delivered intervention for physical activity and dietary change,physical activity and dietary behavior change,not found,not found,type 2 diabetes or hypertension,usual care,18055274
+240,spicy diet,patient-reported outcomes (PROs),positive,increase,stapled hemorrhoidopexy,spices-free diet,20976480
+241,high-RS diet with lower CHO intake,plasma TMAO levels,positive,increase,not found,low-RS diet,27993177
+242,krill powder,adverse events,negative,not found,overweight subjects with moderately elevated blood pressure,placebo,30572894
+243,krill powder,hematological safety parameters,negative,not found,overweight subjects with moderately elevated blood pressure,placebo,30572894
+244,krill powder,blood pressure,negative,not found,overweight subjects with moderately elevated blood pressure,placebo,30572894
+245,krill powder,lipid values,negative,not found,overweight subjects with moderately elevated blood pressure,placebo,30572894
+246,cardamom supplementation,total cholesterol,negative,decrease,dyslipidemia,not found,31755188
+247,cardamom supplementation,low-density lipoprotein cholesterol,negative,decrease,dyslipidemia,not found,31755188
+248,cardamom supplementation,high-density lipoprotein cholesterol,negative,increase,dyslipidemia,not found,31755188
+249,cardamom supplementation,serum triglyceride,positive,decrease,dyslipidemia,not found,31755188
+250,CoQ10 supplementation,total-cholesterol,positive,decrease,coronary artery disease,placebo,30296936
+251,CoQ10 supplementation,HDL-cholesterol levels,positive,increase,coronary artery disease,placebo,30296936
+252,CoQ10 supplementation,LDL-cholesterol,negative,not found,coronary artery disease,placebo,30296936
+253,CoQ10 supplementation,Lp(a) levels,negative,not found,coronary artery disease,placebo,30296936
+254,CoQ10 supplementation,triglycerides levels,negative,not found,coronary artery disease,placebo,30296936
+255,high-Arg diet,pulmonary vascular performance,positive,increase,chronic hypobaric hypoxia,control diet,20852105
+256,high-Arg and high antioxidant-vitamin diet,pulmonary vascular performance,positive,increase,chronic hypobaric hypoxia,control diet,20852105
+257,high-Arg diet,ascites incidence,negative,not found,chronic hypobaric hypoxia,control diet,20852105
+258,high-Arg and high antioxidant-vitamin diet,ascites incidence,negative,not found,chronic hypobaric hypoxia,control diet,20852105
+259,vitamin D supplementation,S-25(OH)D,positive,increase,not found,placebo or lower dose of vitamin D,32060613
+260,vitamin D supplementation,LDL-C,positive,increase,not found,placebo or lower dose of vitamin D,32060613
+261,vitamin D supplementation,HOMA-IR,positive,decrease,overweight/obese,placebo or lower dose of vitamin D,32060613
+262,vitamin D supplementation,"blood glucose, insulin, glycated hemoglobin, total cholesterol, high-density lipoprotein, triglycerides, blood pressure",negative,not found,not found,placebo or lower dose of vitamin D,32060613
+263,vitamin D supplementation,reactive hyperaemia index,negative,increase,type 2 diabetes mellitus,placebo,26818228
+264,catechin consumption,plasma oxidized LDL,positive,decrease,healthy adult volunteers,control group,18160764
+265,National School Lunch Program (NSLP) and the School Breakfast Program (SBP) meals,nutritional quality and adequacy,negative,not found,not found,recommendations of the US Department of Agriculture and the National Research Council,7832171
+266,CATCH intervention,"fat, saturated fat, and sodium content of school meals and student's diets",not found,decrease,not found,not found,7832171
+267,processed meat consumption,risk of CHD,positive,increase,coronary heart disease,unprocessed meat consumption,23001745
+268,unprocessed meat consumption,risk of CHD,negative,not found,coronary heart disease,processed meat consumption,23001745
+269,processed meat consumption,incident diabetes,positive,increase,type 2 diabetes,unprocessed meat consumption,23001745
+270,unprocessed meat consumption,incident diabetes,positive,increase,type 2 diabetes,processed meat consumption,23001745
+271,whey protein consumption,HbA1c,positive,decrease,metabolic syndrome,certain control,32958070
+272,whey protein consumption,insulin,positive,decrease,metabolic syndrome,certain control,32958070
+273,whey protein consumption,homeostasis model assessment-estimated insulin resistance (HOMA-IR),positive,decrease,metabolic syndrome,certain control,32958070
+274,whey protein consumption,triglycerides levels,positive,decrease,metabolic syndrome,certain control,32958070
+275,whey protein consumption,total cholesterol,positive,decrease,metabolic syndrome,certain control,32958070
+276,whey protein consumption,LDL-cholesterol levels,positive,decrease,metabolic syndrome,certain control,32958070
+277,whey protein consumption,total cholesterol/HDL-cholesterol ratio,positive,decrease,metabolic syndrome,certain control,32958070
+278,moderate alcohol consumption,serum HDL-cholesterol,positive,increase,high cardiovascular risk,gin,25183453
+279,moderate alcohol consumption,ApoA-I,positive,increase,high cardiovascular risk,gin,25183453
+280,moderate alcohol consumption,ApoA-II,positive,increase,high cardiovascular risk,gin,25183453
+281,moderate alcohol consumption,adiponectin,positive,increase,high cardiovascular risk,gin,25183453
+282,moderate alcohol consumption,serum fibrinogen,positive,decrease,high cardiovascular risk,gin,25183453
+283,moderate alcohol consumption,interleukin (IL)-5,positive,decrease,high cardiovascular risk,gin,25183453
+284,non-alcoholic fraction of beer (mainly polyphenols),receptor antagonist of IL-1,positive,increase,high cardiovascular risk,gin,25183453
+285,non-alcoholic fraction of beer (mainly polyphenols),lymphocyte function-associated antigen-1,positive,decrease,high cardiovascular risk,gin,25183453
+286,non-alcoholic fraction of beer (mainly polyphenols),lymphocyte and monocyte expression of Sialil-Lewis X,positive,decrease,high cardiovascular risk,gin,25183453
+287,non-alcoholic fraction of beer (mainly polyphenols),monocyte expression of CCR2,positive,decrease,high cardiovascular risk,gin,25183453
+288,non-alcoholic fraction of beer (mainly polyphenols),tumor necrosis factor (TNF)-β,positive,decrease,high cardiovascular risk,gin,25183453
+289,non-alcoholic fraction of beer (mainly polyphenols),IL-15,positive,decrease,high cardiovascular risk,gin,25183453
+290,moderate alcohol consumption,glucose metabolism parameters,negative,not found,high cardiovascular risk,gin,25183453
+291,moderate alcohol consumption,body weight and adiposity parameters,negative,not found,high cardiovascular risk,gin,25183453
+292,cholecalciferol supplementation,endothelium-dependent brachial artery flow-mediated dilation,positive,increase,CKD stage 3-4,placebo,28667080
+293,cholecalciferol supplementation,pulse wave velocity,positive,decrease,CKD stage 3-4,placebo,28667080
+294,cholecalciferol supplementation,circulating IL-6 levels,positive,decrease,CKD stage 3-4,placebo,28667080
+295,linseed in livestock diet,n-3 fatty acids in animal products,positive,increase,healthy volunteers,standard diet livestock,12378041
+296,linseed in livestock diet,conjugated linoleic acids (CLA) in animal products,positive,increase,healthy volunteers,standard diet livestock,12378041
+297,linseed in livestock diet,C18:2 n-6/C18:3 n-3 ratio in animal products,positive,decrease,healthy volunteers,standard diet livestock,12378041
+298,linseed in livestock diet,C18:3 n-3 in volunteers' plasma,positive,increase,healthy volunteers,standard diet livestock,12378041
+299,linseed in livestock diet,n-3 derivatives in volunteers' plasma,positive,increase,healthy volunteers,standard diet livestock,12378041
+300,linseed in livestock diet,CLA in volunteers' plasma,positive,increase,healthy volunteers,standard diet livestock,12378041
+301,linseed in livestock diet,n-6/n-3 ratio in volunteers' plasma,positive,decrease,healthy volunteers,standard diet livestock,12378041
+302,linseed in livestock diet,C20:5 n-3 in erythrocytes,positive,increase,healthy volunteers,standard diet livestock,12378041
+303,linseed in livestock diet,C22:6 n-3 in erythrocytes,positive,increase,healthy volunteers,standard diet livestock,12378041
+304,linseed in livestock diet,n-6/n-3 ratio in erythrocytes,positive,decrease,healthy volunteers,standard diet livestock,12378041
+305,VLCHF diet,weight loss,negative,not found,abdominally obese,HCLF diet,18174038
+306,VLCHF diet,blood pressure,negative,not found,abdominally obese,HCLF diet,18174038
+307,VLCHF diet,CRP,negative,not found,abdominally obese,HCLF diet,18174038
+308,VLCHF diet,fasting glucose,negative,not found,abdominally obese,HCLF diet,18174038
+309,VLCHF diet,insulin,negative,not found,abdominally obese,HCLF diet,18174038
+310,VLCHF diet,triacylglycerols,positive,decrease,abdominally obese,HCLF diet,18174038
+311,VLCHF diet,HDL-C,positive,increase,abdominally obese,HCLF diet,18174038
+312,VLCHF diet,LDL-C,positive,decrease,abdominally obese,HCLF diet,18174038
+313,VLCHF diet,apoB,negative,not found,abdominally obese,HCLF diet,18174038
+314,Chinese lacto-vegetarian diet,body mass index,positive,decrease,healthy,omnivores,22412169
+315,Chinese lacto-vegetarian diet,systolic and diastolic blood pressure,positive,decrease,healthy,omnivores,22412169
+316,Chinese lacto-vegetarian diet,"serum levels of triglyceride, total cholesterol, low-density lipoprotein cholesterol, apolipoprotein B, γ-glutamyl transferase, serum creatinine, uric acid, fasting blood glucose",positive,decrease,healthy,omnivores,22412169
+317,Chinese lacto-vegetarian diet,total cholesterol/high-density lipoprotein cholesterol ratio,positive,decrease,healthy,omnivores,22412169
+318,Chinese lacto-vegetarian diet,homeostasis model assessment β cell function and insulin secretion index,positive,increase,healthy,omnivores,22412169
+319,Chinese lacto-vegetarian diet,carotid IMT,positive,decrease,healthy,omnivores,22412169
+320,Chinese lacto-vegetarian diet,cardiovascular risk points and probability of developing CVD in 5-10 years,positive,decrease,healthy,omnivores,22412169

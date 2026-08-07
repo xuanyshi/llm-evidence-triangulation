@@ -3,3 +3,6 @@
 
 # local secrets
 .env
+
+# local historical notebook copies with private paths or credentials
+notebooks/* (1).ipynb

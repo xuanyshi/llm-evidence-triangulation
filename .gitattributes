@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve archived Figure 2 data files byte-for-byte
+reproducibility/figure2/data/* -text

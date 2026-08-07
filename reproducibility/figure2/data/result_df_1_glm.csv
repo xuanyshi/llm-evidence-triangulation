@@ -1,0 +1,280 @@
+,exposure,label,category,outcome_phenotype,association,effect_size,pmid
+0,sugar-sweetened beverages,SSBs,Carb,CHD,positive,1.35,19211821
+1,higher homocysteine levels,Homocysteine,Other,PAD,positive,2.17,24819748
+2,folate intake,Folate,Vitamin,PAD,negative,0.90,24819748
+3,fetuin-A levels,Fetuin-A,Protein,CHD,negative,0.50,24963103
+4,fetuin-A levels with high C-reactive protein,Fetuin-A with high CRP,Protein,CHD,positive,1.09,24963103
+5,vitamin E,Vitamin E,Vitamin,ischemic stroke,positive,1.18,10383366
+6,vitamin C,Vitamin C,Vitamin,ischemic stroke,positive,1.03,10383366
+7,lutein,Lutein,Carotenoid,ischemic stroke,negative,not found,10383366
+8,saturated fatty acids (SFA),SFA,Lipid,CHD,positive,not found,19211817
+9,polyunsaturated fatty acids (PUFA),PUFA,Lipid,CHD,negative,0.87,19211817
+10,carbohydrates,Carbohydrates,Carb,CHD,positive,1.07,19211817
+11,monounsaturated fatty acids (MUFA),MUFA,Lipid,CHD,no,not found,19211817
+12,polyunsaturated fat,Polyunsaturated fat,Lipid,CHD,negative,0.75,15781956
+13,trans-fat,Trans-fat,Lipid,CHD,positive,1.33,15781956
+14,polyunsaturated fat (younger than age 65),Polyunsaturated fat,Lipid,CHD,negative,0.66,15781956
+15,trans-fat (younger than age 65),Trans-fat,Lipid,CHD,positive,1.50,15781956
+16,polyunsaturated fat (BMI >= 25 kg/m2),Polyunsaturated fat,Lipid,CHD,negative,not found,15781956
+17,fish consumption,Fish,Food/Diet,CHD,negative,0.87,23813701
+18,fish consumption,Fish,Food/Diet,CHD,no,not found,23813701
+19,5 percent of energy intake from saturated fat,Saturated fat,Lipid,CHD,positive,1.17,9366580
+20,2 percent of energy intake from trans unsaturated fat,Trans fat,Lipid,CHD,positive,1.93,9366580
+21,5 percent of energy intake from monounsaturated fat,Monounsaturated fat,Lipid,CHD,negative,0.81,9366580
+22,5 percent of energy intake from polyunsaturated fat,Polyunsaturated fat,Lipid,CHD,negative,0.62,9366580
+23,5 percent increase in energy from fat,Total fat,Lipid,CHD,no,not found,9366580
+24,fish consumption,Fish,Food/Diet,CHD,negative,0.79,11939867
+25,fish consumption,Fish,Food/Diet,CHD,negative,0.71,11939867
+26,fish consumption,Fish,Food/Diet,CHD,negative,0.69,11939867
+27,fish consumption,Fish,Food/Diet,CHD,negative,0.66,11939867
+28,omega-3 fatty acids,Omega-3 Fatty Acids,Lipid,CHD,negative,0.93,11939867
+29,omega-3 fatty acids,Omega-3 Fatty Acids,Lipid,CHD,negative,0.78,11939867
+30,omega-3 fatty acids,Omega-3 Fatty Acids,Lipid,CHD,negative,0.68,11939867
+31,omega-3 fatty acids,Omega-3 Fatty Acids,Lipid,CHD,negative,0.67,11939867
+32,"circulating very-long-chain saturated fatty acids (C20:0, C22:0, C24:0)",VLCSFAs,Lipid,CHD,negative,0.48,26048094
+33,"erythrocyte very-long-chain saturated fatty acids (C20:0, C22:0, C24:0)",VLCSFAs,Lipid,CHD,negative,0.66,26048094
+34,fruit and vegetable intake,Fruits and Vegetables,Food/Diet,CHD,negative,0.80,11412050
+35,1-serving/d increase in intake of fruits or vegetables,Fruits and Vegetables,Food/Diet,CHD,negative,0.96,11412050
+36,green leafy vegetables,Green Leafy Vegetables,Food/Diet,CHD,negative,0.77,11412050
+37,vitamin C-rich fruits and vegetables,Vitamin C-Rich Fruits and Vegetables,Food/Diet,CHD,negative,0.94,11412050
+38,carbohydrate-to-cereal fiber ratio,Carbohydrate-to-cereal fiber ratio,Carb,CHD,positive,1.20,29529162
+39,starch-to-cereal fiber ratio,Starch-to-cereal fiber ratio,Carb,CHD,positive,1.17,29529162
+40,total fiber intake,Total fiber,Fiber,CHD,no,not found,29529162
+41,cereal fiber,Cereal fiber,Fiber,CHD,negative,0.80,29529162
+42,carbohydrate-to-total fiber ratio,Carbohydrate-to-total fiber ratio,Carb,CHD,no,not found,29529162
+43,highest quintile of carbohydrate intake,High carbohydrate intake,Carb,CHD,no,not found,29529162
+44,body iron stores,Body Iron Stores,Mineral,CHD,no,not found,19022969
+45,sTfR:ferritin ratio,sTfR:ferritin Ratio,Mineral,CHD,no,not found,19022969
+46,ferritin,Ferritin,Mineral,CHD,no,not found,19022969
+47,total meat,Total Meat,Food/Diet,hypertension,positive,1.30,26237562
+48,poultry,Poultry,Food/Diet,hypertension,positive,1.22,26237562
+49,seafood,Seafood,Food/Diet,hypertension,positive,1.05,26237562
+50,animal flesh,Animal Flesh,Food/Diet,hypertension,positive,1.30,26237562
+51,dietary intake of n-3 fatty acids,n-3 Fatty Acids,Lipid,CHD,no,not found,7885425
+52,fish intake,Fish Intake,Food/Diet,CHD,no,not found,7885425
+53,fish intake,Fish Intake,Food/Diet,death due to coronary disease,negative,0.74,7885425
+54,low-carbohydrate-diet score,Low-Carb Diet Score,Carb,CHD,negative,0.94,17093250
+55,low-carbohydrate-diet score (animal sources),Low-Carb Diet Score (Animal),Carb,CHD,negative,0.94,17093250
+56,low-carbohydrate-diet score (vegetable sources),Low-Carb Diet Score (Vegetable),Carb,CHD,negative,0.70,17093250
+57,glycemic load,Glycemic Load,Carb,CHD,positive,1.90,17093250
+58,highest quintile of fruit and vegetable intake,High Fruit and Vegetable Intake,Food/Diet,CHD,negative,17,24088718
+59,citrus fruit,Citrus Fruit,Food/Diet,CHD,negative,not found,24088718
+60,green leafy vegetables,Green Leafy Vegetables,Food/Diet,CHD,negative,not found,24088718
+61,β-carotene- and vitamin C-rich fruit and vegetables,Beta-Carotene and Vitamin C-Rich Fruit and Vegetables,Food/Diet,CHD,negative,not found,24088718
+62,quantity-adjusted variety of fruit and vegetable intake,Variety in Fruit and Vegetable Intake,Food/Diet,CHD,no,not found,24088718
+63,dietary magnesium,Magnesium,Mineral,fatal CHD,negative,0.61,23537810
+64,dietary magnesium,Magnesium,Mineral,total CHD,no,not found,23537810
+65,dietary magnesium,Magnesium,Mineral,nonfatal CHD,no,not found,23537810
+66,plasma magnesium,Magnesium,Mineral,CHD,negative,0.67,23537810
+67,gluten,Gluten,Protein,CHD,no,not found,28465308
+68,gluten adjusted for refined grains,Gluten adjusted for refined grains,Protein,CHD,negative,0.85,28465308
+69,HbA1c levels 6.0% to <6.5%,Hemoglobin A1c,Other,CHD,positive,1.90,23537807
+70,HbA1c levels 6.0% to <6.5%,Hemoglobin A1c,Other,CHD,positive,1.81,23537807
+71,every 0.5%-increment increase in HbA1c levels,Hemoglobin A1c Increment,Other,CHD,positive,1.29,23537807
+72,every 1%-increment increase in HbA1c levels,Hemoglobin A1c Increment,Other,CHD,positive,1.67,23537807
+73,total protein,Total Protein,Protein,stroke,no,not found,19889826
+74,animal protein,Animal Protein,Protein,stroke,no,not found,19889826
+75,vegetable protein,Vegetable Protein,Protein,stroke,no,not found,19889826
+76,β2-microglobulin,β2-Microglobulin,Other,PAD,positive,1.31,24980133
+77,cystatin C,Cystatin C,Other,PAD,positive,1.54,24980133
+78,creatinine,Creatinine,Other,PAD,no,not found,24980133
+79,Prime Diet Quality Score (PDQS),PDQS,Other,IHD,negative,0.89,29381797
+80,Minimal Diet Diversity Score for Women (MDDW),MDDW,Other,IHD,negative,0.93,29381797
+81,Food Group Index (FGI),FGI,Other,IHD,no,not found,29381797
+82,polyunsaturated fatty acids,PUFAs,Lipid,CHD,negative,0.80,26429077
+83,carbohydrates from whole grains,Whole grain carbs,Carb,CHD,negative,0.90,26429077
+84,carbohydrates from refined starches/added sugars,Refined carbs,Carb,CHD,positive,1.10,26429077
+85,saturated fats replaced with PUFAs,SFA to PUFAs,Lipid,CHD,negative,0.75,26429077
+86,saturated fats replaced with monounsaturated fatty acids,SFA to MUFAs,Lipid,CHD,negative,0.85,26429077
+87,saturated fats replaced with carbohydrates from whole grains,SFA to whole grain carbs,Carb,CHD,negative,0.91,26429077
+88,alcohol intake,Alcohol,Alcohol,MI,negative,0.59,17060546
+89,alcohol intake 15.0 to 29.9 g/d,Alcohol,Alcohol,MI,negative,0.38,17060546
+90,plasma magnesium levels,Magnesium,Mineral,ischemic stroke,positive,1.57,25116874
+91,plasma magnesium levels,Magnesium,Mineral,thrombotic stroke,positive,1.66,25116874
+92,trans fatty acid content in erythrocytes,Trans fatty acids,Lipid,CHD,positive,3.3,17389261
+93,dietary protein,Dietary Protein,Protein,IHD,no,not found,20881068
+94,animal protein,Animal Protein,Protein,IHD,positive,1.21,20881068
+95,animal protein (healthy men),Animal Protein,Protein,IHD,positive,1.25,20881068
+96,vegetable protein,Vegetable Protein,Protein,IHD,no,not found,20881068
+97,vegetable protein (healthy men),Vegetable Protein,Protein,IHD,no,not found,20881068
+98,plasma adiponectin concentrations,Adiponectin,Other,MI,negative,0.39,15082700
+99,plasma adiponectin concentrations,Adiponectin,Other,MI,negative,0.41,15082700
+100,plasma adiponectin concentrations adjusted for lipids,Adiponectin adjusted for lipids,Other,MI,negative,0.56,15082700
+101,Lp(a) levels >=30 mg/dL,Lipoprotein(a),Lipid,CHD,positive,1.9,15824077
+102,high levels of Lp(a) and fibrinogen,Lipoprotein(a) and Fibrinogen,Lipid,CHD,positive,3.2,15824077
+103,high levels of Lp(a) and C-reactive protein,Lipoprotein(a) and C-Reactive Protein,Lipid,CHD,positive,3.67,15824077
+104,coffee consumption,Coffee,Other,stroke,negative,0.80,19221216
+105,egg consumption,Egg,Food/Diet,CHD,negative,0.99,23295181
+106,egg consumption,Egg,Food/Diet,stroke,negative,0.91,23295181
+107,egg consumption in diabetic populations,Egg in diabetes,Food/Diet,CHD,positive,1.54,23295181
+108,egg consumption,Egg,Food/Diet,hemorrhagic stroke,negative,0.75,23295181
+109,Mediterranean diet adherence,Mediterranean Diet,Food/Diet,CHD,negative,0.71,19221219
+110,Mediterranean diet adherence,Mediterranean Diet,Food/Diet,stroke,negative,0.87,19221219
+111,Mediterranean diet adherence,Mediterranean Diet,Food/Diet,CVD mortality,negative,0.61,19221219
+112,pentadecanoic acid (15:0),Pentadecanoic acid,Lipid,stroke,no,not found,25411278
+113,heptadecanoic acid (17:0),Heptadecanoic acid,Lipid,stroke,no,not found,25411278
+114,trans palmitoleate (trans 16:1n-7),Trans palmitoleate,Lipid,stroke,no,not found,25411278
+115,14:0,Myristic acid,Lipid,stroke,no,not found,25411278
+116,docosapentaenoic acid,DPA,Lipid,ischemic stroke,negative,0.74,28830976
+117,docosahexaenoic acid,DHA,Lipid,ischemic stroke,negative,0.80,28830976
+118,docosahexaenoic acid,DHA,Lipid,atherothrombotic stroke,negative,0.53,28830976
+119,docosapentaenoic acid,DPA,Lipid,cardioembolic stroke,negative,0.58,28830976
+120,25-hydroxyvitamin D,25(OH)D,Vitamin,MI,positive,2.42,18541825
+121,25-hydroxyvitamin D,25(OH)D,Vitamin,MI,positive,2.09,18541825
+122,coffee consumption,Coffee,Other,CHD,no,not found,16636169
+123,average daily alcohol intake,Alcohol,Alcohol,CHD,negative,0.58,20351238
+124,average daily alcohol intake,Alcohol,Alcohol,CHD,negative,0.72,20351238
+125,average daily alcohol intake,Alcohol,Alcohol,CHD,negative,0.85,20351238
+126,low carbohydrate diet from animal sources,Animal-based LCD,Carb,all-cause mortality,positive,1.33,25246449
+127,low carbohydrate diet from animal sources,Animal-based LCD,Carb,cardiovascular mortality,positive,1.51,25246449
+128,increase in adherence to animal-based LCD,Increased adherence to Animal-based LCD,Carb,all-cause mortality,positive,1.30,25246449
+129,increase in adherence to animal-based LCD,Increased adherence to Animal-based LCD,Carb,cardiovascular mortality,positive,1.53,25246449
+130,low carbohydrate diet from plant sources,Plant-based LCD,Carb,all-cause mortality,no,not found,25246449
+131,low carbohydrate diet from plant sources,Plant-based LCD,Carb,cardiovascular mortality,no,not found,25246449
+132,prudent dietary pattern,Prudent diet,Food/Diet,CHD,negative,0.76,11493127
+133,Western dietary pattern,Western diet,Food/Diet,CHD,positive,1.46,11493127
+134,highest prudent diet quintile and lowest Western diet quintile,"High prudent, low Western diet",Food/Diet,CHD,negative,0.64,11493127
+135,melatonin secretion,Melatonin,Other,MI,positive,1.40,27806988
+136,cis MUFA intake from plant sources (MUFA-P),MUFA-P,Lipid,CHD,negative,0.83,29566185
+137,cis MUFA intake from plant sources (MUFA-P),MUFA-P,Lipid,CHD,negative,0.86,29566185
+138,cis MUFA intake from plant sources (MUFA-P),MUFA-P,Lipid,CHD,negative,0.80,29566185
+139,cis MUFA intake from animal sources (MUFA-A),MUFA-A,Lipid,CHD,positive,1.04,29566185
+140,cis MUFA intake from animal sources (MUFA-A),MUFA-A,Lipid,CHD,positive,1.11,29566185
+141,cis MUFA intake from animal sources (MUFA-A),MUFA-A,Lipid,CHD,positive,0.88,29566185
+142,replacement of MUFA-As and SFAs with MUFA-Ps,MUFA-P replacement,Lipid,CHD,negative,0.81,29566185
+143,folate,Folate,Vitamin,CHD,negative,0.69,9459468
+144,vitamin B6,Vitamin B6,Vitamin,CHD,negative,0.67,9459468
+145,folate and vitamin B6,Folate & Vitamin B6,Vitamin,CHD,negative,0.55,9459468
+146,multiple vitamins,Multiple Vitamins,Vitamin,CHD,negative,0.76,9459468
+147,flavonols and flavones,Flavonoids,Other,CHD,no,not found,17379619
+148,kaempferol,Kaempferol,Other,CHD death,negative,0.66,17379619
+149,sugar-sweetened beverage intake,Sugar-sweetened beverage,Food/Diet,CHD,positive,1.20,22412070
+150,artificially sweetened beverage intake,Artificially sweetened beverage,Food/Diet,CHD,no,not found,22412070
+151,alpha-linolenic acid,Alpha-linolenic acid,Lipid,SCD,negative,38 to 40,16301356
+152,alpha-linolenic acid,Alpha-linolenic acid,Lipid,CHD,no,not found,16301356
+153,alpha-linolenic acid,Alpha-linolenic acid,Lipid,MI,no,not found,16301356
+154,multivitamin use,Multivitamin,Vitamin,stroke,no,not found,28758316
+155,multivitamin use,Multivitamin,Vitamin,ischaemic stroke,no,not found,28758316
+156,multivitamin use,Multivitamin,Vitamin,hemorrhagic stroke,no,not found,28758316
+157,multivitamin use,Multivitamin,Vitamin,stroke mortality,no,not found,28758316
+158,plasma concentrations of 15:0,15:0,Lipid,IHD,positive,2.18,17921367
+159,plasma concentrations of 15:0,15:0,Lipid,IHD,positive,2.36,17921367
+160,linoleic acid,Linoleic acid,Lipid,CHD,negative,0.85,25161045
+161,linoleic acid,Linoleic acid,Lipid,CHD deaths,negative,0.79,25161045
+162,5% energy increment in LA replacing energy from saturated fat,LA replacing SFA,Lipid,CHD,negative,0.91,25161045
+163,5% energy increment in LA replacing energy from saturated fat,LA replacing SFA,Lipid,CHD deaths,negative,0.87,25161045
+164,proton pump inhibitor use,PPI use,Other,ischemic stroke,positive,1.18,29269313
+165,proton pump inhibitor use adjusted for indications,PPI use adjusted for indications,Other,ischemic stroke,no,not found,29269313
+166,regular proton pump inhibitor use,Regular PPI use,Other,stroke,no,not found,29269313
+167,regular proton pump inhibitor use,Regular PPI use,Other,hemorrhagic stroke,no,not found,29269313
+168,overall plant-based diet index (PDI),Overall Plant-Based Diet Index,Food/Diet,CHD,negative,0.92,28728684
+169,healthful plant-based diet index (hPDI),Healthful Plant-Based Diet Index,Food/Diet,CHD,negative,0.75,28728684
+170,unhealthful plant-based diet index (uPDI),Unhealthful Plant-Based Diet Index,Food/Diet,CHD,positive,1.32,28728684
+171,total whole fruit intake,Total whole fruit,Food/Diet,hypertension,negative,0.92,26644239
+172,total vegetable intake,Total vegetable,Food/Diet,hypertension,negative,0.95,26644239
+173,increased whole fruit intake,Increased whole fruit,Food/Diet,hypertension,negative,0.94,26644239
+174,increased vegetable intake,Increased vegetable,Food/Diet,hypertension,negative,0.98,26644239
+175,broccoli intake,Broccoli,Food/Diet,hypertension,negative,not found,26644239
+176,carrots intake,Carrots,Food/Diet,hypertension,negative,not found,26644239
+177,tofu or soybeans intake,Tofu or soybeans,Food/Diet,hypertension,negative,not found,26644239
+178,raisins intake,Raisins,Food/Diet,hypertension,negative,not found,26644239
+179,apples intake,Apples,Food/Diet,hypertension,negative,not found,26644239
+180,dehydroepiandrosterone (DHEA),DHEA,Other,MI,positive,1.27,18451313
+181,dehydroepiandrosterone sulfate (DHEA-S),DHEA-S,Other,MI,positive,1.58,18451313
+182,magnesium intake,Magnesium,Mineral,CHD,negative,0.73,14963055
+183,magnesium intake adjusted for standard CHD risk factors and dietary factors,Magnesium adjusted,Mineral,CHD,negative,0.82,14963055
+184,supplemental magnesium intake,Supplemental Magnesium,Mineral,CHD,negative,0.77,14963055
+185,mercury,Mercury,Mineral,CHD,no,not found,12456851
+186,total trans fat,Total trans fat,Lipid,SCD,no,not found,19853694
+187,trans-18:1,Trans-18:1,Lipid,SCD,no,not found,19853694
+188,trans-18:2,Trans-18:2,Lipid,SCD,no,not found,19853694
+189,total trans fat (women with CHD),Total trans fat,Lipid,SCD,positive,3.24,19853694
+190,total dietary fiber,Total dietary fiber,Fiber,CHD,negative,0.86,14980987
+191,cereal fiber,Cereal fiber,Fiber,CHD,negative,0.90,14980987
+192,fruit fiber,Fruit fiber,Fiber,CHD,negative,0.84,14980987
+193,vegetable fiber,Vegetable fiber,Fiber,CHD,negative,1.00,14980987
+194,total dietary fiber,Total dietary fiber,Fiber,coronary death,negative,0.73,14980987
+195,cereal fiber,Cereal fiber,Fiber,coronary death,negative,0.75,14980987
+196,fruit fiber,Fruit fiber,Fiber,coronary death,negative,0.70,14980987
+197,vegetable fiber,Vegetable fiber,Fiber,coronary death,negative,1.00,14980987
+198,toenail selenium levels,Selenium,Mineral,CHD,no,not found,14585763
+199,toenail selenium levels,Selenium,Mineral,nonfatal MI,negative,0.54,14585763
+200,toenail selenium levels,Selenium,Mineral,fatal CHD,negative,0.79,14585763
+201,toenail selenium levels,Selenium,Mineral,coronary revascularization procedures,positive,2.38,14585763
+202,dietary magnesium,Magnesium,Mineral,stroke,negative,0.87,26044278
+203,dietary potassium,Potassium,Mineral,stroke,negative,0.89,26044278
+204,dietary calcium,Calcium,Mineral,stroke,negative,0.89,26044278
+205,supplemental magnesium,Magnesium,Mineral,stroke,negative,0.74,26044278
+206,supplemental potassium,Potassium,Mineral,stroke,negative,0.66,26044278
+207,supplemental calcium,Calcium,Mineral,stroke,no,not found,26044278
+208,total magnesium intake (dietary and supplemental),Magnesium,Mineral,stroke,negative,0.83,26044278
+209,total potassium intake (dietary and supplemental),Potassium,Mineral,stroke,no,not found,26044278
+210,total calcium intake (dietary and supplemental),Calcium,Mineral,stroke,no,not found,26044278
+211,"combined dietary score of magnesium, potassium, and calcium",Combined Cations Score,Mineral,stroke,negative,0.79,26044278
+212,red meat,Red Meat,Protein,CHD,positive,not found,20713902
+213,red meat excluding processed meat,Red Meat (unprocessed),Protein,CHD,positive,not found,20713902
+214,high-fat dairy,High-Fat Dairy,Protein,CHD,positive,not found,20713902
+215,nuts,Nuts,Protein,CHD,negative,0.30,20713902
+216,low-fat dairy,Low-Fat Dairy,Protein,CHD,negative,0.13,20713902
+217,poultry,Poultry,Protein,CHD,negative,0.19,20713902
+218,fish,Fish,Protein,CHD,negative,0.24,20713902
+219,fried-food consumption,Fried Food,Food/Diet,CAD,positive,1.21,24944061
+220,fried-food consumption,Fried Food,Food/Diet,T2D,positive,1.55,24944061
+221,total 25-hydroxyvitamin D,Total 25OHD,Vitamin,CHD,no,not found,28882871
+222,bioavailable 25-hydroxyvitamin D,Bioavailable 25OHD,Vitamin,CHD,no,not found,28882871
+223,parathyroid hormone,PTH,Other,CHD,no,not found,28882871
+224,vitamin D binding protein,VDBP,Protein,CHD,negative,0.60,28882871
+225,eicosapentaenoic acid (EPA),EPA,Lipid,CHD,negative,not found,27357102
+226,docosapentaenoic acid (DPA),DPA,Lipid,CHD,negative,0.94,27357102
+227,docosahexaenoic acid (DHA),DHA,Lipid,CHD,negative,0.95,27357102
+228,α-linolenic acid (ALA),ALA,Lipid,CHD,negative,1.00,27357102
+229,ALA,ALA,Lipid,fatal CHD,negative,0.91,27357102
+230,DPA,DPA,Lipid,fatal CHD,negative,0.90,27357102
+231,DHA,DHA,Lipid,fatal CHD,negative,0.90,27357102
+232,fruit and vegetable intake,Fruits and Vegetables,Food/Diet,ischemic stroke,negative,0.69,10517425
+233,increment of 1 serving per day of fruits or vegetables,Fruits and Vegetables Increment,Food/Diet,ischemic stroke,negative,0.94,10517425
+234,cruciferous vegetables,Cruciferous Vegetables,Food/Diet,ischemic stroke,negative,0.68,10517425
+235,green leafy vegetables,Green Leafy Vegetables,Food/Diet,ischemic stroke,negative,0.79,10517425
+236,citrus fruit including juice,Citrus Fruit and Juice,Food/Diet,ischemic stroke,negative,0.81,10517425
+237,citrus fruit juice,Citrus Fruit Juice,Food/Diet,ischemic stroke,negative,0.75,10517425
+238,frequent nut consumption,Nuts,Food/Diet,CHD,negative,0.65,9812929
+239,frequent nut consumption,Nuts,Food/Diet,fatal CHD,negative,0.61,9812929
+240,frequent nut consumption,Nuts,Food/Diet,MI,negative,0.68,9812929
+241,lauric acid,Lauric acid,Lipid,CHD,positive,1.07,27881409
+242,myristic acid,Myristic acid,Lipid,CHD,positive,1.07,27881409
+243,palmitic acid,Palmitic acid,Lipid,CHD,positive,1.07,27881409
+244,stearic acid,Stearic acid,Lipid,CHD,positive,1.07,27881409
+245,eicosapentaenoic acid (EPA),EPA,Lipid,MI,negative,0.23,18614744
+246,docosapentaenoic acid (DPA),DPA,Lipid,MI,negative,0.40,18614744
+247,docosahexaenoic acid (DHA),DHA,Lipid,MI,negative,0.46,18614744
+248,folate intake,Folate,Vitamin,stroke,no,not found,15105514
+249,whole-grain intake,Whole grains,Food/Diet,CHD,negative,0.82,15585760
+250,added bran,Bran,Food/Diet,CHD,negative,0.70,15585760
+251,added germ,Germ,Food/Diet,CHD,no,not found,15585760
+252,fibroblast growth factor 23,FGF23,Other,CHD,no,not found,21570529
+253,parathyroid hormone,PTH,Other,CHD,no,not found,21570529
+254,phosphorus,Phosphorus,Mineral,CHD,no,not found,21570529
+255,dietary vitamin E,Vitamin E,Vitamin,CHD,negative,0.84,15585762
+256,dietary vitamin C,Vitamin C,Vitamin,CHD,positive,1.23,15585762
+257,dietary carotenoids,Carotenoids,Vitamin,CHD,negative,0.90-0.99,15585762
+258,supplemental vitamin C,Vitamin C,Vitamin,CHD,negative,0.75,15585762
+259,supplemental vitamin E,Vitamin E,Vitamin,CHD,no,not found,15585762
+260,dietary calcium intake,Calcium,Mineral,IHD,no,not found,12663277
+261,supplemental calcium intake,Calcium,Mineral,IHD,no,not found,12663277
+262,vitamin D intake,Vitamin D,Vitamin,IHD,no,not found,12663277
+263,total dairy product intake,Dairy Product,Food/Diet,IHD,no,not found,12663277
+264,total intake of vitamin C,Vitamin C,Vitamin,CHD,negative,0.73,12875759
+265,dietary intake of vitamin C,Vitamin C,Vitamin,CHD,no,not found,12875759
+266,vitamin C supplement use,Vitamin C supplement,Vitamin,CHD,negative,0.72,12875759
+267,DASH-style diet adherence score,DASH Diet Score,Food/Diet,CHD,negative,0.76,18413553
+268,DASH-style diet adherence score,DASH Diet Score,Food/Diet,stroke,negative,0.82,18413553
+269,DASH-style diet adherence score,DASH Diet Score,Food/Diet,MI,negative,0.87,18413553
+270,short- to medium-chain saturated fatty acids (4:0-10:0),SCSFA,Lipid,CHD,no,not found,10584044
+271,longer-chain saturated fatty acids (12:0-18:0),LCSFA,Lipid,CHD,positive,1.19,10584044
+272,stearic acid,Stearic Acid,Lipid,CHD,positive,1.19,10584044
+273,ratio of polyunsaturated to saturated fat,PUFA/SFA Ratio,Lipid,CHD,negative,0.58,10584044
+274,red meat to poultry and fish consumption ratio,Meat Consumption Ratio,Food/Diet,CHD,positive,not found,10584044
+275,high-fat to low-fat dairy consumption ratio,Dairy Consumption Ratio,Food/Diet,CHD,positive,not found,10584044
+276,alcohol consumption three to four days per week,Alcohol consumption frequency,Alcohol,MI,negative,0.68,12519921
+277,alcohol consumption five to seven days per week,Alcohol consumption frequency,Alcohol,MI,negative,0.63,12519921
+278,12.5-g increase in daily alcohol consumption,Alcohol consumption increase,Alcohol,MI,negative,0.78,12519921
