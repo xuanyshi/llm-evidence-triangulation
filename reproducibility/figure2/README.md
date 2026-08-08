@@ -11,7 +11,9 @@ This directory contains the archived inputs, gold standards, model-specific pred
 
 ## Validation datasets
 
-### Validation dataset 1: direction and significance
+### Validation dataset #1: expert-annotated food, nutrition, and cardiovascular relations
+
+The paper refers to this material as validation dataset #1. The `amia_` prefix is retained only as a historical filename prefix so that the archived files and notebook code remain unchanged.
 
 - Primary gold standard: `data/amia_vali_df_new.csv`
 - Historical alternative gold file referenced by some notebook sections: `data/amia_vali_df.csv`
@@ -19,7 +21,9 @@ This directory contains the archived inputs, gold standards, model-specific pred
 - One-step predictions: `data/amia_result_df_1_<model>.csv`
 - Two-step predictions: `data/amia_result_df_2_<model>.csv`
 
-### Validation dataset 2: association
+### Validation dataset #2: external dietary factor and coronary heart disease relations
+
+The paper refers to this material as validation dataset #2. The `nc_` prefix and unprefixed result filenames are retained from the historical workflow.
 
 - Gold standard: `data/nc_vali_df.csv`
 - Gold-standard source workbook: `data/nc_figure1.xlsx`
