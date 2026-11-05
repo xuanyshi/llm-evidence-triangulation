@@ -1,0 +1,1961 @@
+{
+  "created_at": "2026-11-03T04:50:27Z",
+  "sources": {
+    "mesh": "https://id.nlm.nih.gov/mesh/",
+    "icd": "https://icd.who.int/browse10/2019/en",
+    "umls": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/",
+    "umls_id_documentation": "https://cbiit-download.nci.nih.gov/evs/MainEVS/Docs/Technical/NCIMetaphraseUserGuide.pdf"
+  },
+  "concepts": [
+    {
+      "id": "child",
+      "label": "Child",
+      "mesh": {
+        "code": "D002648",
+        "label": "Child",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D002648",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0008059",
+        "label": "Child",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0008059?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0008059",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "adult",
+      "label": "Adult",
+      "mesh": {
+        "code": "D000328",
+        "label": "Adult",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000328",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0001675",
+        "label": "Adult",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0001675?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0001675",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "young_adult",
+      "label": "Young adult",
+      "mesh": {
+        "code": "D055815",
+        "label": "Young Adult",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D055815",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0238598",
+        "label": "Young Adult",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0238598?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0238598",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "middle_aged",
+      "label": "Middle aged",
+      "mesh": {
+        "code": "D008875",
+        "label": "Middle Aged",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D008875",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0026062",
+        "label": "Middle Age",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0026062?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0026062",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "older_adult",
+      "label": "Older adult",
+      "mesh": {
+        "code": "D000368",
+        "label": "Aged",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000368",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C2825054",
+        "label": "Elderly",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C2825054?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C2825054",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "male",
+      "label": "Male",
+      "mesh": {
+        "code": "D008297",
+        "label": "Male",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D008297",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0086582",
+        "label": "Male",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0086582?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0086582",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "female",
+      "label": "Female",
+      "mesh": {
+        "code": "D005260",
+        "label": "Female",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D005260",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0015780",
+        "label": "Female",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0015780?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0015780",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "healthy_volunteer",
+      "label": "Healthy volunteer",
+      "mesh": {
+        "code": "D064368",
+        "label": "Healthy Volunteers",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D064368",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C1708335",
+        "label": "Healthy Subject",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1708335?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1708335",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "hypertension",
+      "label": "Hypertension",
+      "mesh": {
+        "code": "D006973",
+        "label": "Hypertension",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D006973",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "I10-I15",
+        "label": "Hypertensive diseases",
+        "relation": "Broader",
+        "source_url": "https://icd.who.int/browse10/2019/en#/I10-I15",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=IX&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C4014808",
+        "label": "Hypertension",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C4014808?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C4014808",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "resistant_hypertension",
+      "label": "Resistant hypertension",
+      "mesh": {
+        "code": "D006973",
+        "label": "Hypertension",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D006973",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "I10-I15",
+        "label": "Hypertensive diseases",
+        "relation": "Broader",
+        "source_url": "https://icd.who.int/browse10/2019/en#/I10-I15",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=IX&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C1834155",
+        "label": "Hypertension Resistant to Conventional Therapy",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1834155?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1834155",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "type_2_diabetes_mellitus",
+      "label": "Type 2 diabetes mellitus",
+      "mesh": {
+        "code": "D003924",
+        "label": "Diabetes Mellitus, Type 2",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D003924",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "E11",
+        "label": "Type 2 diabetes mellitus",
+        "relation": "Exact",
+        "source_url": "https://icd.who.int/browse10/2019/en#/E11",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=E10-E14&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C0011860",
+        "label": "Type 2 Diabetes Mellitus",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0011860?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0011860",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "overweight",
+      "label": "Overweight",
+      "mesh": {
+        "code": "D050177",
+        "label": "Overweight",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D050177",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0497406",
+        "label": "Overweight",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0497406?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0497406",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "obesity",
+      "label": "Obesity",
+      "mesh": {
+        "code": "D009765",
+        "label": "Obesity",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D009765",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "E66",
+        "label": "Obesity",
+        "relation": "Exact",
+        "source_url": "https://icd.who.int/browse10/2019/en#/E66",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=E65-E68&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C3809449",
+        "label": "Obesity",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3809449?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3809449",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "elevated_blood_pressure",
+      "label": "Elevated blood pressure",
+      "mesh": {
+        "code": "D001794",
+        "label": "Blood Pressure",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001794",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "R03.0",
+        "label": "Elevated blood-pressure reading, without diagnosis of hypertension",
+        "relation": "Related",
+        "source_url": "https://icd.who.int/browse10/2019/en#/R03.0",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=R03&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C0497247",
+        "label": "Increase in blood pressure",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0497247?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0497247",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "uncontrolled_hypertension",
+      "label": "Uncontrolled hypertension",
+      "mesh": {
+        "code": "D006973",
+        "label": "Hypertension",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D006973",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "I10-I15",
+        "label": "Hypertensive diseases",
+        "relation": "Broader",
+        "source_url": "https://icd.who.int/browse10/2019/en#/I10-I15",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=IX&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C1868885",
+        "label": "Uncontrolled hypertension",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1868885?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1868885",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "stroke",
+      "label": "Stroke",
+      "mesh": {
+        "code": "D020521",
+        "label": "Stroke",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D020521",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "I60-I69",
+        "label": "Cerebrovascular diseases",
+        "relation": "Broader",
+        "source_url": "https://icd.who.int/browse10/2019/en#/I60-I69",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=IX&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": {
+        "code": "C3554760",
+        "label": "Stroke",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3554760?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3554760",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "cardiovascular_disease",
+      "label": "Cardiovascular disease",
+      "mesh": {
+        "code": "D002318",
+        "label": "Cardiovascular Diseases",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D002318",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0007222",
+        "label": "Cardiovascular Disorder",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0007222?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0007222",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dietary_sodium",
+      "label": "Dietary sodium",
+      "mesh": {
+        "code": "D012982",
+        "label": "Sodium, Dietary",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012982",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0037570",
+        "label": "Dietary Sodium",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0037570?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0037570",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "sodium_chloride",
+      "label": "Sodium chloride",
+      "mesh": {
+        "code": "D012965",
+        "label": "Sodium Chloride",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012965",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0037494",
+        "label": "Sodium Chloride",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0037494?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0037494",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dietary_potassium",
+      "label": "Dietary potassium",
+      "mesh": {
+        "code": "D017419",
+        "label": "Potassium, Dietary",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D017419",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0162800",
+        "label": "Dietary Potassium",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0162800?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0162800",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "sodium_restricted_diet",
+      "label": "Sodium-restricted diet",
+      "mesh": {
+        "code": "D004039",
+        "label": "Diet, Sodium-Restricted",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D004039",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0012169",
+        "label": "Low sodium diet",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0012169?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0012169",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "salt_substitute",
+      "label": "Salt substitute",
+      "mesh": null,
+      "icd": null,
+      "umls": {
+        "code": "C0784217",
+        "label": "Salt Substitute",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0784217?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0784217",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dash_diet",
+      "label": "DASH diet",
+      "mesh": {
+        "code": "D000073601",
+        "label": "Dietary Approaches To Stop Hypertension",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000073601",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C4053458",
+        "label": "Dietary Approaches to Stop Hypertension diet",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C4053458?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C4053458",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "mediterranean_diet",
+      "label": "Mediterranean diet",
+      "mesh": {
+        "code": "D038441",
+        "label": "Diet, Mediterranean",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D038441",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C1138412",
+        "label": "Mediterranean diet",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1138412?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1138412",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "ketogenic_diet",
+      "label": "Ketogenic diet",
+      "mesh": {
+        "code": "D055423",
+        "label": "Diet, Ketogenic",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D055423",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0259972",
+        "label": "Ketogenic Diet",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0259972?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0259972",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "high_protein_diet",
+      "label": "High-protein diet",
+      "mesh": {
+        "code": "D000073600",
+        "label": "Diet, High-Protein",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000073600",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0425403",
+        "label": "Increased protein diet",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0425403?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0425403",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "calorie_restriction",
+      "label": "Calorie restriction",
+      "mesh": {
+        "code": "D031204",
+        "label": "Caloric Restriction",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D031204",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C1135809",
+        "label": "Caloric Restriction",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1135809?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1135809",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "fructose",
+      "label": "Fructose",
+      "mesh": {
+        "code": "D005632",
+        "label": "Fructose",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D005632",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0016745",
+        "label": "Fructose",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0016745?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0016745",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "health_education",
+      "label": "Health education",
+      "mesh": {
+        "code": "D006266",
+        "label": "Health Education",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D006266",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0018701",
+        "label": "Health Education",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0018701?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0018701",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "nutrition_counseling",
+      "label": "Nutrition counseling",
+      "mesh": {
+        "code": "D003376",
+        "label": "Counseling",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D003376",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": {
+        "code": "Z71.3",
+        "label": "Dietary counselling and surveillance",
+        "relation": "Broader",
+        "source_url": "https://icd.who.int/browse10/2019/en#/Z71.3",
+        "evidence_url": "https://icd.who.int/browse10/2019/en/JsonGetChildrenConcepts?ConceptId=Z71&useHtml=false",
+        "source": "World Health Organization",
+        "version": "ICD-10 2019"
+      },
+      "umls": null
+    },
+    {
+      "id": "mobile_application",
+      "label": "Mobile application",
+      "mesh": {
+        "code": "D063731",
+        "label": "Mobile Applications",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D063731",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C3658310",
+        "label": "Mobile Applications",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3658310?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3658310",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "sarcocornia",
+      "label": "Sarcocornia",
+      "mesh": {
+        "code": "D027703",
+        "label": "Amaranthaceae",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D027703",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "blood_pressure",
+      "label": "Blood pressure",
+      "mesh": {
+        "code": "D001794",
+        "label": "Blood Pressure",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001794",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005823",
+        "label": "Blood Pressure",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005823?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005823",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "systolic_blood_pressure",
+      "label": "Systolic blood pressure",
+      "mesh": {
+        "code": "D001794",
+        "label": "Blood Pressure",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001794",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0871470",
+        "label": "Systolic Blood Pressure",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0871470?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0871470",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "diastolic_blood_pressure",
+      "label": "Diastolic blood pressure",
+      "mesh": {
+        "code": "D001794",
+        "label": "Blood Pressure",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001794",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0428883",
+        "label": "Diastolic Blood Pressure",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0428883?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0428883",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "mean_arterial_pressure",
+      "label": "Mean arterial pressure",
+      "mesh": {
+        "code": "D062186",
+        "label": "Arterial Pressure",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D062186",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0428886",
+        "label": "Mean Arterial Pressure",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0428886?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0428886",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "ambulatory_blood_pressure_monitoring",
+      "label": "Ambulatory blood pressure monitoring",
+      "mesh": {
+        "code": "D018660",
+        "label": "Blood Pressure Monitoring, Ambulatory",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D018660",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0242876",
+        "label": "Blood Pressure Monitoring, Ambulatory",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0242876?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0242876",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "urinary_sodium",
+      "label": "Urinary sodium",
+      "mesh": {
+        "code": "D012964",
+        "label": "Sodium",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012964",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C1256585",
+        "label": "Urine Sodium Measurement",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1256585?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1256585",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "urinary_potassium",
+      "label": "Urinary potassium",
+      "mesh": {
+        "code": "D011188",
+        "label": "Potassium",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D011188",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0202195",
+        "label": "Urine Potassium Measurement",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0202195?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0202195",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "urinary_sodium_to_potassium_ratio",
+      "label": "Urinary sodium-to-potassium ratio",
+      "mesh": {
+        "code": "D012964",
+        "label": "Sodium",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012964",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C3536769",
+        "label": "Sodium to Potassium Ratio Measurement",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3536769?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3536769",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "urinary_sodium_to_creatinine_ratio",
+      "label": "Urinary sodium-to-creatinine ratio",
+      "mesh": {
+        "code": "D012964",
+        "label": "Sodium",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012964",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C2699329",
+        "label": "Sodium to Creatinine Ratio Measurement",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C2699329?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C2699329",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "cardiovascular_risk",
+      "label": "Cardiovascular risk",
+      "mesh": {
+        "code": "D002318",
+        "label": "Cardiovascular Diseases",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D002318",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "salt_sensitivity_of_blood_pressure",
+      "label": "Salt sensitivity of blood pressure",
+      "mesh": {
+        "code": "D001794",
+        "label": "Blood Pressure",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001794",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "mortality",
+      "label": "Mortality",
+      "mesh": {
+        "code": "D009026",
+        "label": "Mortality",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D009026",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0026565",
+        "label": "Mortality Rate",
+        "relation": "Related",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0026565?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0026565",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "body_weight",
+      "label": "Body weight",
+      "mesh": {
+        "code": "D001835",
+        "label": "Body Weight",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001835",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005910",
+        "label": "Body Weight",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005910?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005910",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "pulse_wave_velocity",
+      "label": "Pulse wave velocity",
+      "mesh": {
+        "code": "D063177",
+        "label": "Pulse Wave Analysis",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D063177",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C3494431",
+        "label": "Pulse Wave Velocity",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3494431?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3494431",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "pulse_wave_analysis",
+      "label": "Pulse wave analysis",
+      "mesh": {
+        "code": "D063177",
+        "label": "Pulse Wave Analysis",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D063177",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C3494430",
+        "label": "Pulse Wave Analysis",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3494430?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3494430",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "interleukin_6",
+      "label": "Interleukin-6",
+      "mesh": {
+        "code": "D015850",
+        "label": "Interleukin-6",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D015850",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0021760",
+        "label": "interleukin-6",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0021760?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0021760",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "nitric_oxide",
+      "label": "Nitric oxide",
+      "mesh": {
+        "code": "D009569",
+        "label": "Nitric Oxide",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D009569",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0028128",
+        "label": "Nitric Oxide",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0028128?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0028128",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "brain_natriuretic_peptide",
+      "label": "Brain natriuretic peptide",
+      "mesh": {
+        "code": "D020097",
+        "label": "Natriuretic Peptide, Brain",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D020097",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C1095989",
+        "label": "Brain Natriuretic Peptide Measurement",
+        "relation": "Related",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1095989?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1095989",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "extracellular_fluid",
+      "label": "Extracellular fluid",
+      "mesh": {
+        "code": "D045604",
+        "label": "Extracellular Fluid",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D045604",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0015349",
+        "label": "Extracellular fluid",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0015349?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0015349",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "aldosterone",
+      "label": "Aldosterone",
+      "mesh": {
+        "code": "D000450",
+        "label": "Aldosterone",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000450",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0002006",
+        "label": "Aldosterone",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0002006?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0002006",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "renin",
+      "label": "Renin",
+      "mesh": {
+        "code": "D012083",
+        "label": "Renin",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012083",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0035094",
+        "label": "Renin",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0035094?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0035094",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "adverse_event",
+      "label": "Adverse event",
+      "mesh": null,
+      "icd": null,
+      "umls": {
+        "code": "C0877248",
+        "label": "Adverse Event",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0877248?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0877248",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "body_composition",
+      "label": "Body composition",
+      "mesh": {
+        "code": "D001823",
+        "label": "Body Composition",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001823",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005885",
+        "label": "Body composition",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005885?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005885",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "anthropometry",
+      "label": "Anthropometry",
+      "mesh": {
+        "code": "D000886",
+        "label": "Anthropometry",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000886",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0003188",
+        "label": "Anthropometry",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0003188?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0003188",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "creatinine",
+      "label": "Creatinine",
+      "mesh": {
+        "code": "D003404",
+        "label": "Creatinine",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D003404",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0010294",
+        "label": "Creatinine",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0010294?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0010294",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "randomized_controlled_trial",
+      "label": "Randomized controlled trial",
+      "mesh": {
+        "code": "D016449",
+        "label": "Randomized Controlled Trial",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D016449",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0206035",
+        "label": "Randomized Controlled Clinical Trial",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0206035?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0206035",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "cluster_randomized_trial",
+      "label": "Cluster randomized trial",
+      "mesh": {
+        "code": "D016449",
+        "label": "Randomized Controlled Trial",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D016449",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0206035",
+        "label": "Randomized Controlled Clinical Trial",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0206035?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0206035",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "crossover_study",
+      "label": "Crossover study",
+      "mesh": {
+        "code": "D018592",
+        "label": "Cross-Over Studies",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D018592",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0150097",
+        "label": "Crossover Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0150097?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0150097",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "cross_sectional_study",
+      "label": "Cross-sectional study",
+      "mesh": {
+        "code": "D003430",
+        "label": "Cross-Sectional Studies",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D003430",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0010362",
+        "label": "Cross-Sectional Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0010362?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0010362",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "cohort_study",
+      "label": "Cohort study",
+      "mesh": {
+        "code": "D015331",
+        "label": "Cohort Studies",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D015331",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0009247",
+        "label": "Cohort Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0009247?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0009247",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "observational_study",
+      "label": "Observational study",
+      "mesh": {
+        "code": "D064888",
+        "label": "Observational Study",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D064888",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C1518527",
+        "label": "Observational Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C1518527?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C1518527",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "pilot_study",
+      "label": "Pilot study",
+      "mesh": {
+        "code": "D010865",
+        "label": "Pilot Projects",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D010865",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0031928",
+        "label": "Pilot Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0031928?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0031928",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "single_blind_study",
+      "label": "Single-blind study",
+      "mesh": {
+        "code": "D016037",
+        "label": "Single-Blind Method",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D016037",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0242570",
+        "label": "Single Blind Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0242570?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0242570",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "double_blind_study",
+      "label": "Double-blind study",
+      "mesh": {
+        "code": "D004311",
+        "label": "Double-Blind Method",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D004311",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0013072",
+        "label": "Double Blind Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0013072?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0013072",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "prospective_study",
+      "label": "Prospective study",
+      "mesh": {
+        "code": "D011446",
+        "label": "Prospective Studies",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D011446",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0033522",
+        "label": "Prospective Cohort Study",
+        "relation": "Related",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0033522?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0033522",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "secondary_analysis",
+      "label": "Secondary analysis",
+      "mesh": {
+        "code": "D000078332",
+        "label": "Data Analysis",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D000078332",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "clinical_trial",
+      "label": "Clinical trial",
+      "mesh": {
+        "code": "D016430",
+        "label": "Clinical Trial",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D016430",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0008976",
+        "label": "Clinical Trial",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0008976?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0008976",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dietitian",
+      "label": "Dietitian",
+      "mesh": {
+        "code": "D064686",
+        "label": "Nutritionists",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D064686",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C3536818",
+        "label": "Dietitian",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3536818?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C3536818",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "urinalysis",
+      "label": "Urinalysis",
+      "mesh": {
+        "code": "D016482",
+        "label": "Urinalysis",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D016482",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0042014",
+        "label": "Urinalysis",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0042014?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0042014",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "clinical_blood_pressure_measurement",
+      "label": "Clinical blood pressure measurement",
+      "mesh": {
+        "code": "D001795",
+        "label": "Blood Pressure Determination",
+        "relation": "Exact",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001795",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005824",
+        "label": "Blood pressure determination",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005824?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005824",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "potassium_enriched_salt",
+      "label": "Potassium-enriched salt",
+      "mesh": null,
+      "icd": null,
+      "umls": {
+        "code": "C0784217",
+        "label": "Salt Substitute",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0784217?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0784217",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dietary_intake",
+      "label": "Dietary intake",
+      "mesh": {
+        "code": "D004435",
+        "label": "Eating",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D004435",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "food_sodium_content",
+      "label": "Food sodium content",
+      "mesh": {
+        "code": "D012982",
+        "label": "Sodium, Dietary",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012982",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0037570",
+        "label": "Dietary Sodium",
+        "relation": "Related",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0037570?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0037570",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "salt_intake",
+      "label": "Salt intake",
+      "mesh": {
+        "code": "D017673",
+        "label": "Sodium Chloride, Dietary",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D017673",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0489767",
+        "label": "salt intake",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0489767?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0489767",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dietary_planning",
+      "label": "Dietary planning",
+      "mesh": {
+        "code": "D004035",
+        "label": "Diet Therapy",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D004035",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "sodium_excretion",
+      "label": "Sodium excretion",
+      "mesh": {
+        "code": "D012964",
+        "label": "Sodium",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D012964",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "potassium_excretion",
+      "label": "Potassium excretion",
+      "mesh": {
+        "code": "D011188",
+        "label": "Potassium",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D011188",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "nocturnal_blood_pressure",
+      "label": "Nocturnal blood pressure",
+      "mesh": {
+        "code": "D001794",
+        "label": "Blood Pressure",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001794",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005823",
+        "label": "Blood Pressure",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005823?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005823",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "home_blood_pressure",
+      "label": "Home blood pressure",
+      "mesh": {
+        "code": "D001795",
+        "label": "Blood Pressure Determination",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001795",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005824",
+        "label": "Blood pressure determination",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005824?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005824",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "office_blood_pressure",
+      "label": "Office blood pressure",
+      "mesh": {
+        "code": "D001795",
+        "label": "Blood Pressure Determination",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001795",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0005824",
+        "label": "Blood pressure determination",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0005824?include=full",
+        "browser_url": "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncim/C0005824",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "fat_free_mass",
+      "label": "Fat-free mass",
+      "mesh": {
+        "code": "D001823",
+        "label": "Body Composition",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001823",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0424678",
+        "label": "Lean Body Mass",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0424678?include=full",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "fat_mass",
+      "label": "Fat mass",
+      "mesh": {
+        "code": "D001823",
+        "label": "Body Composition",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001823",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "blood_lipids",
+      "label": "Blood lipids",
+      "mesh": {
+        "code": "D008055",
+        "label": "Lipids",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D008055",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "insulin",
+      "label": "Insulin measurement",
+      "mesh": {
+        "code": "D007328",
+        "label": "Insulin",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D007328",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0202098",
+        "label": "Insulin Measurement",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0202098?include=full",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "salt_monitoring_device",
+      "label": "Salt monitoring device",
+      "mesh": {
+        "code": "D004864",
+        "label": "Equipment and Supplies",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D004864",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0025080",
+        "label": "Medical Device",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0025080?include=full",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "sodium_free_bread",
+      "label": "Sodium-free bread",
+      "mesh": {
+        "code": "D001939",
+        "label": "Bread",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D001939",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": null
+    },
+    {
+      "id": "interventional_study",
+      "label": "Interventional study",
+      "mesh": {
+        "code": "D016430",
+        "label": "Clinical Trial",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D016430",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C3274035",
+        "label": "Interventional Study",
+        "relation": "Exact",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C3274035?include=full",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "nitric_oxide_metabolites",
+      "label": "Nitric oxide metabolites",
+      "mesh": {
+        "code": "D009569",
+        "label": "Nitric Oxide",
+        "relation": "Related",
+        "source_url": "https://id.nlm.nih.gov/mesh/D009569",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0028128",
+        "label": "Nitric Oxide",
+        "relation": "Related",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0028128?include=full",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "dietary_sodium_restriction_questionnaire",
+      "label": "Dietary sodium restriction questionnaire",
+      "mesh": {
+        "code": "D011795",
+        "label": "Surveys and Questionnaires",
+        "relation": "Broader",
+        "source_url": "https://id.nlm.nih.gov/mesh/D011795",
+        "source": "NLM MeSH RDF",
+        "version": "Retrieved 2026-11-03"
+      },
+      "icd": null,
+      "umls": {
+        "code": "C0034394",
+        "label": "Questionnaire",
+        "relation": "Broader",
+        "source_url": "https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/C0034394?include=full",
+        "source": "UMLS CUI via NCI Metathesaurus",
+        "version": "202608"
+      }
+    },
+    {
+      "id": "meal_pack",
+      "label": "Meal pack",
+      "mesh": null,
+      "icd": null,
+      "umls": null
+    }
+  ]
+}

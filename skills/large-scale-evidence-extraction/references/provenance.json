@@ -1,0 +1,20 @@
+{
+  "snapshot_date": "2026-11-05",
+  "research_question": {
+    "exposure": "High vs low salt intake",
+    "outcome": "Incident hypertension"
+  },
+  "original_model": "deepseek-flash",
+  "sources": [
+    {
+      "file": "prompts.json",
+      "source_path": "outputs/hosted_evidence_extraction/server/prompts.json",
+      "sha256": "6df2a95916a6e68123987950d0ef5cc217f975a1f20b5e85580b5d02808b4793"
+    },
+    {
+      "file": "terminology.json",
+      "source_path": "outputs/hosted_evidence_extraction/server/terms.json",
+      "sha256": "7a772167f0644214ecc88e254161a07dd1eaf826ce9bc9370cff3b5b8e555c77"
+    }
+  ]
+}

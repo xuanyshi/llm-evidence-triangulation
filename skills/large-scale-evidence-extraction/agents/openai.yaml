@@ -1,0 +1,4 @@
+interface:
+  display_name: "Large-scale evidence extraction"
+  short_description: "Extract PICOS, effect estimates and terminology mappings"
+  default_prompt: "Use $large-scale-evidence-extraction to extract the supplied study abstracts into one evidence table with source-grounded PICOS, effect estimates and terminology mappings."
