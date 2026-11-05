@@ -28,13 +28,13 @@ The optional `--index path/to/index.json` on the mapping stage accepts an object
 
 ## Comparison selection
 
-Keep numerical estimates matching the current question and the actual reference groups. Restrict to extreme exposure categories only when requested. Preserve continuous exposure increments, doses, units and transformations. Keep categorical contrasts without imposing an exposure ordering. Preserve relevant distinct methods, adjustment models, follow-up times and within-subgroup comparisons. Exclude a joint exposure contrast only when it changes an unrelated factor outside the requested question.
+Keep numerical estimates and directly reported qualitative relationships matching the current question and the actual reference groups. Restrict to extreme exposure categories only when requested. Preserve continuous exposure increments, doses, units and transformations. Keep categorical contrasts without imposing an exposure ordering. Preserve relevant distinct methods, adjustment models, follow-up times and within-subgroup comparisons. Exclude a joint exposure contrast only when it changes an unrelated factor outside the requested question.
 
 Never transfer estimates, population sizes or exposure means across subcohorts or outcomes. A whole-population-average reference remains that reference. A range spanning several intervention arms is not an arm-specific estimate. When the requested endpoint is a composite, include individual components only if the user permits them.
 
 Deduplicate a comparative estimate and descriptive group rates only when they express the same population, contrast, endpoint and timepoint. Do not discard distinct comparisons because some other result in the article has a ratio. Preserve every eligible point estimate as originally reported, including a positive reduction magnitude, an explicitly signed coefficient, or a logarithmic estimate. Do not invert, exponentiate or convert units.
 
-The schema represents numerical effects and paired cumulative incidence percentages. Diagnostic accuracy, prevalence pairs, descriptive group means or unassigned ranges may require an extension for a particular request. Explain that specific limitation and make an explicit schema extension when needed; do not mislabel them as incidence or manufacture an estimate. Keep extensions documented with that run.
+The schema represents numerical effects, paired cumulative incidence percentages and explicit qualitative relationships. Qualitative rows have null effect_value and supported direction or significance. Diagnostic accuracy, prevalence pairs, descriptive group means or unassigned ranges may require an extension for a particular request. Explain that specific limitation and make an explicit schema extension when needed; do not mislabel them as incidence or manufacture an estimate. Keep extensions documented with that run.
 
 ## Terminology resolution
 
@@ -52,7 +52,7 @@ Read relevant source definitions when homonyms, subtypes or mapping relations ar
 
 Validate the populated object against `prompts.json.schema`. Schema validity alone does not establish scientific attribution. Check the following conditions against each original abstract.
 
-- Required fields and controlled values match the schema. An absent PICOS field is `Not reported` with an empty source quote. Each eligible effect has a reported number.
+- Required fields and controlled values match the schema. An absent PICOS field is `Not reported` with an empty source quote. Quantitative rows have a reported number; qualitative rows retain an explicit direction or significance statement with a null value. Validate the NC and scoped sample-size fields described in [nc-fields.md](nc-fields.md).
 - PICOS quotes occur in the title or abstract. Effect and significance quotes occur in the abstract and support the exact comparison, population, endpoint, timepoint and model. If case/whitespace alignment is used, replace the stored quote with the literal matched source span; omitted words or discontinuous text are invalid.
 - Values and interval endpoints match their quoted result. Confidence limits belong to the same estimate, scale and stated confidence level. CI fields are reserved for 95% intervals; preserve other levels as `other_uncertainty`. Check bound ordering and consistency with the point estimate; retain and flag an inconsistency present in the source rather than silently repairing it.
 - Original-scale HR/OR/RR estimates use null=1. Differences, log ratios, correlations and signed coefficients use null=0 only when their reported metric supports that interpretation. Determine direction from the reported contrast orientation. For paired incidence, compare the two percentages. A reported positive reduction magnitude denotes decrease. Unestablished direction remains `not found`.
@@ -66,6 +66,6 @@ Validate the populated object against `prompts.json.schema`. Schema validity alo
 
 On validation failure, retain the prior assistant response and append `Correct the JSON. ` followed by the specific error. Allow at most three total attempts per stage. Record unresolved errors. Keep valid evidence extraction when only terminology retrieval fails. Omitted invalid entities and unmapped concepts must remain visible in the run's status.
 
-Create one table row per eligible effect, preserving its own P/I/C/O, method, model and timepoint. Retain study-level PICOS in structured output. For a complete study inventory, no-effect studies can occupy a PICOS-only row with blank effect fields; record them as no eligible numerical estimate. Do not turn missingness into zero. Failed extraction is a distinct status.
+Create one table row per eligible effect, preserving its own P/I/C/O, method, model and timepoint. Retain study-level PICOS in structured output. For a complete study inventory, no-effect studies can occupy a PICOS-only row with blank effect fields; record them as no eligible result. Do not turn missingness into zero. Failed extraction is a distinct status.
 
 For auditable runs, retain original inputs, question object, actual model, exact messages or their hashes, source quotes and terminology provenance. The question must accompany exports so results from different questions cannot be confused.

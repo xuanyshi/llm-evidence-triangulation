@@ -91,18 +91,21 @@ def retry_delay(value, attempt):
     return max(0, min(seconds, 300))
 
 
-def validate_extraction(data, article, schema):
+def validate_extraction(data, article, schema, question=None):
     jsonschema.validate(data, schema)
-    for item in data['picos'].values():
+    for field, item in data['picos'].items():
         quote = item['source_quote']
         if not quote and item['text'] == 'Not reported':
             continue
         if not quote or not any(quote in article[k] for k in ('title', 'abstract')):
-            raise ValueError('PICOS needs an exact nonempty title/abstract quote, or Not reported.')
+            raise ValueError(f'PICOS {field} source_quote {quote!r} is not a literal title/abstract passage. Copy a contiguous passage without dropping intervening words; use Not reported with empty quote only if absent.')
     for effect in data['effects']:
+        validate_participants(effect, article)
         value = effect['effect_value']
-        if value is None or not math.isfinite(value):
-            raise ValueError('Each effect must have a finite reported numerical value.')
+        if value is not None and not math.isfinite(value):
+            raise ValueError('Reported effect values must be finite.')
+        if value is None and effect['effect_direction'] == 'not found' and effect['significance'] == 'not found':
+            raise ValueError('A qualitative row requires a reported direction or significance.')
         quote = effect['source_quote']
         if not quote or quote not in article['abstract']:
             raise ValueError('Each effect needs an exact nonempty abstract quote.')
@@ -114,29 +117,130 @@ def validate_extraction(data, article, schema):
         lo, hi = effect['ci_lower'], effect['ci_upper']
         if (lo is None) != (hi is None):
             raise ValueError('Supply both stated 95% CI bounds or leave both null.')
-        if lo is not None and (not all(math.isfinite(x) for x in (lo, hi)) or not lo <= value <= hi):
+        if lo is not None and (not all(math.isfinite(x) for x in (lo, hi)) or lo > hi or (value is not None and not lo <= value <= hi)):
             raise ValueError('Check the point estimate and its exact 95% interval.')
         metric = effect['effect_type'].strip().lower()
+        average_comparator = re.search(r'(?:average|mean).*?(?:risk|population)|(?:population|overall).*?(?:average|mean)', effect['comparator'], re.I)
+        contrast = ' '.join((question or {}).get(k, '') for k in ('contrast', 'comparator'))
+        extreme_contrast = re.search(r'\b(?:high|highest|higher|top)\b.*\b(?:low|lowest|lower|bottom)\b', contrast, re.I)
+        if average_comparator and extreme_contrast:
+            raise ValueError('The question requires higher/highest versus lower/lowest groups. A population-average reference is ineligible. Omit that estimate; use an explicitly reported eligible comparison such as paired cumulative incidences if available. Do not relabel an HR or borrow a trend/global test as pairwise significance.')
+        population_reference = re.search(r'(?:hazard ratios?|\bHRs?\b)[^.!?]{0,200}relative to (?:the )?average risk in the whole study population', article['abstract'], re.I)
+        if metric in ('hr', 'hazard ratio') and population_reference and not re.search(r'(?:average|mean).*?(?:risk|population)|(?:population|overall).*?(?:average|mean)', effect['comparator'], re.I):
+            raise ValueError('Methods explicitly define HRs relative to average risk in the whole study population. Do not label those HRs as high versus low. Use the stated population-average comparator only if eligible for the question; otherwise omit these HRs and retain an eligible directly reported comparison such as paired cumulative incidences, without borrowing HR/trend significance.')
         null = None
         if metric in ('hr', 'or', 'rr', 'hazard ratio', 'odds ratio', 'risk ratio', 'relative risk'):
             null = 1
         elif metric in ('rd', 'risk difference', 'mean difference', 'standardized mean difference', 'log odds ratio', 'log hazard ratio', 'log risk ratio', 'correlation'):
             null = 0
         if null is not None:
-            delta = value - null
-            direction = 'no_change' if delta == 0 else 'increase' if delta > 0 else 'decrease'
-            if effect['effect_direction'] != direction:
-                raise ValueError('Direction disagrees with the reported metric and point estimate.')
+            if value is not None:
+                delta = value - null
+                direction = 'no_change' if delta == 0 else 'increase' if delta > 0 else 'decrease'
+                if effect['effect_direction'] != direction:
+                    raise ValueError('Direction disagrees with the reported metric and point estimate.')
             if lo is not None and effect['significance_basis'] == '95% CI':
                 expected = 'negative' if lo <= null <= hi else 'positive'
                 if effect['significance'] != expected:
                     raise ValueError('Significance disagrees with this estimate\'s 95% interval.')
         if effect['comparator_estimate'] is not None:
+            if value is None:
+                raise ValueError('Paired incidence requires both group values.')
             if metric != 'cumulative incidence' or effect['unit'] != '%':
                 raise ValueError('Paired comparator values are reserved for cumulative incidence percentages.')
             if not 0 <= value <= 100 or not 0 <= effect['comparator_estimate'] <= 100:
                 raise ValueError('Cumulative incidence percentages must lie between 0 and 100.')
     return data
+
+
+def validate_participants(effect, article):
+    def source(quote):
+        if not quote or not any(quote in article[k] for k in ('title', 'abstract')):
+            raise ValueError('Population and count fields require exact source quotes.')
+
+    def stated(number, quote):
+        source(quote)
+        # Recognize digit counts, including thousands separators, without accepting
+        # 96 inside 2096 or treating an exponent as an expanded participant count.
+        tokens = re.findall(r'(?<![\w.])\d{1,3}(?:[,\s\u00a0]\d{3})+(?:\.\d+)?(?!\w)|(?<![\w.])\d+(?:\.\d+)?(?!\w)', quote)
+        if not math.isfinite(number) or not any(float(re.sub(r'[,\s\u00a0]', '', token)) == number for token in tokens):
+            raise ValueError('Count must be explicitly stated as digits in its source quote.')
+
+    condition = effect['population_main_condition']
+    if condition is not None:
+        if not condition.strip():
+            raise ValueError('Use null for an unreported baseline condition.')
+        source(effect['population_condition_quote'])
+    elif effect['population_condition_quote']:
+        raise ValueError('An unreported baseline condition has an empty quote.')
+    n = effect['number_of_participants']
+    basis = effect['participants_basis']
+    if n is None:
+        if basis != 'not_reported' or effect['participants_quote']:
+            raise ValueError('Unknown participant N requires not_reported and an empty quote.')
+    else:
+        if basis == 'not_reported':
+            raise ValueError('Participant N needs an analysis or enrolled population basis.')
+        stated(n, effect['participants_quote'])
+        role = 'analysis_population' if basis == 'analysis_population' else 'cohort_total'
+        if not any(item['role'] == role and item['unit'] == 'participants' and item['number'] == n and item['source_quote'] == effect['participants_quote'] for item in effect['sample_sizes']):
+            raise ValueError('Participant N must match its scoped sample_sizes item and quote.')
+    for item in effect['sample_sizes']:
+        stated(item['number'], item['source_quote'])
+        if not item['population'].strip():
+            raise ValueError('Each count needs its population or analysis scope.')
+        if item['unit'] in ('participants', 'events', 'clusters') and int(item['number']) != item['number']:
+            raise ValueError('Participant, event and cluster counts must be integers.')
+        if item['role'] == 'events' and item['unit'] != 'events':
+            raise ValueError('Event counts cannot supply participant N.')
+        if item['role'] in ('cohort_total', 'analysis_population', 'intervention_group', 'comparator_group', 'cases', 'controls', 'exposure_gwas', 'outcome_gwas') and item['unit'] != 'participants':
+            raise ValueError('Participant-group counts require participants units; use other for clusters/person-years.')
+    included = effect['included_studies']
+    if included is not None:
+        if effect['study_design'] not in ('META', 'SR', 'REVIEW'):
+            raise ValueError('included_studies must be null for primary studies.')
+        source(included['source_quote'])
+        if included['total'] is None and not included['by_design']:
+            raise ValueError('Use null when no included-study count is reported.')
+        if included['total'] is not None:
+            stated(included['total'], included['source_quote'])
+        for item in included['by_design']:
+            stated(item['count'], included['source_quote'])
+            if included['total'] is not None and item['count'] > included['total']:
+                raise ValueError('Design-specific study count exceeds the reported total.')
+
+
+def nc_relation(identifier, position, effect):
+    """Lossless export projection; never overwrite raw model direction or P text."""
+    raw_p = effect.get('p_value')
+    match = re.fullmatch(r'\s*(?:[pP]\s*)?(<=|>=|<|>|=|≤|≥)?\s*((?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)\s*', raw_p or '')
+    operator = (match[1] or '=') if match else None
+    p_number = float(match[2]) if match else None
+    if p_number is not None and not 0 <= p_number <= 1:
+        p_number, operator = None, None
+    direction = 'no_change' if effect['significance'] == 'negative' else effect['effect_direction'] if effect['significance'] == 'positive' else 'not found'
+    included = effect.get('included_studies')
+    included_text = None
+    if included:
+        parts = [f"{i['count']} {i['study_design']}" for i in included['by_design']]
+        included_text = '; '.join(([f"{included['total']} total"] if included['total'] is not None else []) + parts)
+    return {
+        'relation_id': f'{identifier}:relation:{position:04d}',
+        'exposure': effect['intervention'], 'exposure_direction': effect['exposure_direction'],
+        'outcome': effect['outcome'], 'significance': effect['significance'], 'direction': direction,
+        'population_main_condition': effect.get('population_main_condition'), 'comparator': effect['comparator'],
+        'study_design': effect.get('study_design'), 'included_studies': included_text,
+        'number_of_participants': effect.get('number_of_participants'),
+        'study_design_detail': effect.get('study_design_detail'), 'study_design_category': effect.get('study_design_category'),
+        'statistical_parameter': None if effect['effect_type'] == 'Not reported' else effect['effect_type'],
+        'statistical_value': effect['effect_value'], 'ci_lower': effect['ci_lower'], 'ci_upper': effect['ci_upper'],
+        'p_value': p_number if operator == '=' else None, 'p_value_raw': raw_p,
+        'p_value_operator': operator, 'p_value_bound': p_number if operator and operator != '=' else None,
+        'effect_direction': effect['effect_direction'], 'result_kind': 'quantitative' if effect['effect_value'] is not None else 'qualitative',
+        'participants_basis': effect.get('participants_basis'), 'sample_sizes': effect.get('sample_sizes'),
+        'participants_quote': effect.get('participants_quote'), 'included_studies_detail': included,
+        'source_quote': effect['source_quote'], 'direction_rule': 'NC: negative significance -> no_change; unknown significance -> not found; otherwise raw effect direction',
+    }
 
 
 def validate_entities(data, article, index):
@@ -259,7 +363,7 @@ class BatchRunner:
 
     def model_call(self, article, stage, extraction=None):
         messages = build_messages(self.question, article, stage, extraction, self.index if stage == 'map' else None)
-        validator = (lambda d: validate_extraction(d, article, self.prompts['schema'])) if stage == 'extract' else (lambda d: validate_entities(d, article, self.index))
+        validator = (lambda d: validate_extraction(d, article, self.prompts['schema'], self.question)) if stage == 'extract' else (lambda d: validate_entities(d, article, self.index))
         last_error = 'Model stage did not complete.'
         for attempt in range(1, self.args.max_attempts + 1):
             self.limiter.acquire()
@@ -325,7 +429,7 @@ class BatchRunner:
             if self.stop.is_set():
                 self.save(identifier, status='pending', error='Interrupted during terminology lookup.')
                 return
-            self.save(identifier, status='succeeded' if extraction['effects'] else 'no_eligible_estimate')
+            self.save(identifier, status='succeeded' if extraction['effects'] else 'no_eligible_result')
         except StageError as error:
             status = 'mapping_failed' if extraction is not None and self.args.stage == 'both' else 'failed'
             if self.stop.is_set():
@@ -386,8 +490,12 @@ class BatchRunner:
             manifest = json.loads(db.execute('SELECT manifest FROM metadata WHERE id=1').fetchone()['manifest'])
         json_path = self.args.output / 'results.jsonl'
         csv_path = self.args.output / 'evidence.csv'
-        columns = ['Study', 'Status', 'Mapping review', 'Study design', 'P', 'I', 'C', 'O', 'Effect type', 'Effect value',
-                   'Comparator value', 'Unit', 'Effect direction', 'CI', 'Significance', 'Adjustment', 'Timepoint', 'Source quote', 'Entities']
+        columns = ['Study', 'Relation ID', 'PMID', 'Year', 'Status', 'Mapping review', 'Study design',
+                   'Study design code', 'Study design category', 'Study design detail', 'P', 'Population main condition',
+                   'Number of participants', 'Participants basis', 'Participants quote', 'Sample sizes', 'Included studies',
+                   'I', 'Exposure direction', 'C', 'O', 'Result kind', 'Effect type', 'Effect value',
+                   'Comparator value', 'Unit', 'Effect direction', 'NC direction', 'CI', 'Significance', 'P value',
+                   'Adjustment', 'Timepoint', 'Source quote', 'Entities']
         with json_path.with_suffix('.jsonl.tmp').open('w', encoding='utf-8') as out, csv_path.with_suffix('.csv.tmp').open('w', encoding='utf-8-sig', newline='') as table:
             review_items = []
             writer = csv.DictWriter(table, fieldnames=columns)
@@ -400,14 +508,25 @@ class BatchRunner:
                     for vocab in entity.get('review_vocabularies', []):
                         review_items.append({'study': row['id'], 'role': entity['role'], 'label': entity['label'], 'mention': entity['mention'],
                             'vocabulary': vocab, **entity['mapping_checks'][vocab], 'source_quote': entity['source_quote']})
+                relations = [nc_relation(row['id'], i, e) for i, e in enumerate(data['effects'], 1)] if data else []
                 out.write(packed({'id': row['id'], 'status': row['status'], 'question': self.question, 'article': article,
-                                  'data': data, 'entities': entities, 'error': row['error']}) + '\n')
-                for effect in (data['effects'] or [None]) if data else [None]:
+                                  'data': data, 'nc_relations': relations, 'entities': entities, 'error': row['error']}) + '\n')
+                for position, effect in enumerate((data['effects'] or [None]) if data else [None]):
                     line = {'Study': row['id'], 'Status': row['status'], 'Entities': packed(entities),
+                            'PMID': article.get('pmid', ''), 'Year': article.get('year', ''),
                             'Mapping review': 'Needs review' if any(e.get('review_vocabularies') for e in entities) else ''}
                     if data:
                         line.update({'Study design': data['picos']['S']['text'], **{k: data['picos'][k]['text'] for k in 'PICO'}})
                     if effect:
+                        relation = relations[position]
+                        line.update({'Relation ID': relation['relation_id'], 'Study design code': effect.get('study_design'),
+                            'Study design category': effect.get('study_design_category'), 'Study design detail': effect.get('study_design_detail'),
+                            'Population main condition': effect.get('population_main_condition'),
+                            'Number of participants': effect.get('number_of_participants'), 'Participants basis': effect.get('participants_basis'),
+                            'Participants quote': effect.get('participants_quote'), 'Sample sizes': packed(effect.get('sample_sizes')),
+                            'Included studies': packed(effect.get('included_studies')) if effect.get('included_studies') else '',
+                            'Exposure direction': effect['exposure_direction'], 'NC direction': relation['direction'],
+                            'P value': effect.get('p_value'), 'Result kind': relation['result_kind']})
                         line.update({k: effect[v] for k, v in {'P':'population','I':'intervention','C':'comparator','O':'outcome','Effect type':'effect_type','Effect value':'effect_value','Comparator value':'comparator_estimate','Unit':'unit','Effect direction':'effect_direction','Significance':'significance','Adjustment':'adjustment','Timepoint':'timepoint','Source quote':'source_quote'}.items()})
                         line['CI'] = '' if effect['ci_lower'] is None else f"{effect['ci_lower']}–{effect['ci_upper']}"
                         line['Significance'] = {'positive': 'Significant', 'negative': 'Not significant', 'not found': 'Not established'}[effect['significance']]

@@ -45,16 +45,16 @@ The runner preserves literal source spans and checks JSON Schema, selected metri
 
 ## Outputs and verification
 
-- `results.jsonl` contains each original article, question, extraction, entities, status and error. Source quotes and raw extracted fields remain available.
-- `evidence.csv` presents the unified evidence table, including status, model/timepoint context and entity mappings. Numeric columns remain numeric. Text that could execute as a spreadsheet formula is escaped only in CSV; JSON retains the original text.
+- `results.jsonl` contains each original article, question, extraction, entities, status and error. Source quotes and raw extracted fields remain available. `nc_relations` provides the [NC field crosswalk](nc-fields.md), including sample sizes, design classification, raw-versus-analysis direction and lossless P-value aliases.
+- `evidence.csv` presents the unified evidence table, including status, model/timepoint context and entity mappings. Participant N, sample-size basis, included-study counts, exposure direction and raw P values are included. Numeric columns remain numeric. Text that could execute as a spreadsheet formula is escaped only in CSV; JSON retains the original text.
 - `summary.json` records aggregate counts, requested model, manifest fingerprints, mapping scope and validation scope.
 - `terminology.sqlite3` persists label-query results with per-vocabulary decisions and source evidence. Default terminology pacing is 120 request starts/minute across all workers; configure `--terminology-requests-per-minute`, `--terminology-timeout` and `--terminology-cache-days` independently of model requests.
 - `mapping_review.jsonl` lists each study/entity/vocabulary requiring review, with the reason, candidates and original source quote. The evidence table also displays `Needs review` and the affected vocabularies alongside available codes.
 - The SQLite `requests` table records attempted calls, duration, provider-reported model, token usage when returned, and received model content. The API key and error response bodies are not logged.
 
-CSV/JSONL/summary are atomic snapshots generated when a run starts or stops. During execution the SQLite state advances after every stage; rerun with `--resume` to regenerate exports after a forced termination. A status of `succeeded` means configured stages completed and automated checks passed, including any explicit unresolved terminology. `no_eligible_estimate`, `failed`, `mapping_failed` and `pending` remain distinct.
+CSV/JSONL/summary are atomic snapshots generated when a run starts or stops. During execution the SQLite state advances after every stage; rerun with `--resume` to regenerate exports after a forced termination. A status of `succeeded` means configured stages completed and automated checks passed, including any explicit unresolved terminology. `no_eligible_result`, `failed`, `mapping_failed` and `pending` remain distinct.
 
-Exit code 0 means all studies reached `succeeded` or `no_eligible_estimate`; exit code 1 means unfinished/failed studies remain or the run was interrupted, and 2 indicates invalid configuration or inputs. Terminology uncertainty remains a separate review state. `--stage both` can complete with `mapping_status=needs_review`; inspect `mapping_review_items` in the summary before calling vocabulary mappings complete. `mapped` means all three fields have codes, including any previously accepted broader index mappings whose relation is preserved.
+Exit code 0 means all studies reached `succeeded` or `no_eligible_result`; exit code 1 means unfinished/failed studies remain or the run was interrupted, and 2 indicates invalid configuration or inputs. Terminology uncertainty remains a separate review state. `--stage both` can complete with `mapping_status=needs_review`; inspect `mapping_review_items` in the summary before calling vocabulary mappings complete. `mapped` means all three fields have codes, including any previously accepted broader index mappings whose relation is preserved.
 
 Run the isolated local regression suite without model credentials or provider charges.
 
@@ -69,3 +69,5 @@ The suite uses synthetic abstracts and fake services to check bounded parallelis
 The project's `notebooks/nc_revision (1).ipynb` implements extraction workers with `threading.Thread`, `queue.Queue`, and eight threads. Its results are collected from an in-memory output queue after `input_queue.join()`. The current batch runner adds persistent stage checkpoints, configuration fingerprints and controlled recovery for this skill. These added controls should not be attributed to the original article's implementation.
 
 Article and associated repository are linked in [Nature Communications](https://doi.org/10.1038/s41467-025-62783-x) and [the project notebook](https://github.com/xuanyshi/llm-evidence-triangulation/blob/main/notebooks/nc_revision%20%281%29.ipynb).
+
+Schema changes require a new run directory and fresh extraction. Terminology-only migration does not fill absent sample sizes or other new evidence fields. The current `no_eligible_result` status replaces the older `no_eligible_estimate` meaning because qualitative relationships are now retained.

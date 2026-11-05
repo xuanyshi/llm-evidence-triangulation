@@ -1,14 +1,10 @@
 {
-  "version": "4.0",
+  "version": "5.0",
   "updated_at": "2026-11-05",
   "scope": "User-defined exposure, comparator and outcome; no default research question",
   "model": "Selected at execution time",
-  "schema": "Preserves the original PICOS/effects fields; documented extensions permitted for unsupported result types",
+  "schema": "Ten original NC relationship fields plus six local extended-script fields, scoped sample sizes, qualitative relations and a lossless NC export projection",
   "sources": [
-    {
-      "file": "references/prompts.json",
-      "sha256": "fa94e539dca44e5ff9342696808afe76e4052d7e778b809f0fbe616a033b92c6"
-    },
     {
       "file": "examples/salt-hypertension/prompts.json",
       "sha256": "6df2a95916a6e68123987950d0ef5cc217f975a1f20b5e85580b5d02808b4793"
@@ -18,20 +14,32 @@
       "sha256": "7a772167f0644214ecc88e254161a07dd1eaf826ce9bc9370cff3b5b8e555c77"
     },
     {
-      "file": "scripts/run_batch.py",
-      "sha256": "de0abbe99f984eff0dd448e67f1178036986f427d18bec2edbc2b1cabf57c19f"
+      "file": "references/nc-fields.md",
+      "sha256": "6508a16617194ee56353b28e36e751b891af952b444e92a867a3a863db2dda10"
+    },
+    {
+      "file": "references/prompts.json",
+      "sha256": "30699ac725beaed789d7e6b5e619c1a3f59a21846482b4da5360666c8cfd72ab"
     },
     {
       "file": "scripts/prepare_messages.py",
       "sha256": "5ed3cd7ef851e850fd2910320ce46ccf7d13aa160318d79124f72266941b61a4"
     },
     {
-      "file": "tests/test_run_batch.py",
-      "sha256": "a574d2c9c83aefb9019085045e8048db9e901b7300baf2d19826711433497a28"
+      "file": "scripts/run_batch.py",
+      "sha256": "08be70deec986e66cafbd1daf20d6bacbff846c9941ebff79564c22a7d462fa2"
     },
     {
       "file": "scripts/terminology.py",
       "sha256": "e70df10f94d03567800d8a4ad7a175996747ff8078cfe00d33d33420e6d8e157"
+    },
+    {
+      "file": "tests/test_fields.py",
+      "sha256": "951b91f34bdb8d14357b7e6958a2a8ed184a9f7008757f0b7cb304bb7cda79d9"
+    },
+    {
+      "file": "tests/test_run_batch.py",
+      "sha256": "bdc1b98849041fdaf5451bac1b39f65e31cfb1f7b2759b2d2140e55aa2de1224"
     },
     {
       "file": "tests/test_terminology.py",
@@ -51,5 +59,13 @@
     "umls": "UMLS CUIs via NCI Metathesaurus",
     "icd": "ICD-10-CM via NLM Clinical Tables / CMS",
     "unresolved": "Per-vocabulary needs_review with candidates or service error"
+  },
+  "nc_audit": "references/nc-fields.md",
+  "validation": {
+    "unit_tests": 28,
+    "real_abstracts": 3,
+    "extraction_stage_only": true,
+    "csv_json_consistent": true,
+    "semantic_adjudication": "not complete; original source passages and per-result scope retained"
   }
 }

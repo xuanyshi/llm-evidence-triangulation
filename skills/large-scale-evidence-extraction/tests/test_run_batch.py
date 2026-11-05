@@ -27,7 +27,9 @@ def result():
     effect.update(exposure_direction='not found', effect_direction='increase', significance='positive',
                   significance_basis='95% CI', significance_quote=ABSTRACT, population='Adults',
                   intervention='Exposure X', comparator='Control', outcome='Event Y', effect_type='HR',
-                  effect_value=1.5, ci_lower=1.2, ci_upper=1.8, source_quote=ABSTRACT)
+                  effect_value=1.5, ci_lower=1.2, ci_upper=1.8, source_quote=ABSTRACT,
+                  study_design='Not reported', participants_basis='not_reported', participants_quote='',
+                  population_condition_quote='', sample_sizes=[])
     return {'picos': {k: {'text': 'Reported study fact', 'source_quote': ABSTRACT} for k in 'PICOS'}, 'effects': [effect]}
 
 
@@ -113,6 +115,12 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(rows[0]['Effect type'], 'HR')
         self.assertEqual(rows[0]['Significance'], 'Significant')
         self.assertEqual(rows[0]['Mapping review'], 'Needs review')
+        self.assertEqual(rows[0]['Relation ID'], records[0]['nc_relations'][0]['relation_id'])
+        self.assertEqual(rows[0]['Participants basis'], 'not_reported')
+        self.assertEqual(rows[0]['Number of participants'], '')
+        self.assertEqual(rows[0]['Exposure direction'], 'not found')
+        self.assertIn('P value', rows[0])
+        self.assertEqual(records[0]['nc_relations'][0]['statistical_value'], float(rows[0]['Effect value']))
 
     def test_mapping_upgrade_never_repeats_model_calls(self):
         self.assertEqual(self.execute(), 0)
