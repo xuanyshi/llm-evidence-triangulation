@@ -1,9 +1,9 @@
 {
-  "version": "5.0",
+  "version": "5.2",
   "updated_at": "2026-11-05",
   "scope": "User-defined exposure, comparator and outcome; no default research question",
   "model": "Selected at execution time",
-  "schema": "Ten original NC relationship fields plus six local extended-script fields, scoped sample sizes, qualitative relations and a lossless NC export projection",
+  "schema": "Ten original NC relationship fields plus six local extended-script fields, scoped sample sizes, qualitative relations and a lossless NC export projection; independent reported and inferred significance channels with NC conflict resolution",
   "sources": [
     {
       "file": "examples/salt-hypertension/prompts.json",
@@ -15,11 +15,15 @@
     },
     {
       "file": "references/nc-fields.md",
-      "sha256": "6508a16617194ee56353b28e36e751b891af952b444e92a867a3a863db2dda10"
+      "sha256": "5864e19de3a265c243e9fe8e5e10face406ba08ec08db3dcac078c4d01063edd"
     },
     {
       "file": "references/prompts.json",
-      "sha256": "30699ac725beaed789d7e6b5e619c1a3f59a21846482b4da5360666c8cfd72ab"
+      "sha256": "6fbf3465c135642d340028c1642d4d351c8614e72e063346c0eb0d545c430cfe"
+    },
+    {
+      "file": "references/significance.md",
+      "sha256": "98dd835b5294f427dc8fb9d05b4553ca8c4935c5d5a2d86936e3ec619aec4019"
     },
     {
       "file": "scripts/prepare_messages.py",
@@ -27,7 +31,7 @@
     },
     {
       "file": "scripts/run_batch.py",
-      "sha256": "08be70deec986e66cafbd1daf20d6bacbff846c9941ebff79564c22a7d462fa2"
+      "sha256": "7952067d484ede660331705d5e53ee182fb8d1d3f3dbedbeb14f876a91257435"
     },
     {
       "file": "scripts/terminology.py",
@@ -35,11 +39,15 @@
     },
     {
       "file": "tests/test_fields.py",
-      "sha256": "951b91f34bdb8d14357b7e6958a2a8ed184a9f7008757f0b7cb304bb7cda79d9"
+      "sha256": "aa2849a92b3b8962295a865c0d0e8db408f7c53067921ba90b29eb99c42b236d"
     },
     {
       "file": "tests/test_run_batch.py",
-      "sha256": "bdc1b98849041fdaf5451bac1b39f65e31cfb1f7b2759b2d2140e55aa2de1224"
+      "sha256": "9a91382a95ba042cd7538c3e0202c69a0edb8dd5f6aeafa46597adff8a6b5a5b"
+    },
+    {
+      "file": "tests/test_significance.py",
+      "sha256": "ef2507e486caa3cb0d98b7b179b411eb5c3e73e6623aff31318cebda04564ef7"
     },
     {
       "file": "tests/test_terminology.py",
@@ -62,6 +70,15 @@
   },
   "nc_audit": "references/nc-fields.md",
   "validation": {
+    "unit_tests": 34,
+    "saved_abstracts_reannotated": 3,
+    "saved_relations_reannotated": 4,
+    "new_model_API_calls": 0,
+    "operation": "Reviewed existing source passages to split reported/inferred significance; no new model extraction",
+    "csv_json_consistent": true,
+    "semantic_adjudication": "Existing population/cutoff scope review notes preserved"
+  },
+  "previous_validation": {
     "unit_tests": 28,
     "real_abstracts": 3,
     "extraction_stage_only": true,

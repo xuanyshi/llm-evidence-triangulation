@@ -51,12 +51,15 @@ For batches, process studies independently before combining results. Preserve mu
 | Exposure direction | Increased, decreased or not found |
 | Effect direction | Increase, decrease, no change or not found |
 | CI | The exact reported 95% interval, when available |
-| Significance | Significant, not significant or not established |
+| Significance reported | Explicit author statement of significance or nonsignificance; blank if absent |
+| Significance inferred | Separate inference from the exact result’s CI or P value; blank if unestablished |
 | P value | Exact reported value or inequality, without converting a bound to equality |
 
 Read [references/nc-fields.md](references/nc-fields.md) for the audited ten NC core fields, six extended fields, design taxonomy crosswalk, sample-size scope and derived NC export. The prompt, schema, validation and CSV all require these fields. `results.jsonl` retains raw extraction plus `nc_relations` with stable within-run relation IDs. Keep raw point-estimate direction separate from the NC analysis convention for nonsignificance.
 
 Use effect-specific P/I/C/O when it is more specific than study-level PICOS. Preserve study-level PICOS in structured results. Include adjustment and timepoint in row details to distinguish estimates. Avoid a duplicate effect-measure column.
+
+Read [references/significance.md](references/significance.md) for the independent reported/inferred fields, inference thresholds and conflict handling. Both channels have their own source quote. Display both columns; retain legacy `significance` only for NC compatibility.
 
 `significance=positive` means statistically significant and `negative` means nonsignificant. Effect direction describes the measured endpoint and does not imply clinical benefit or harm. For unordered exposures, `exposure_direction=not found` is valid. Keep cohort, analysis, group, event and MR GWAS counts separate. Never sum counts to invent an unreported N, cap raw N, or sum repeated-model sample sizes as independent participants. Preserve both percentages in paired cumulative-incidence rows. Missing values remain missing, never zero.
 

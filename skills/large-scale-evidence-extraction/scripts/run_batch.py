@@ -91,6 +91,55 @@ def retry_delay(value, attempt):
     return max(0, min(seconds, 300))
 
 
+def significance_resolution(effect):
+    reported, inferred = effect['significance_reported'], effect['significance_inferred']
+    conflict = reported != 'not found' and inferred != 'not found' and reported != inferred
+    if conflict:
+        return 'not found', 'Not found', '', True
+    if reported != 'not found':
+        return reported, 'Reported statement', effect['significance_reported_quote'], False
+    return inferred, effect['significance_inferred_basis'], effect['significance_inferred_quote'], False
+
+
+def p_significance(raw, alpha):
+    match = re.fullmatch(r'\s*(?:[pP]\s*)?(<=|>=|<|>|=|≤|≥)?\s*((?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)\s*', raw or '')
+    if not match:
+        return 'not found'
+    operator, value = match[1] or '=', float(match[2])
+    if not 0 <= value <= 1:
+        return 'not found'
+    if (operator == '=' and value < alpha) or (operator == '<' and value <= alpha) or (operator in ('<=', '≤') and value < alpha):
+        return 'positive'
+    if (operator == '=' and value > alpha) or (operator == '>' and value >= alpha) or (operator in ('>=', '≥') and value > alpha):
+        return 'negative'
+    return 'not found'
+
+
+def validate_significance(effect, article):
+    for name in ('reported', 'inferred'):
+        value, quote = effect['significance_' + name], effect['significance_' + name + '_quote']
+        if value == 'not found':
+            if quote:
+                raise ValueError(f'Unknown {name} significance requires an empty quote.')
+        elif not quote or quote not in article['abstract']:
+            raise ValueError(f'{name} significance requires its own literal abstract quote.')
+    inferred, basis, alpha = (effect['significance_inferred'], effect['significance_inferred_basis'], effect['significance_inferred_alpha'])
+    if inferred == 'not found':
+        if basis != 'Not found' or alpha is not None:
+            raise ValueError('Unknown inferred significance requires Not found basis and null alpha.')
+    elif basis == '95% CI':
+        if effect['ci_lower'] is None or effect['ci_upper'] is None or alpha is not None:
+            raise ValueError('CI inference requires both 95% bounds and null P-test alpha.')
+    elif basis == 'P value':
+        if alpha is None or inferred != p_significance(effect['p_value'], alpha):
+            raise ValueError('P inference requires a reported threshold and a P value/bound that resolves significance at that threshold.')
+    else:
+        raise ValueError('Inferred significance requires a numeric basis.')
+    resolved, resolved_basis, quote, _ = significance_resolution(effect)
+    if (effect['significance'], effect['significance_basis'], effect['significance_quote']) != (resolved, resolved_basis, quote):
+        raise ValueError('Legacy significance must follow the two-channel resolution: conflict -> not found; otherwise reported first, then inferred. Preserve both original channels.')
+
+
 def validate_extraction(data, article, schema, question=None):
     jsonschema.validate(data, schema)
     for field, item in data['picos'].items():
@@ -101,10 +150,11 @@ def validate_extraction(data, article, schema, question=None):
             raise ValueError(f'PICOS {field} source_quote {quote!r} is not a literal title/abstract passage. Copy a contiguous passage without dropping intervening words; use Not reported with empty quote only if absent.')
     for effect in data['effects']:
         validate_participants(effect, article)
+        validate_significance(effect, article)
         value = effect['effect_value']
         if value is not None and not math.isfinite(value):
             raise ValueError('Reported effect values must be finite.')
-        if value is None and effect['effect_direction'] == 'not found' and effect['significance'] == 'not found':
+        if value is None and effect['effect_direction'] == 'not found' and effect['significance_reported'] == effect['significance_inferred'] == 'not found':
             raise ValueError('A qualitative row requires a reported direction or significance.')
         quote = effect['source_quote']
         if not quote or quote not in article['abstract']:
@@ -139,9 +189,9 @@ def validate_extraction(data, article, schema, question=None):
                 direction = 'no_change' if delta == 0 else 'increase' if delta > 0 else 'decrease'
                 if effect['effect_direction'] != direction:
                     raise ValueError('Direction disagrees with the reported metric and point estimate.')
-            if lo is not None and effect['significance_basis'] == '95% CI':
+            if lo is not None and effect['significance_inferred_basis'] == '95% CI':
                 expected = 'negative' if lo <= null <= hi else 'positive'
-                if effect['significance'] != expected:
+                if effect['significance_inferred'] != expected:
                     raise ValueError('Significance disagrees with this estimate\'s 95% interval.')
         if effect['comparator_estimate'] is not None:
             if value is None:
@@ -228,6 +278,8 @@ def nc_relation(identifier, position, effect):
         'relation_id': f'{identifier}:relation:{position:04d}',
         'exposure': effect['intervention'], 'exposure_direction': effect['exposure_direction'],
         'outcome': effect['outcome'], 'significance': effect['significance'], 'direction': direction,
+        **{k: effect.get(k) for k in ('significance_reported', 'significance_reported_quote', 'significance_inferred', 'significance_inferred_basis', 'significance_inferred_quote', 'significance_inferred_alpha')},
+        'significance_conflict': significance_resolution(effect)[3] if 'significance_reported' in effect else None,
         'population_main_condition': effect.get('population_main_condition'), 'comparator': effect['comparator'],
         'study_design': effect.get('study_design'), 'included_studies': included_text,
         'number_of_participants': effect.get('number_of_participants'),
@@ -494,7 +546,8 @@ class BatchRunner:
                    'Study design code', 'Study design category', 'Study design detail', 'P', 'Population main condition',
                    'Number of participants', 'Participants basis', 'Participants quote', 'Sample sizes', 'Included studies',
                    'I', 'Exposure direction', 'C', 'O', 'Result kind', 'Effect type', 'Effect value',
-                   'Comparator value', 'Unit', 'Effect direction', 'NC direction', 'CI', 'Significance', 'P value',
+                   'Comparator value', 'Unit', 'Effect direction', 'NC direction', 'CI', 'Significance reported', 'Significance inferred', 'Significance inferred basis',
+                   'Significance conflict', 'Significance reported quote', 'Significance inferred quote', 'Inference alpha', 'P value',
                    'Adjustment', 'Timepoint', 'Source quote', 'Entities']
         with json_path.with_suffix('.jsonl.tmp').open('w', encoding='utf-8') as out, csv_path.with_suffix('.csv.tmp').open('w', encoding='utf-8-sig', newline='') as table:
             review_items = []
@@ -527,9 +580,15 @@ class BatchRunner:
                             'Included studies': packed(effect.get('included_studies')) if effect.get('included_studies') else '',
                             'Exposure direction': effect['exposure_direction'], 'NC direction': relation['direction'],
                             'P value': effect.get('p_value'), 'Result kind': relation['result_kind']})
-                        line.update({k: effect[v] for k, v in {'P':'population','I':'intervention','C':'comparator','O':'outcome','Effect type':'effect_type','Effect value':'effect_value','Comparator value':'comparator_estimate','Unit':'unit','Effect direction':'effect_direction','Significance':'significance','Adjustment':'adjustment','Timepoint':'timepoint','Source quote':'source_quote'}.items()})
+                        line.update({k: effect[v] for k, v in {'P':'population','I':'intervention','C':'comparator','O':'outcome','Effect type':'effect_type','Effect value':'effect_value','Comparator value':'comparator_estimate','Unit':'unit','Effect direction':'effect_direction','Adjustment':'adjustment','Timepoint':'timepoint','Source quote':'source_quote'}.items()})
                         line['CI'] = '' if effect['ci_lower'] is None else f"{effect['ci_lower']}–{effect['ci_upper']}"
-                        line['Significance'] = {'positive': 'Significant', 'negative': 'Not significant', 'not found': 'Not established'}[effect['significance']]
+                        labels = {'positive': 'Significant', 'negative': 'Not significant', 'not found': ''}
+                        for channel in ('reported', 'inferred'):
+                            line['Significance ' + channel] = labels.get(effect.get('significance_' + channel), '')
+                            line['Significance ' + channel + ' quote'] = effect.get('significance_' + channel + '_quote', '')
+                        line['Significance inferred basis'] = effect.get('significance_inferred_basis', '')
+                        line['Inference alpha'] = effect.get('significance_inferred_alpha')
+                        line['Significance conflict'] = 'Yes' if relation['significance_conflict'] else ''
                     for role, field in [('S', 'Study design'), ('P', 'P'), ('I', 'I'), ('C', 'C'), ('O', 'O')]:
                         mapped = []
                         for entity in entities:

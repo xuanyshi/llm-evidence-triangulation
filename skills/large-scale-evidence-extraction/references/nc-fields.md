@@ -26,7 +26,7 @@ Every effects row has explicit scope and count fields, even when the value is nu
 | exposure | intervention → exposure | Actual exposure, dose and scale, not an ontology parent |
 | exposure_direction | exposure_direction | increased/decreased; not found for unordered or unresolved contrasts |
 | outcome | outcome | Exact measured endpoint |
-| significance | significance | positive=significant; negative=nonsignificant; unknown=not found |
+| significance | compatibility resolution of significance_reported and significance_inferred | Separate channels retained; conflict produces not found and a review flag |
 | direction | derived nc_relations.direction | negative → no_change; positive → raw effect_direction; unknown → not found |
 | population_main_condition | population_main_condition | Baseline condition or eligibility; separate from outcome disease |
 | comparator | comparator | Actual reference group |

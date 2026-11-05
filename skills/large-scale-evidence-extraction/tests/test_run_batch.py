@@ -29,7 +29,10 @@ def result():
                   intervention='Exposure X', comparator='Control', outcome='Event Y', effect_type='HR',
                   effect_value=1.5, ci_lower=1.2, ci_upper=1.8, source_quote=ABSTRACT,
                   study_design='Not reported', participants_basis='not_reported', participants_quote='',
-                  population_condition_quote='', sample_sizes=[])
+                  population_condition_quote='', sample_sizes=[],
+                  significance_reported='not found', significance_reported_quote='',
+                  significance_inferred='positive', significance_inferred_basis='95% CI',
+                  significance_inferred_quote=ABSTRACT)
     return {'picos': {k: {'text': 'Reported study fact', 'source_quote': ABSTRACT} for k in 'PICOS'}, 'effects': [effect]}
 
 
@@ -113,7 +116,8 @@ class BatchTests(unittest.TestCase):
             rows = list(csv.DictReader(f))
         self.assertEqual(len(rows), 3)
         self.assertEqual(rows[0]['Effect type'], 'HR')
-        self.assertEqual(rows[0]['Significance'], 'Significant')
+        self.assertEqual(rows[0]['Significance reported'], '')
+        self.assertEqual(rows[0]['Significance inferred'], 'Significant')
         self.assertEqual(rows[0]['Mapping review'], 'Needs review')
         self.assertEqual(rows[0]['Relation ID'], records[0]['nc_relations'][0]['relation_id'])
         self.assertEqual(rows[0]['Participants basis'], 'not_reported')

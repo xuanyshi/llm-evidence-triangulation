@@ -67,7 +67,9 @@ class FieldTests(unittest.TestCase):
         self.article['abstract'] += ' ' + quote
         self.effect.update(effect_type='Not reported', effect_value=None, ci_lower=None, ci_upper=None,
             effect_direction='no_change', significance='negative', significance_basis='Reported statement',
-            significance_quote=quote, source_quote=quote)
+            significance_quote=quote, source_quote=quote, significance_reported='negative',
+            significance_reported_quote=quote, significance_inferred='not found',
+            significance_inferred_basis='Not found', significance_inferred_quote='')
         self.check()
         projection = batch.nc_relation('x',1,self.effect)
         self.assertEqual(projection['result_kind'], 'qualitative')
@@ -77,7 +79,7 @@ class FieldTests(unittest.TestCase):
     def test_nc_direction_and_p_bounds_preserve_raw(self):
         quote = 'Event Y HR 1.5 (95% CI 0.8 to 1.8), P=0.2.'
         self.article['abstract'] += ' ' + quote
-        self.effect.update(ci_lower=.8, significance='negative', significance_quote=quote, source_quote=quote, p_value='P=0.2')
+        self.effect.update(ci_lower=.8, significance='negative', significance_quote=quote, source_quote=quote, p_value='P=0.2', significance_inferred='negative', significance_inferred_quote=quote)
         self.check()
         original = copy.deepcopy(self.effect)
         relation = batch.nc_relation('x',1,self.effect)
