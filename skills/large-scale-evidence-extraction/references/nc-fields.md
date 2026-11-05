@@ -28,7 +28,7 @@ Every effects row has explicit scope and count fields, even when the value is nu
 | outcome | outcome | Exact measured endpoint |
 | significance | compatibility resolution of significance_reported and significance_inferred | Separate channels retained; conflict produces not found and a review flag |
 | direction | derived nc_relations.direction | negative → no_change; positive → raw effect_direction; unknown → not found |
-| population_main_condition | population_main_condition | Baseline condition or eligibility; separate from outcome disease |
+| population_main_condition | population_main_condition → condition / CSV Condition | Specific baseline disease or clinical status; separate from outcome disease. Generic population descriptors stay in P. |
 | comparator | comparator | Actual reference group |
 | study_design | study_design plus study_design_detail | Original MR/RCT/OS/META/REVIEW/SR/Others category plus specific analysis method; Not reported when unknown |
 | included_studies | included_studies → formatted NC alias | Review-level study counts, with reported total and per-design counts; strict null for primary studies |

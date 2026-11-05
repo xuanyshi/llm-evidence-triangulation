@@ -280,7 +280,9 @@ def nc_relation(identifier, position, effect):
         'outcome': effect['outcome'], 'significance': effect['significance'], 'direction': direction,
         **{k: effect.get(k) for k in ('significance_reported', 'significance_reported_quote', 'significance_inferred', 'significance_inferred_basis', 'significance_inferred_quote', 'significance_inferred_alpha')},
         'significance_conflict': significance_resolution(effect)[3] if 'significance_reported' in effect else None,
-        'population_main_condition': effect.get('population_main_condition'), 'comparator': effect['comparator'],
+        'population_main_condition': effect.get('population_main_condition'),
+        'condition': effect.get('population_main_condition'), 'condition_quote': effect.get('population_condition_quote'),
+        'comparator': effect['comparator'],
         'study_design': effect.get('study_design'), 'included_studies': included_text,
         'number_of_participants': effect.get('number_of_participants'),
         'study_design_detail': effect.get('study_design_detail'), 'study_design_category': effect.get('study_design_category'),
@@ -543,7 +545,7 @@ class BatchRunner:
         json_path = self.args.output / 'results.jsonl'
         csv_path = self.args.output / 'evidence.csv'
         columns = ['Study', 'Relation ID', 'PMID', 'Year', 'Status', 'Mapping review', 'Study design',
-                   'Study design code', 'Study design category', 'Study design detail', 'P', 'Population main condition',
+                   'Study design code', 'Study design category', 'Study design detail', 'P', 'Condition',
                    'Number of participants', 'Participants basis', 'Participants quote', 'Sample sizes', 'Included studies',
                    'I', 'Exposure direction', 'C', 'O', 'Result kind', 'Effect type', 'Effect value',
                    'Comparator value', 'Unit', 'Effect direction', 'NC direction', 'CI', 'Significance reported', 'Significance inferred', 'Significance inferred basis',
@@ -574,7 +576,7 @@ class BatchRunner:
                         relation = relations[position]
                         line.update({'Relation ID': relation['relation_id'], 'Study design code': effect.get('study_design'),
                             'Study design category': effect.get('study_design_category'), 'Study design detail': effect.get('study_design_detail'),
-                            'Population main condition': effect.get('population_main_condition'),
+                            'Condition': effect.get('population_main_condition'),
                             'Number of participants': effect.get('number_of_participants'), 'Participants basis': effect.get('participants_basis'),
                             'Participants quote': effect.get('participants_quote'), 'Sample sizes': packed(effect.get('sample_sizes')),
                             'Included studies': packed(effect.get('included_studies')) if effect.get('included_studies') else '',

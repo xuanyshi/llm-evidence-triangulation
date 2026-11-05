@@ -124,6 +124,9 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(rows[0]['Number of participants'], '')
         self.assertEqual(rows[0]['Exposure direction'], 'not found')
         self.assertIn('P value', rows[0])
+        self.assertEqual(rows[0]['Condition'], '')
+        self.assertNotIn('Population main condition', rows[0])
+        self.assertIsNone(records[0]['nc_relations'][0]['condition'])
         self.assertEqual(records[0]['nc_relations'][0]['statistical_value'], float(rows[0]['Effect value']))
 
     def test_mapping_upgrade_never_repeats_model_calls(self):

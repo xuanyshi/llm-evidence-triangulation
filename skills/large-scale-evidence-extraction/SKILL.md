@@ -40,7 +40,7 @@ For batches, process studies independently before combining results. Preserve mu
 | Study | Supplied study identifier and citation |
 | Study design | Design category and specific design from S |
 | P | Population for the reported effect |
-| Population main condition | Baseline condition or eligibility, with source evidence |
+| Condition | Baseline disease or clinical status of this analysis population, with source evidence; blank if unreported |
 | Number of participants | Explicit analysis-specific N, or clearly applicable enrolled N; preserve basis and quote |
 | Included studies | Reported study counts for META/SR/REVIEW; null for primary studies |
 | I | Exposure/intervention and its reported scale or dose |
@@ -56,6 +56,8 @@ For batches, process studies independently before combining results. Preserve mu
 | P value | Exact reported value or inequality, without converting a bound to equality |
 
 Read [references/nc-fields.md](references/nc-fields.md) for the audited ten NC core fields, six extended fields, design taxonomy crosswalk, sample-size scope and derived NC export. The prompt, schema, validation and CSV all require these fields. `results.jsonl` retains raw extraction plus `nc_relations` with stable within-run relation IDs. Keep raw point-estimate direction separate from the NC analysis convention for nonsignificance.
+
+`Condition` displays the existing `population_main_condition` field; NC JSON preserves that key and also exposes a `condition` alias with `condition_quote`. Record the specific baseline disease, subtype/stage or comorbidities only when stated. Explicitly healthy or disease-free status may be retained; general population, age or sex alone cannot fill Condition. Do not substitute the outcome disease or infer diagnoses from treatment.
 
 Use effect-specific P/I/C/O when it is more specific than study-level PICOS. Preserve study-level PICOS in structured results. Include adjustment and timepoint in row details to distinguish estimates. Avoid a duplicate effect-measure column.
 

@@ -1,9 +1,9 @@
 {
-  "version": "5.2",
+  "version": "5.2.1",
   "updated_at": "2026-11-05",
   "scope": "User-defined exposure, comparator and outcome; no default research question",
   "model": "Selected at execution time",
-  "schema": "Ten original NC relationship fields plus six local extended-script fields, scoped sample sizes, qualitative relations and a lossless NC export projection; independent reported and inferred significance channels with NC conflict resolution",
+  "schema": "Ten original NC relationship fields plus six local extended-script fields, scoped sample sizes, qualitative relations and a lossless NC export projection; independent reported and inferred significance channels with NC conflict resolution; Condition display and JSON alias for baseline population disease/clinical status",
   "sources": [
     {
       "file": "examples/salt-hypertension/prompts.json",
@@ -15,11 +15,11 @@
     },
     {
       "file": "references/nc-fields.md",
-      "sha256": "5864e19de3a265c243e9fe8e5e10face406ba08ec08db3dcac078c4d01063edd"
+      "sha256": "eb610a77d7e7f39dd2367c81c6e3b7c15245b2b718543dde41b3d867b622fdd9"
     },
     {
       "file": "references/prompts.json",
-      "sha256": "6fbf3465c135642d340028c1642d4d351c8614e72e063346c0eb0d545c430cfe"
+      "sha256": "574c9b907db1688428dec277c642135fe251124c42ec9ee1e6dc7f3fb859b3fa"
     },
     {
       "file": "references/significance.md",
@@ -31,7 +31,7 @@
     },
     {
       "file": "scripts/run_batch.py",
-      "sha256": "7952067d484ede660331705d5e53ee182fb8d1d3f3dbedbeb14f876a91257435"
+      "sha256": "5ac672db7f5b6750a7990c616b1959b83a86e8265c9c1a3bca99aecc400e7f45"
     },
     {
       "file": "scripts/terminology.py",
@@ -43,7 +43,7 @@
     },
     {
       "file": "tests/test_run_batch.py",
-      "sha256": "9a91382a95ba042cd7538c3e0202c69a0edb8dd5f6aeafa46597adff8a6b5a5b"
+      "sha256": "9458e9500fe0b9878a4bc1c8f451ae164eaf186afe41dc44e4b471e27dabc038"
     },
     {
       "file": "tests/test_significance.py",
@@ -76,7 +76,8 @@
     "new_model_API_calls": 0,
     "operation": "Reviewed existing source passages to split reported/inferred significance; no new model extraction",
     "csv_json_consistent": true,
-    "semantic_adjudication": "Existing population/cutoff scope review notes preserved"
+    "semantic_adjudication": "Existing population/cutoff scope review notes preserved",
+    "condition": "Four saved rows re-annotated against original abstracts; no new model API calls"
   },
   "previous_validation": {
     "unit_tests": 28,
