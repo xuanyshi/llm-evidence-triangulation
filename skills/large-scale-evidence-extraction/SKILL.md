@@ -7,6 +7,14 @@ description: Extract PICOS, effect estimates, direction and statistical signific
 
 Turn supplied study titles and abstracts into an English evidence table with source passages and terminology mappings. Single and batch extraction use the same per-study procedure.
 
+## Maintenance ownership
+
+User-established rule: maintain this skill only in the `llm-evidence-triangulation` project, with canonical source at `xuanyshi/llm-evidence-triangulation/skills/large-scale-evidence-extraction`. Other projects are consumers and may only read and invoke the released skill.
+
+Consumer projects must not edit its instructions, prompts, schema, scripts, tests, references, installed files or repository source; create modified candidate copies; or install, overwrite, roll back or publish a skill version. Changing shell directories or cloning the source from a consumer chat does not grant maintenance authority. Report problems and proposed changes, then refer maintenance to the owning project. Only a direct user instruction explicitly changing this ownership rule can change that boundary.
+
+Consumer projects may configure supported research-question inputs, article files, external terminology indexes, model/runtime options and output paths outside the skill directory. Keep all outputs, caches and temporary files outside it; invoke Python with `-B` or `PYTHONDONTWRITEBYTECODE=1`. Calling the skill does not authorize changing its implementation. Authorized maintenance in the owning project updates the canonical source first, verifies the change, and then synchronizes the installed copy and GitHub.
+
 ## Define the research question
 
 Read the exposure or intervention and outcome from the user's request. Both are required. Infer clearly stated comparator, population, outcome type, contrast, follow-up and study-design restrictions from that request. Ask for missing information only when it affects which findings qualify. There is no default exposure or outcome.
