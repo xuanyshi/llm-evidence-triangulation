@@ -1,0 +1,22 @@
+[
+  {
+    "exposure": "Body mass index",
+    "outcome": "Incident colorectal cancer",
+    "outcome_type": "Incidence",
+    "contrast": "Per 5 kg/m2 higher body mass index"
+  },
+  {
+    "exposure": "Drug A",
+    "comparator": "Placebo",
+    "outcome": "Change in a prespecified symptom score",
+    "outcome_type": "Continuous change",
+    "follow_up": "12 weeks",
+    "study_designs": "Randomized controlled trials"
+  },
+  {
+    "exposure": "Current cigarette smoking",
+    "comparator": "Never smoking",
+    "outcome": "All-cause mortality",
+    "outcome_type": "Mortality"
+  }
+]

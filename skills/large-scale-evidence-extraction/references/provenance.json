@@ -1,20 +1,28 @@
 {
-  "snapshot_date": "2026-11-05",
-  "research_question": {
-    "exposure": "High vs low salt intake",
-    "outcome": "Incident hypertension"
-  },
-  "original_model": "deepseek-flash",
+  "version": "2.0",
+  "updated_at": "2026-11-05",
+  "scope": "User-defined exposure, comparator and outcome; no default research question",
+  "model": "Selected at execution time",
+  "schema": "Preserves the original PICOS/effects fields; documented extensions permitted for unsupported result types",
   "sources": [
     {
-      "file": "prompts.json",
-      "source_path": "outputs/hosted_evidence_extraction/server/prompts.json",
+      "file": "references/prompts.json",
+      "sha256": "fa94e539dca44e5ff9342696808afe76e4052d7e778b809f0fbe616a033b92c6"
+    },
+    {
+      "file": "examples/salt-hypertension/prompts.json",
       "sha256": "6df2a95916a6e68123987950d0ef5cc217f975a1f20b5e85580b5d02808b4793"
     },
     {
-      "file": "terminology.json",
-      "source_path": "outputs/hosted_evidence_extraction/server/terms.json",
+      "file": "examples/salt-hypertension/terminology.json",
       "sha256": "7a772167f0644214ecc88e254161a07dd1eaf826ce9bc9370cff3b5b8e555c77"
     }
-  ]
+  ],
+  "historical_example": {
+    "directory": "examples/salt-hypertension",
+    "question": "High vs low salt intake and isolated sodium reduction; incident hypertension",
+    "model": "deepseek-flash",
+    "source_directory": "outputs/hosted_evidence_extraction/server",
+    "unchanged_snapshot": true
+  }
 }

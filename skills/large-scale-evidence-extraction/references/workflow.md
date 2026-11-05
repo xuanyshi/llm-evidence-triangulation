@@ -1,66 +1,71 @@
-# Messages, validation and table construction
+# Research question, messages and validation
 
-## Extraction call
+## Research question object
 
-Use the complete `extract` string from `prompts.json` as the system message. Append this user message, substituting the supplied title and abstract verbatim.
+`exposure` and `outcome` are required nonempty strings. Optional fields are nonempty strings describing restrictions supplied by the user. Do not add implicit restrictions.
 
-```text
-Extract PICOS and eligible quantitative findings from this article. Return the populated data object in JSON.
-Title: {{article.title}}
-Abstract: {{article.abstract}}
+```json
+{
+  "exposure": "The exposure or intervention requested by the user",
+  "outcome": "The measured endpoint requested by the user"
+}
 ```
 
-The prompt requests populated results, not a repeated schema. Validate against the bundled `schema` object. The schema permits null numerical fields, but an eligible effect row must contain a reported numerical effect value. Use an empty effects array when no eligible numerical result exists.
+Optional keys are `comparator`, `population`, `outcome_type`, `contrast`, `follow_up`, and `study_designs`. Examples of a contrast are a per-unit increment, current versus never exposure, or an intervention versus placebo. Outcome type can distinguish incidence, recurrence, mortality, survival duration, prevalence or continuous change. Study-design restrictions can be expressed as text such as `Randomized trials only`. Keep each distinct research question attached to its own results.
 
-For the frozen sodium question, preserve the paper's actual exposure contrast. Keep the extreme groups when reported, otherwise the explicit higher-versus-lower reference. Retain sodium comparisons within a subgroup; exclude contrasts that simultaneously change sodium and another exposure such as genotype. Preserve each eligible adjustment model and method. Never import sample size, exposure means or effect estimates from a separate mortality/CVD analysis into the hypertension-incidence analysis.
+## Model messages
 
-Prefer comparative estimates over duplicate arm rates. Preserve reported percent reductions as percentages. If a ratio and percent reduction express the same finding, retain the ratio. Never invert or calculate an unreported estimate. When all categories have nonreference HRs and nondegenerate CIs, do not invent a lowest-category reference.
+For extraction, the system message is `prompts.json.extract`. The user message is JSON containing `research_question`, `article` (title and abstract), and `schema`. For entity recognition, the system message is `prompts.json.map`; the user JSON contains the same question and article, `extracted` (the populated validated first-call object), and `terminology_index` (ID/label entries, or an empty list).
 
-## Entity call
+Build either message pair with the standard-library helper. Paths below are relative to the skill folder. Generated messages go to standard output and can be supplied to the selected model interface.
 
-Use the complete `map` string as the system message. Serialize a user object with the keys `title`, `abstract`, and `extracted`. The first two contain original study text; `extracted` contains the populated, validated first-call object.
+```sh
+python3 scripts/prepare_messages.py --stage extract --question question.json --article article.json
+python3 scripts/prepare_messages.py --stage map --question question.json --article article.json --extraction extraction.json
+```
 
-Validate entities against their actual mentions and extracted PICOS roles. Each entity needs an exact, nonempty mention and quote from the title or abstract, with the mention contained in its quote. Use methods/results passages for study facts. Exclude prior-literature background, negated baseline disease, generic control groups, numbers and statistical tests. At most 30 distinct concept-role pairs are requested by the frozen prompt.
+The optional `--index path/to/index.json` on the mapping stage accepts an object with a `concepts` array of `{id,label,...}` objects. The helper sends only IDs and labels to the model. Keep the complete index for subsequent code lookup. The helper checks input shape and required question fields; it does not execute or validate an extraction. For a batch, prepare and process each article separately with the same question and retain input identifiers outside the model payload.
+
+## Comparison selection
+
+Keep numerical estimates matching the current question and the actual reference groups. Restrict to extreme exposure categories only when requested. Preserve continuous exposure increments, doses, units and transformations. Keep categorical contrasts without imposing an exposure ordering. Preserve relevant distinct methods, adjustment models, follow-up times and within-subgroup comparisons. Exclude a joint exposure contrast only when it changes an unrelated factor outside the requested question.
+
+Never transfer estimates, population sizes or exposure means across subcohorts or outcomes. A whole-population-average reference remains that reference. A range spanning several intervention arms is not an arm-specific estimate. When the requested endpoint is a composite, include individual components only if the user permits them.
+
+Deduplicate a comparative estimate and descriptive group rates only when they express the same population, contrast, endpoint and timepoint. Do not discard distinct comparisons because some other result in the article has a ratio. Preserve every eligible point estimate as originally reported, including a positive reduction magnitude, an explicitly signed coefficient, or a logarithmic estimate. Do not invert, exponentiate or convert units.
+
+The schema represents numerical effects and paired cumulative incidence percentages. Diagnostic accuracy, prevalence pairs, descriptive group means or unassigned ranges may require an extension for a particular request. Explain that specific limitation and make an explicit schema extension when needed; do not mislabel them as incidence or manufacture an estimate. Keep extensions documented with that run.
 
 ## Terminology resolution
 
-For a recognized `concept_id`, join the corresponding concept in `terminology.json` and retain `mesh`, `icd` and `umls` objects, including source URLs, relation and version. A broader mapping does not change the meaning of the extracted concept. Do not reinterpret all mappings as exact.
+Use an index entry only when its named concept matches the entity. Preserve its MeSH/ICD/UMLS mapping objects, exact or broader relation, version and source URL. Unindexed entities remain eligible for extraction and mapping. The example's vocabulary is optional and does not define allowable concepts or outcomes.
 
-For an unindexed label, the original cloud implementation performs these requests with URL-encoded parameters.
+For unindexed terms, the existing workflow offers exact label searches with URL-encoded parameters.
 
-- MeSH descriptor lookup at `https://id.nlm.nih.gov/mesh/lookup/descriptor`, with `label`, `match=exact`, and `limit=5`. Accept one unambiguous descriptor with its returned identifier and label.
-- NCI Metathesaurus lookup at `https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/search`, with `term`, `type=match`, `include=full`, and `pageSize=8`. Accept one CUI whose preferred name or a supported synonym matches after case/punctuation normalization. Prefer a unique preferred-name match. Record that the CUI was obtained via NCI Metathesaurus.
+- MeSH descriptor lookup at `https://id.nlm.nih.gov/mesh/lookup/descriptor`, with `label`, `match=exact`, and `limit=5`. Accept an unambiguous returned descriptor and retain its identifier and label.
+- NCI Metathesaurus lookup at `https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/search`, with `term`, `type=match`, `include=full`, and `pageSize=8`. Prefer a unique preferred-name match or an unambiguous supported synonym. Record that the CUI was obtained via NCI Metathesaurus.
+- For ICD, use a verified crosswalk or the requested ICD version's authoritative terminology source. Record the specific code system, such as ICD-10 or ICD-10-CM. Do not infer an ICD code from a CUI, MeSH code, code prefix or approximate text match.
 
-The original fallback performs at most eight distinct label lookups per study and leaves ICD null for unindexed concepts. If lookups fail, keep the entity and null codes. Do not treat a failed lookup as absence of the concept. Code prefixes, approximate name matches or LLM suggestions alone do not establish a vocabulary mapping.
+Read relevant source definitions when homonyms, subtypes or mapping relations are ambiguous. Synonym resolution must preserve the endpoint and concept meaning. Keep unmapped labels with null codes if a source is inaccessible or no mapping is established. Do not force medications, exposures or demographics into disease codes. Query deduplication and rate limits may be chosen for the batch; report any uncompleted mapping work.
 
-## Source and numerical checks
+## Source and numerical validation
 
-Check these conditions before a row is treated as validated.
+Validate the populated object against `prompts.json.schema`. Schema validity alone does not establish scientific attribution. Check the following conditions against each original abstract.
 
-- Required fields, types and controlled values match the schema. Empty PICOS source quotes are acceptable only for a genuinely unreported field marked `Not reported`.
-- PICOS quotes occur in the supplied title or abstract. Numerical result and significance quotes occur in the abstract and support this exact comparison, population, timepoint and model. The cloud implementation tolerates case/whitespace differences when locating a quote, then replaces it with the literal source span. It does not permit omitted words or discontinuous quotations.
-- Every numerical value is supported by its quoted result passage. CI bounds belong to the same estimate, are ordered, and contain the point estimate. Subgroup, model and arm attribution must agree with the quote. Literal containment and schema validity alone cannot establish that attribution.
-- Ratios above/below 1 imply increased/decreased point-estimate direction. Differences use 0. Paired cumulative incidences compare exposure with comparator. A positive reported reduction magnitude denotes decrease. Nonsignificance does not change point-estimate direction to no change.
-- For a ratio, a stated 95% CI containing 1 implies nonsignificance; for a difference, use 0. Otherwise an excluding interval implies significance. Use this estimate's CI before a statement about another model. Without a CI, use a clearly linked pairwise P value or direct statement. Trend, interaction and global log-rank P values do not establish pairwise significance.
-- Paired incidence rows retain both group percentages. Other metrics have a null `comparator_estimate`. Preserve uncertainty as missing when it is unreported.
-- Entity quotes contain the mention, concepts match the extracted fields, and disease absence is not coded as disease presence. Keep different measurement concepts distinct, such as dietary sodium and urinary sodium.
+- Required fields and controlled values match the schema. An absent PICOS field is `Not reported` with an empty source quote. Each eligible effect has a reported number.
+- PICOS quotes occur in the title or abstract. Effect and significance quotes occur in the abstract and support the exact comparison, population, endpoint, timepoint and model. If case/whitespace alignment is used, replace the stored quote with the literal matched source span; omitted words or discontinuous text are invalid.
+- Values and interval endpoints match their quoted result. Confidence limits belong to the same estimate, scale and stated confidence level. CI fields are reserved for 95% intervals; preserve other levels as `other_uncertainty`. Check bound ordering and consistency with the point estimate; retain and flag an inconsistency present in the source rather than silently repairing it.
+- Original-scale HR/OR/RR estimates use null=1. Differences, log ratios, correlations and signed coefficients use null=0 only when their reported metric supports that interpretation. Determine direction from the reported contrast orientation. For paired incidence, compare the two percentages. A reported positive reduction magnitude denotes decrease. Unestablished direction remains `not found`.
+- For the applicable null, a stated 95% CI excluding it supports significance, and an interval including it supports nonsignificance. Without an applicable interval, use a directly linked P value or statement for the exact result, respecting the reported threshold or multiple-testing adjustment. A P value at an ambiguous threshold remains unresolved. Trend, interaction and global tests cannot establish pairwise significance. Preserve CI-based and multiplicity-adjusted conclusions separately if they differ; describe the discrepancy in `other_uncertainty` and apply an explicitly requested inferential criterion consistently.
+- Significance does not change point-estimate direction. Clinical desirability is separate from a measured endpoint's increase/decrease. Preserve distinction between an event hazard and a time-to-event duration.
+- Keep effect-specific metadata when subgroup/model results differ. A statement about an adjusted association cannot change the significance assigned to a different unadjusted number.
+- Paired-incidence rows retain both percentages. Other metrics retain a null `comparator_estimate` unless an explicit schema extension was made. Preserve the original units for differences and coefficients.
+- Entity quotes contain their mentions. Concept identities agree with the focused fields, and negated baseline disease is not coded as present disease. The same concept can occupy multiple roles when explicitly supported.
 
-The original cloud code implements a subset of these checks mechanically. Semantic comparison selection and numerical attribution still need direct review against the supplied abstract. Do not claim that automatic checks alone validate every scientific interpretation.
+## Corrections and output
 
-## Corrective calls
+On validation failure, retain the prior assistant response and append `Correct the JSON. ` followed by the specific error. Allow at most three total attempts per stage. Record unresolved errors. Keep valid evidence extraction when only terminology retrieval fails. Omitted invalid entities and unmapped concepts must remain visible in the run's status.
 
-When validation fails, retain the previous assistant response and append a user message containing the concrete validation error.
+Create one table row per eligible effect, preserving its own P/I/C/O, method, model and timepoint. Retain study-level PICOS in structured output. For a complete study inventory, no-effect studies can occupy a PICOS-only row with blank effect fields; record them as no eligible numerical estimate. Do not turn missingness into zero. Failed extraction is a distinct status.
 
-```text
-Correct the JSON. {{validation error message}}
-```
-
-Allow at most three total attempts per stage, including the first call. Keep the error record if unresolved. Do not silently convert a failed study into an empty-results study. For entity failures, retain only grounded entities and report omitted or unresolved mappings. A failed terminology lookup should not trigger repetition of a successful evidence extraction.
-
-## Rows and traceability
-
-Create one row per eligible effect. Use the effect's population, intervention, comparator, outcome, timepoint and adjustment metadata to prevent collapsing distinct findings. Retain study-level PICOS alongside effect-specific fields in the structured output. Do not carry effect-specific subgroup entities across unrelated rows.
-
-For no-effect studies, show one study-level row with PICOS and missing effect fields when a complete study inventory is requested. Otherwise report the study separately as having no eligible numerical estimate. Never create an estimate row with value zero to represent missingness.
-
-Keep the input record identifier, original abstract, actual model identifier, prompt or prompt hash, source quotes and mapping provenance with the extraction outputs when an auditable run is requested. The frozen vocabulary date and the execution date are different pieces of information.
+For auditable runs, retain original inputs, question object, actual model, exact messages or their hashes, source quotes and terminology provenance. The question must accompany exports so results from different questions cannot be confused.
