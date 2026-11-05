@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "3.0",
   "updated_at": "2026-11-05",
   "scope": "User-defined exposure, comparator and outcome; no default research question",
   "model": "Selected at execution time",
@@ -16,6 +16,18 @@
     {
       "file": "examples/salt-hypertension/terminology.json",
       "sha256": "7a772167f0644214ecc88e254161a07dd1eaf826ce9bc9370cff3b5b8e555c77"
+    },
+    {
+      "file": "scripts/run_batch.py",
+      "sha256": "9c8d62aacad463397440b62b0b4def4298fd6671abf91b4a626692477b1b74fb"
+    },
+    {
+      "file": "scripts/prepare_messages.py",
+      "sha256": "5ed3cd7ef851e850fd2910320ce46ccf7d13aa160318d79124f72266941b61a4"
+    },
+    {
+      "file": "tests/test_run_batch.py",
+      "sha256": "74bb17fbc318d5330c27e7a39b0307d3e184ba97d684fd4ea3f842ab9b520021"
     }
   ],
   "historical_example": {
@@ -24,5 +36,6 @@
     "model": "deepseek-flash",
     "source_directory": "outputs/hosted_evidence_extraction/server",
     "unchanged_snapshot": true
-  }
+  },
+  "execution": "Bounded-concurrency OpenAI-compatible API runner with SQLite stage checkpoints and configuration isolation"
 }

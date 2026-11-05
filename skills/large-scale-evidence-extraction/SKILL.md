@@ -53,6 +53,10 @@ Read [examples/salt-hypertension/example.md](examples/salt-hypertension/example.
 
 ## Execution
 
-Use the available model interface or an explicitly configured runner and report the actual model and execution method. The helper prepares requests only. API runs require the user's configured provider and runtime credentials. Use JSON output when supported; adapt token limits and provider-specific options to the selected model. Historical DeepSeek settings are documented in the example.
+For large API batches, use [scripts/run_batch.py](scripts/run_batch.py) and [references/batch-running.md](references/batch-running.md). The runner provides bounded concurrency, global request pacing, retry backoff, per-stage SQLite checkpoints, recovery and failure-only retries. It uses the generic prompts and preserves the question and input fingerprints. Run a small representative sample before scaling an unfamiliar endpoint or domain.
+
+Use the available model interface or the configured runner and report the actual model and execution method. `prepare_messages.py` prepares requests only; `run_batch.py` performs API calls. API runs require the user's configured provider and runtime credentials. Historical DeepSeek settings are documented in the example. Choose workers and request rate to fit the provider's limits, preserving a separate output directory for each question/configuration.
+
+The runner resolves entity codes from the supplied verified index and records unindexed terms as unresolved. Complete their terminology lookup using the workflow reference before describing all mappings as complete. Automatic schema and source checks do not establish every comparison's semantic eligibility.
 
 Check any existing runner for fixed endpoint filters, concept whitelists and contrast rules before using it with a new question. A generic prompt cannot override hardcoded validation. Deliver the requested table and structured output, with unresolved validation or terminology limits stated. Keep keys and private inputs outside the skill and public repository.
