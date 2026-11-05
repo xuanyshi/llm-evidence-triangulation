@@ -23,6 +23,7 @@ from urllib.request import Request, urlopen
 
 import jsonschema
 from prepare_messages import SKILL_ROOT, build_messages
+from terminology import TerminologyResolver, RESOLVER_VERSION
 
 
 def packed(value):
@@ -162,7 +163,7 @@ def validate_entities(data, article, index):
             continue
         seen.add(key)
         term = catalog.get(concept, {})
-        entities.append({**item, **{v: term.get(v) for v in ('mesh', 'icd', 'umls')},
+        entities.append({**item, 'label': term.get('label', item['label']), **{v: term.get(v) for v in ('mesh', 'icd', 'umls')},
                          'mapping_status': 'index' if term else 'unresolved'})
     return entities
 
@@ -177,6 +178,7 @@ class BatchRunner:
         # A separate SQLite write transaction holds a process-wide output lock.
         # The operating system releases this lock after a crash.
         self.owner = None
+        self.resolver = None
 
     @contextmanager
     def connect(self):
@@ -204,7 +206,8 @@ class BatchRunner:
             'disable_thinking': self.args.disable_thinking,
             'prompt_hash': digest(self.prompts), 'index_hash': digest(self.index),
             'input_hash': digest(self.articles),
-            'implementation_hash': hashlib.sha256(Path(__file__).read_bytes() + (SKILL_ROOT / 'scripts/prepare_messages.py').read_bytes()).hexdigest(),
+            'terminology': {'resolver_version': RESOLVER_VERSION, 'online_icd_system': 'ICD-10-CM'},
+            'implementation_hash': hashlib.sha256(Path(__file__).read_bytes() + (SKILL_ROOT / 'scripts/prepare_messages.py').read_bytes() + (SKILL_ROOT / 'scripts/terminology.py').read_bytes()).hexdigest(),
         }
         with self.connect() as db:
             db.execute('PRAGMA journal_mode=WAL')
@@ -213,16 +216,28 @@ class BatchRunner:
             db.execute('CREATE TABLE IF NOT EXISTS requests (id INTEGER PRIMARY KEY, study TEXT, stage TEXT, attempt INTEGER, started REAL, elapsed REAL, status TEXT, usage TEXT, response TEXT)')
             previous = db.execute('SELECT manifest FROM metadata WHERE id=1').fetchone()
             if previous:
-                if json.loads(previous['manifest']) != manifest:
-                    raise ValueError('Question, input, model, prompts, index or implementation changed. Use a new output directory.')
-                if not (self.args.resume or self.args.retry_failed):
-                    raise ValueError('Output already contains a run. Use --resume or --retry-failed.')
+                old_manifest = json.loads(previous['manifest'])
+                if old_manifest != manifest:
+                    omit = {'implementation_hash', 'terminology'}
+                    compatible = {k: v for k, v in old_manifest.items() if k not in omit} == {k: v for k, v in manifest.items() if k not in omit}
+                    if not self.args.retry_mappings or not compatible:
+                        raise ValueError('Question, input, model, prompts, index or implementation changed. Use a new output directory; --retry-mappings permits terminology-only upgrades.')
+                    db.execute('CREATE TABLE IF NOT EXISTS mapping_migrations (id INTEGER PRIMARY KEY, previous_manifest TEXT, updated REAL)')
+                    db.execute('INSERT INTO mapping_migrations (previous_manifest,updated) VALUES (?,?)', (previous['manifest'], time.time()))
+                    db.execute('UPDATE metadata SET manifest=? WHERE id=1', (packed(manifest),))
+                if not (self.args.resume or self.args.retry_failed or self.args.retry_mappings):
+                    raise ValueError('Output already contains a run. Use --resume, --retry-failed or --retry-mappings.')
             else:
+                if self.args.retry_mappings:
+                    raise ValueError('--retry-mappings requires an existing run with saved entities.')
                 db.execute('INSERT INTO metadata VALUES (1, ?)', (packed(manifest),))
                 for position, article in enumerate(self.articles):
                     db.execute('INSERT INTO jobs VALUES (?,?,?, ?,NULL,NULL,NULL)',
                                (article['id'], position, packed(article), 'pending'))
             db.execute("UPDATE jobs SET status='pending' WHERE status='running'")
+        self.resolver = TerminologyResolver(self.args.output / 'terminology.sqlite3',
+            rpm=self.args.terminology_requests_per_minute, timeout=self.args.terminology_timeout,
+            cache_days=self.args.terminology_cache_days, stop=self.stop)
         self.export()
 
     def close(self):
@@ -303,6 +318,13 @@ class BatchRunner:
             if self.args.stage == 'both' and not row['entities']:
                 entities = self.model_call(article, 'map', extraction)
                 self.save(identifier, entities=packed(entities))
+            elif row['entities']:
+                entities = json.loads(row['entities'])
+            if self.args.stage == 'both':
+                self.save(identifier, entities=packed(self.resolver.enrich(entities)))
+            if self.stop.is_set():
+                self.save(identifier, status='pending', error='Interrupted during terminology lookup.')
+                return
             self.save(identifier, status='succeeded' if extraction['effects'] else 'no_eligible_estimate')
         except StageError as error:
             status = 'mapping_failed' if extraction is not None and self.args.stage == 'both' else 'failed'
@@ -314,16 +336,21 @@ class BatchRunner:
 
     def run(self):
         with self.connect() as db:
-            statuses = ('failed', 'mapping_failed') if self.args.retry_failed else ('pending',)
-            sql = 'SELECT id FROM jobs WHERE status IN (' + ','.join('?' for _ in statuses) + ') ORDER BY position'
-            identifiers = iter([r['id'] for r in db.execute(sql, statuses)])
+            if self.args.retry_mappings:
+                selected = db.execute('SELECT id FROM jobs WHERE entities IS NOT NULL ORDER BY position')
+            else:
+                statuses = ('failed', 'mapping_failed') if self.args.retry_failed else ('pending',)
+                sql = 'SELECT id FROM jobs WHERE status IN (' + ','.join('?' for _ in statuses) + ') ORDER BY position'
+                selected = db.execute(sql, statuses)
+            identifiers = iter([r['id'] for r in selected])
+        operation = self.refresh_mappings if self.args.retry_mappings else self.one
         pool = ThreadPoolExecutor(max_workers=self.args.workers)
         pending = set()
         try:
             for _ in range(self.args.workers):
                 identifier = next(identifiers, None)
                 if identifier is not None:
-                    pending.add(pool.submit(self.one, identifier))
+                    pending.add(pool.submit(operation, identifier))
             while pending:
                 done, pending = wait(pending, timeout=1, return_when=FIRST_COMPLETED)
                 for future in done:
@@ -331,7 +358,7 @@ class BatchRunner:
                     if not self.stop.is_set():
                         identifier = next(identifiers, None)
                         if identifier is not None:
-                            pending.add(pool.submit(self.one, identifier))
+                            pending.add(pool.submit(operation, identifier))
                 if done:
                     print(packed(self.counts()), flush=True)
         except KeyboardInterrupt:
@@ -341,7 +368,13 @@ class BatchRunner:
             pool.shutdown(wait=True)
             self.export()
         counts = self.counts()
-        return 1 if any(counts.get(s, 0) for s in ('failed', 'mapping_failed', 'pending', 'running')) else 0
+        return 1 if self.stop.is_set() or any(counts.get(s, 0) for s in ('failed', 'mapping_failed', 'pending', 'running')) else 0
+
+    def refresh_mappings(self, identifier):
+        with self.connect() as db:
+            row = db.execute('SELECT entities FROM jobs WHERE id=?', (identifier,)).fetchone()
+        entities = self.resolver.enrich(json.loads(row['entities']), refresh=True)
+        self.save(identifier, entities=packed(entities))
 
     def counts(self):
         with self.connect() as db:
@@ -353,19 +386,25 @@ class BatchRunner:
             manifest = json.loads(db.execute('SELECT manifest FROM metadata WHERE id=1').fetchone()['manifest'])
         json_path = self.args.output / 'results.jsonl'
         csv_path = self.args.output / 'evidence.csv'
-        columns = ['Study', 'Status', 'Study design', 'P', 'I', 'C', 'O', 'Effect type', 'Effect value',
+        columns = ['Study', 'Status', 'Mapping review', 'Study design', 'P', 'I', 'C', 'O', 'Effect type', 'Effect value',
                    'Comparator value', 'Unit', 'Effect direction', 'CI', 'Significance', 'Adjustment', 'Timepoint', 'Source quote', 'Entities']
         with json_path.with_suffix('.jsonl.tmp').open('w', encoding='utf-8') as out, csv_path.with_suffix('.csv.tmp').open('w', encoding='utf-8-sig', newline='') as table:
+            review_items = []
             writer = csv.DictWriter(table, fieldnames=columns)
             writer.writeheader()
             for row in rows:
                 article = json.loads(row['article'])
                 data = json.loads(row['extraction']) if row['extraction'] else None
                 entities = json.loads(row['entities']) if row['entities'] else []
+                for entity in entities:
+                    for vocab in entity.get('review_vocabularies', []):
+                        review_items.append({'study': row['id'], 'role': entity['role'], 'label': entity['label'], 'mention': entity['mention'],
+                            'vocabulary': vocab, **entity['mapping_checks'][vocab], 'source_quote': entity['source_quote']})
                 out.write(packed({'id': row['id'], 'status': row['status'], 'question': self.question, 'article': article,
                                   'data': data, 'entities': entities, 'error': row['error']}) + '\n')
                 for effect in (data['effects'] or [None]) if data else [None]:
-                    line = {'Study': row['id'], 'Status': row['status'], 'Entities': packed(entities)}
+                    line = {'Study': row['id'], 'Status': row['status'], 'Entities': packed(entities),
+                            'Mapping review': 'Needs review' if any(e.get('review_vocabularies') for e in entities) else ''}
                     if data:
                         line.update({'Study design': data['picos']['S']['text'], **{k: data['picos'][k]['text'] for k in 'PICO'}})
                     if effect:
@@ -377,7 +416,8 @@ class BatchRunner:
                         for entity in entities:
                             if entity['role'] != role:
                                 continue
-                            codes = [f"{v.upper()} {entity[v]['code']}" for v in ('mesh', 'icd', 'umls') if entity.get(v)]
+                            codes = [f"{entity[v].get('code_system', v.upper())} {entity[v]['code']}" for v in ('mesh', 'icd', 'umls') if entity.get(v)]
+                            codes.extend(v.upper() + ' needs review' for v in entity.get('review_vocabularies', []))
                             if codes:
                                 mapped.append(entity['label'] + ' [' + ', '.join(codes) + ']')
                         if mapped:
@@ -389,9 +429,14 @@ class BatchRunner:
                     writer.writerow(line)
         os.replace(json_path.with_suffix('.jsonl.tmp'), json_path)
         os.replace(csv_path.with_suffix('.csv.tmp'), csv_path)
+        review_path = self.args.output / 'mapping_review.jsonl'
+        review_tmp = review_path.with_suffix('.jsonl.tmp')
+        review_tmp.write_text(''.join(packed(item) + '\n' for item in review_items))
+        os.replace(review_tmp, review_path)
         summary = {'counts': self.counts(), 'model': self.args.model, 'manifest': manifest,
                    'updated_at': datetime.now(timezone.utc).isoformat(),
-                   'terminology': 'Supplied-index mappings only; unindexed labels remain unresolved for terminology lookup.',
+                   'terminology': 'Index plus NLM MeSH, NCI Metathesaurus and NLM ICD-10-CM lookup; unresolved or ambiguous codes require review.',
+                   'mapping_review_items': len(review_items),
                    'validation': 'Schema, source spans and selected numeric consistency checks; semantic attribution requires review.'}
         target = self.args.output / 'summary.json'
         temporary = target.with_suffix('.json.tmp')
@@ -414,23 +459,27 @@ def main():
     parser.add_argument('--timeout', type=float, default=90)
     parser.add_argument('--max-tokens', type=int, default=6000)
     parser.add_argument('--disable-thinking', action='store_true', help='Send thinking.type=disabled on providers that support this setting.')
+    parser.add_argument('--terminology-requests-per-minute', type=float, default=120)
+    parser.add_argument('--terminology-timeout', type=float, default=15)
+    parser.add_argument('--terminology-cache-days', type=float, default=30)
     parser.add_argument('--stage', choices=('extract', 'both'), default='both')
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--resume', action='store_true')
     mode.add_argument('--retry-failed', action='store_true')
+    mode.add_argument('--retry-mappings', action='store_true', help='Refresh missing codes on saved entities without any model calls.')
     args = parser.parse_args()
     runner = None
     try:
         if not 1 <= args.workers <= 64 or not 1 <= args.max_attempts <= 3:
             raise ValueError('Use 1–64 workers and 1–3 attempts per stage.')
-        if not all(math.isfinite(v) and v > 0 for v in (args.requests_per_minute, args.timeout, args.max_tokens)):
+        if not all(math.isfinite(v) and v > 0 for v in (args.requests_per_minute, args.timeout, args.max_tokens, args.terminology_requests_per_minute, args.terminology_timeout, args.terminology_cache_days)):
             raise ValueError('Rate, timeout and token limit must be positive finite values.')
         url = urlparse(args.base_url)
         if url.scheme != 'https' and not (url.scheme == 'http' and url.hostname in ('localhost', '127.0.0.1', '::1')):
             raise ValueError('Use HTTPS for the provider; HTTP is allowed only for localhost tests.')
         if url.username or url.password or url.query or url.fragment or not url.netloc:
             raise ValueError('Base URL must not contain credentials, query parameters or fragments.')
-        if not os.environ.get(args.api_key_env):
+        if not args.retry_mappings and not os.environ.get(args.api_key_env):
             raise ValueError('Set the API key in the named environment variable before running.')
         articles = read_articles(args.input)
         question = json.loads(args.question.read_text())

@@ -40,13 +40,13 @@ The schema represents numerical effects and paired cumulative incidence percenta
 
 Use an index entry only when its named concept matches the entity. Preserve its MeSH/ICD/UMLS mapping objects, exact or broader relation, version and source URL. Unindexed entities remain eligible for extraction and mapping. The example's vocabulary is optional and does not define allowable concepts or outcomes.
 
-For unindexed terms, the existing workflow offers exact label searches with URL-encoded parameters.
+For unindexed terms and missing vocabulary fields in indexed entities, the runner automatically performs independent exact label searches with URL-encoded parameters. [terminology-mapping.md](terminology-mapping.md) describes caching, source verification and review states.
 
 - MeSH descriptor lookup at `https://id.nlm.nih.gov/mesh/lookup/descriptor`, with `label`, `match=exact`, and `limit=5`. Accept an unambiguous returned descriptor and retain its identifier and label.
 - NCI Metathesaurus lookup at `https://api-evsrest.nci.nih.gov/api/v1/concept/ncim/search`, with `term`, `type=match`, `include=full`, and `pageSize=8`. Prefer a unique preferred-name match or an unambiguous supported synonym. Record that the CUI was obtained via NCI Metathesaurus.
-- For ICD, use a verified crosswalk or the requested ICD version's authoritative terminology source. Record the specific code system, such as ICD-10 or ICD-10-CM. Do not infer an ICD code from a CUI, MeSH code, code prefix or approximate text match.
+- For new ICD mappings, query the NLM Clinical Tables ICD-10-CM service. Accept a unique exact diagnosis label or a unique exact ICD10CM source synonym from NCIm whose code and current label can be confirmed in Clinical Tables. Record `code_system=ICD-10-CM`. Retain existing ICD-10 index mappings with their original version. A request specifically requiring WHO ICD-10 or another national modification needs that vocabulary's verified index or a separate adapter; do not substitute ICD-10-CM silently.
 
-Read relevant source definitions when homonyms, subtypes or mapping relations are ambiguous. Synonym resolution must preserve the endpoint and concept meaning. Keep unmapped labels with null codes if a source is inaccessible or no mapping is established. Do not force medications, exposures or demographics into disease codes. Query deduplication and rate limits may be chosen for the batch; report any uncompleted mapping work.
+Read relevant source definitions when homonyms, subtypes or mapping relations are ambiguous. Synonym resolution must preserve the endpoint and concept meaning. A verified exact target-vocabulary synonym can resolve a label absent from that vocabulary's preferred-name search. Multiple exact CUIs or target codes remain ambiguous. Keep unmapped labels with null codes if a source is inaccessible or no mapping is established. Do not force medications, exposures or demographics into disease codes. The runner deduplicates label queries across workers, persists results and independently limits terminology request starts.
 
 ## Source and numerical validation
 

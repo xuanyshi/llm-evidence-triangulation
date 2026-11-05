@@ -27,9 +27,9 @@ python3 scripts/run_batch.py \
 
 The provider/model above are an execution example. They do not set a research-question default. `--disable-thinking` sends the provider-specific `thinking.type=disabled` setting used in the original DeepSeek workflow. Use it only with providers supporting that option. Reasoning-enabled models may consume the output budget before returning JSON; configure the mode and token budget deliberately. Each study normally uses two model calls, plus any retries. `--requests-per-minute` limits total request starts across both stages and all worker threads in this process. It is not a token-per-minute limiter; lower the rate for long abstracts or provider token limits. Separate output directories do not share a rate limiter, so divide the account's allowance among concurrent runs.
 
-The default stage is `both` (evidence extraction then entity recognition). Use `--stage extract` for evidence only. Use `--index /path/to/verified-index.json` to attach verified MeSH/ICD/UMLS codes. Without an index, entity mentions and roles are still extracted, and codes remain null pending terminology lookup.
+The default stage is `both` (evidence extraction, entity recognition and online terminology mapping). Use `--stage extract` for evidence only. Use `--index /path/to/verified-index.json` to attach existing verified MeSH/ICD/UMLS codes. Missing codes are automatically queried in MeSH, NCI Metathesaurus and ICD-10-CM. An index is optional. See [terminology-mapping.md](terminology-mapping.md) for exact-match acceptance rules and code-system distinctions.
 
-For an interrupted run, repeat the same command with `--resume`. It processes pending/interrupted studies and skips successful stages. For recorded failed studies, repeat it with `--retry-failed`. A mapping failure retries mapping while retaining the saved extraction. The two options are mutually exclusive; process pending records and recorded failures in separate invocations when both exist.
+For an interrupted run, repeat the same command with `--resume`. It processes pending/interrupted studies and skips successful stages. For recorded failed studies, repeat it with `--retry-failed`. An entity-recognition failure retries that stage while retaining the saved extraction. For unresolved vocabulary mappings, repeat it with `--retry-mappings`; this uses saved entities and makes no model calls, so no model key is required. These three modes are mutually exclusive. Use the appropriate mode separately when several kinds of unfinished work coexist.
 
 ## Persistence and retries
 
@@ -39,7 +39,7 @@ For an interrupted run, repeat the same command with `--resume`. It processes pe
 - Every request attempt consumes the shared rate limiter. HTTP 408, 409, 429, server errors and network/response failures receive bounded retries. Respect `Retry-After` up to 300 seconds; otherwise use exponential delay with jitter. Repeated rate limits require lowering the run's rate. Validation failures receive the prior response plus the concrete correction message.
 - `--max-attempts` is 1–3 attempts per stage per invocation, default 3. `--timeout` is the per-request socket timeout, default 90 seconds. HTTP 401/403 stops new scheduling and leaves unfinished work recoverable after credentials are corrected. A manual retry invocation grants a fresh per-stage attempt budget.
 - On Ctrl-C, the coordinator stops starting new requests, waits for active requests to settle, and exports the committed state. Force termination still leaves committed SQLite stages available for `--resume`.
-- Resume requires identical question, inputs, provider/model, prompts, index, output token settings and runner implementation. A changed question or source cannot reuse previous results silently. Worker count, request rate, timeout and retry budget can be adjusted on recovery. Use a new output directory for incompatible changes.
+- Resume requires identical question, inputs, provider/model, prompts, index, output token settings and runner implementation. A changed question or source cannot reuse previous results silently. Worker count, request rate, timeout and retry budget can be adjusted on recovery. `--retry-mappings` permits terminology/implementation upgrades with all extraction inputs and settings unchanged, records the previous manifest in `mapping_migrations`, and only touches saved entity mappings. This upgrades compatible pre-online-mapping runs without regenerating extraction or entities. Use a new output directory for incompatible research-question or model changes.
 
 The runner preserves literal source spans and checks JSON Schema, selected metric/direction/CI consistency, entity quote containment and index identifiers. Semantic eligibility, numeric attribution to the correct model, and ambiguous code meanings still require review as described in [workflow.md](workflow.md).
 
@@ -48,11 +48,13 @@ The runner preserves literal source spans and checks JSON Schema, selected metri
 - `results.jsonl` contains each original article, question, extraction, entities, status and error. Source quotes and raw extracted fields remain available.
 - `evidence.csv` presents the unified evidence table, including status, model/timepoint context and entity mappings. Numeric columns remain numeric. Text that could execute as a spreadsheet formula is escaped only in CSV; JSON retains the original text.
 - `summary.json` records aggregate counts, requested model, manifest fingerprints, mapping scope and validation scope.
+- `terminology.sqlite3` persists label-query results with per-vocabulary decisions and source evidence. Default terminology pacing is 120 request starts/minute across all workers; configure `--terminology-requests-per-minute`, `--terminology-timeout` and `--terminology-cache-days` independently of model requests.
+- `mapping_review.jsonl` lists each study/entity/vocabulary requiring review, with the reason, candidates and original source quote. The evidence table also displays `Needs review` and the affected vocabularies alongside available codes.
 - The SQLite `requests` table records attempted calls, duration, provider-reported model, token usage when returned, and received model content. The API key and error response bodies are not logged.
 
 CSV/JSONL/summary are atomic snapshots generated when a run starts or stops. During execution the SQLite state advances after every stage; rerun with `--resume` to regenerate exports after a forced termination. A status of `succeeded` means configured stages completed and automated checks passed, including any explicit unresolved terminology. `no_eligible_estimate`, `failed`, `mapping_failed` and `pending` remain distinct.
 
-Exit code 0 means all studies reached `succeeded` or `no_eligible_estimate`; exit code 1 means unfinished/failed studies remain, and 2 indicates invalid configuration or inputs. `--stage both` can complete with unindexed concepts, which are explicitly marked `mapping_status=unresolved`.
+Exit code 0 means all studies reached `succeeded` or `no_eligible_estimate`; exit code 1 means unfinished/failed studies remain or the run was interrupted, and 2 indicates invalid configuration or inputs. Terminology uncertainty remains a separate review state. `--stage both` can complete with `mapping_status=needs_review`; inspect `mapping_review_items` in the summary before calling vocabulary mappings complete. `mapped` means all three fields have codes, including any previously accepted broader index mappings whose relation is preserved.
 
 Run the isolated local regression suite without model credentials or provider charges.
 
@@ -60,7 +62,7 @@ Run the isolated local regression suite without model credentials or provider ch
 python3 -m unittest discover -s tests -v
 ```
 
-The suite uses synthetic abstracts and a local fake service to check bounded parallelism, 429 handling, pacing, completed-work skipping, mapping-only retries, interrupted-stage recovery, output ownership, changed-question rejection, duplicate IDs and source validation. Its mock outputs are software fixtures, not research evidence.
+The suite uses synthetic abstracts and fake services to check bounded parallelism, 429 handling, pacing, completed-work skipping, stage-specific retries, interrupted-stage recovery, output ownership, changed-question rejection, duplicate IDs, source validation, per-source lookup failures, exact synonym verification, ambiguity, durable concurrent cache reuse and terminology-only migration without model calls. Its mock outputs are software fixtures, not research evidence.
 
 ## Relation to the original NC code
 

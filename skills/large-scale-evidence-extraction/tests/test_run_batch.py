@@ -71,12 +71,18 @@ class BatchTests(unittest.TestCase):
         self.articles = [{'id': str(i), 'title': f'Study {i}', 'abstract': ABSTRACT} for i in range(3)]
         self.args = argparse.Namespace(output=Path(self.temp.name), requests_per_minute=600000,
             model='test-model', base_url=f'http://127.0.0.1:{self.server.server_port}', stage='both',
-            workers=2, max_attempts=3, timeout=2, max_tokens=2000, disable_thinking=False, api_key_env='EVIDENCE_TEST_KEY', resume=False, retry_failed=False)
+            workers=2, max_attempts=3, timeout=2, max_tokens=2000, disable_thinking=False, api_key_env='EVIDENCE_TEST_KEY', resume=False, retry_failed=False,
+            retry_mappings=False, terminology_requests_per_minute=120, terminology_timeout=2, terminology_cache_days=30)
         self.env = patch.dict(os.environ, {'EVIDENCE_TEST_KEY': 'local-fake-test-key'}); self.env.start()
+        self.terms = patch.object(batch.TerminologyResolver, 'fetch', return_value={
+            'query': 'Event Y', 'checked_at': 'test', 'requests': [],
+            **{v: None for v in ('mesh', 'icd', 'umls')},
+            'checks': {v: {'status': 'not_found', 'candidates': [], 'reason': None} for v in ('mesh', 'icd', 'umls')}})
+        self.terms.start()
 
     def tearDown(self):
         self.server.shutdown(); self.server.server_close(); self.thread.join()
-        self.env.stop(); self.temp.cleanup()
+        self.terms.stop(); self.env.stop(); self.temp.cleanup()
 
     def execute(self, question=None):
         runner = batch.BatchRunner(self.args, question or QUESTION, self.articles, None)
@@ -99,12 +105,29 @@ class BatchTests(unittest.TestCase):
         records = [json.loads(line) for line in (self.args.output/'results.jsonl').read_text().splitlines()]
         self.assertEqual([r['id'] for r in records], ['0','1','2'])
         self.assertTrue(all(r['status'] == 'succeeded' for r in records))
-        self.assertEqual(records[0]['entities'][0]['mapping_status'], 'unresolved')
+        self.assertEqual(records[0]['entities'][0]['mapping_status'], 'needs_review')
+        self.assertEqual(len((self.args.output/'mapping_review.jsonl').read_text().splitlines()), 9)
         with (self.args.output/'evidence.csv').open(encoding='utf-8-sig') as f:
             rows = list(csv.DictReader(f))
         self.assertEqual(len(rows), 3)
         self.assertEqual(rows[0]['Effect type'], 'HR')
         self.assertEqual(rows[0]['Significance'], 'Significant')
+        self.assertEqual(rows[0]['Mapping review'], 'Needs review')
+
+    def test_mapping_upgrade_never_repeats_model_calls(self):
+        self.assertEqual(self.execute(), 0)
+        before = len(self.server.calls)
+        with sqlite3.connect(self.args.output/'run.sqlite3') as db:
+            manifest = json.loads(db.execute('SELECT manifest FROM metadata WHERE id=1').fetchone()[0])
+            manifest.pop('terminology')
+            manifest['implementation_hash'] = 'historical-runner'
+            db.execute('UPDATE metadata SET manifest=? WHERE id=1', (json.dumps(manifest),))
+        self.args.retry_mappings = True
+        with patch.dict(os.environ, {}, clear=True):
+            self.assertEqual(self.execute(), 0)
+        self.assertEqual(len(self.server.calls), before)
+        with sqlite3.connect(self.args.output/'run.sqlite3') as db:
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM mapping_migrations').fetchone()[0], 1)
 
     def test_failed_mapping_retries_only_that_stage(self):
         self.server.fail_mapping = True
